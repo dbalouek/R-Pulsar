@@ -1,0 +1,34 @@
+syntax = "proto3";
+package tutorial;
+// [END declaration]
+
+// [START java_declaration]
+option java_package = "com.rutgers.Core";
+option java_outer_classname = "Message";
+// [END java_declaration]
+
+// [START messages]
+message SearchRequest {
+  string peerID = 1;
+  repeated int32 queryID = 2;
+}
+
+message SearchResponse {
+  string peerID = 1;
+  repeated bytes data = 2;
+}
+
+message PushRequest {
+  string peerID = 1;
+  repeated bytes payload = 2;
+}
+
+message PullRequest {
+  string peerID = 1;
+}
+
+message PullResponse {
+  string peerID = 1;
+  repeat bytes payload = 2;
+}
+// [END messages]s
