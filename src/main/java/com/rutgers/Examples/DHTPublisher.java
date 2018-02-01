@@ -39,11 +39,6 @@ public class DHTPublisher {
             producer.init();
 
             int size = Integer.parseInt(args[0]);
-            int nodesOne = Integer.parseInt(args[1]);
-            int nodesTwo = Integer.parseInt(args[2]);
-            int nodesTree = Integer.parseInt(args[3]);
-            int nodesFour = Integer.parseInt(args[4]);
-            int nodesFive = Integer.parseInt(args[5]);
             
             List<String> payloadList = new ArrayList<>();
             for(int i = 0; i < size; i++) {
@@ -60,20 +55,7 @@ public class DHTPublisher {
            
             System.out.println("DHT Insert start: " + System.currentTimeMillis());
             
-            for(int i = 0; i < nodesOne; i++)
-                producer.post(msg, profile, 0);
-
-            for(int i = 0; i < nodesTwo; i++)
-                producer.post(msg, profile, 1);
-            
-            for(int i = 0; i < nodesTree; i++)
-                producer.post(msg, profile, 2);
-                        
-            for(int i = 0; i < nodesFour; i++)
-                producer.post(msg, profile, 3);
-            
-            for(int i = 0; i < nodesFive; i++)
-                producer.post(msg, profile, 4);
+            producer.post(msg, profile);
             
             
         } catch (NoSuchAlgorithmException | InvalidKeySpecException | IOException | InterruptedException ex) {
