@@ -100,7 +100,7 @@ public class Publisher {
                 }
             });
             
-            ARMessage.Header.Profile profile = ARMessage.Header.Profile.newBuilder().addSingle("temperature").addSingle("fahrenheit").build();
+            ARMessage.Header.Profile profile = ARMessage.Header.Profile.newBuilder().addSingle("temperatur*").addSingle("fahrenheit").build();
             ARMessage.Header header = ARMessage.Header.newBuilder().setLatitude(0.00).setLongitude(0.00).setType(ARMessage.RPType.AR_PRODUCER).setProfile(profile).setPeerId(producer.getPeerID()).build();
             ARMessage msg = ARMessage.newBuilder().setHeader(header).setAction(ARMessage.Action.NOTIFY_INTEREST).build();
             producer.post(msg, profile);

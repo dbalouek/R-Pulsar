@@ -119,7 +119,6 @@ public class ConsumerReplyHandler implements Runnable{
                                     peer.sendDirectMessageNonBlocking(exactKey, pr);
                             }
                         }
-
                         break;
                     case NOTIFY_INTEREST:
                         System.out.println("Notify Interest");
@@ -156,9 +155,8 @@ public class ConsumerReplyHandler implements Runnable{
                     case NOTIFY_DATA_ANDROID:
                         break;
                     case DELETE_INTEREST:
-//                            for(int i = 0; i < ARMsg.getHeader().getHIDCount(); i++) {
-//                                Hid = ARMsg.getHeader().getHID(i);
-//                            }
+                        Hid = hc.index(ARMsg.getHeader().getProfile());
+                        dbms.deleteInterest(Hid);
                         break;
                     case DELETE_DATA:
                         //Fix
@@ -188,6 +186,30 @@ public class ConsumerReplyHandler implements Runnable{
                         List<String> stop = ARMsg.getPayloadList();
                         Storm.KillTopology(manager.getStormDir() + stop.get(0));
                         break;
+                    case STORE_EDGENT_TOPOLOGY:
+                        dir = manager.getStormDir();
+                        payloadJAR = ARMsg.getPayloadList();
+                        str = payloadJAR.get(1);
+                        full = dir + str ;
+                        System.out.println(full);
+                        Utils.writeBytesToFile(payloadJAR.get(0).getBytes(), full);
+                        break;
+                    case START_EDGENT_TOPOLOGY:
+                        payloadName = ARMsg.getPayloadList();
+                        name = payloadName.get(0);
+                        mainclass = payloadName.get(1);
+                        arg = payloadName.get(2);
+                        path = Paths.get(manager.getStormDir() + name);
+                        if (Files.exists(path)) {
+                            Utils.executeCommand("java -cp " + path + " " + arg);
+                        }else {
+                            System.out.println("Jar does not exist");
+                        }
+                        break;
+                    case STOP_EDGENT_TOPOLOGY:
+                        stop = ARMsg.getPayloadList();
+                        Utils.executeCommand("kill -9 -f" + stop.get(0));
+                        break;    
                     case REQUEST:
                         if(!"".equals(ARMsg.getTopic())) {
                             byte[] payload = queueManager.removeFromQueue(ARMsg.getTopic());
@@ -212,11 +234,6 @@ public class ConsumerReplyHandler implements Runnable{
                         }
                         break;
                     case HELLO:
-                        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                        QueueManager q = manager.getQueueManager();;
-                        q.createQueue("test", "test");
-                        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                        System.out.println("Hello Message");
                         ARMessage.Header header = ARMsg.getHeader();
                         if(manager.isMaster() && header.getType().equals(RPType.AR_RP)) {
                             PeerAddress addr = PeerAddress.class.cast(msg.getElement0());
@@ -264,7 +281,8 @@ public class ConsumerReplyHandler implements Runnable{
                             byte[] data = dataPayload.get(i).getBytes();
                             int dim = ARMsg.getHeader().getProfile().getSingleCount();//+ 1;
                             HilbertCurve curve = HilbertCurve.bits(_QUERY_BITS_).dimensions(dim);
-                            locationKey = curve.index(ARMsg.getHeader().getProfile(), dataPayload.get(i));
+                            List<String> singleList =  ARMsg.getHeader().getProfile().getSingleList();
+                            locationKey = curve.index(singleList, dataPayload.get(i));
                             map.put(new Number640(locationKey, Number160.ZERO, Number160.ZERO, Number160.ZERO), new Data(data));
                         }
                         

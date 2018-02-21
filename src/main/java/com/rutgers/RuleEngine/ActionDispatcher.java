@@ -11,5 +11,5 @@ package com.rutgers.RuleEngine;
  */
 public interface ActionDispatcher
 {
-    public void fire(String filename);
+    public void fire();
 }

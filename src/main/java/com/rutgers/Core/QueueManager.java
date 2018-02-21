@@ -25,8 +25,8 @@ public class QueueManager {
     public static Random r = null;
         
     public QueueManager() {
-        queue = new HashMap<String,IBigQueue>();  
-        fqueue = new HashMap<String,IFanOutQueue>();
+        queue = new HashMap<>();  
+        fqueue = new HashMap<>();
         r = new Random();
     }
     

@@ -12,9 +12,8 @@ package com.rutgers.RuleEngine;
 public class NullActionDispatcher implements ActionDispatcher
 {
     @Override
-    public void fire(String filename)
+    public void fire()
     {
-        // send patient to in_patient
-        System.out.println("Send patient to NULL");
+        System.out.println("Send to NULL");
     }
 }

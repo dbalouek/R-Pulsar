@@ -8,6 +8,8 @@ package com.rutgers.Core;
 /**
  *
  * @author eduard
+ * @param <K>
+ * @param <V>
  */
 public class Pair<K, V> {
 
@@ -15,7 +17,7 @@ public class Pair<K, V> {
     private final V element1;
 
     public static <K, V> Pair<K, V> createPair(K element0, V element1) {
-        return new Pair<K, V>(element0, element1);
+        return new Pair<>(element0, element1);
     }
 
     public Pair(K element0, V element1) {

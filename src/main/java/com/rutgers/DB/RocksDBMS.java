@@ -116,6 +116,17 @@ public class RocksDBMS {
         return result;  
     }
     
+    public void deleteInterest(Number160... keys) {
+        
+        for(Number160 key : keys) {                    
+            try {
+                interest_dbs.delete(key.toByteArray());
+            } catch (RocksDBException ex) {
+                Logger.getLogger(RocksDBMS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
     public void close() {
         interest_dbs.close();
         data_dbs.close();

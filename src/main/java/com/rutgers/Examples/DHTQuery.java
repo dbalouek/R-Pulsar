@@ -39,7 +39,6 @@ public class DHTQuery {
             Message.ARMessage.Header header = Message.ARMessage.Header.newBuilder().setLatitude(0.00).setLongitude(0.00).setType(Message.ARMessage.RPType.AR_PRODUCER).setHDimension(2).setProfile(profile).setPeerId(consumer.getPeerID()).addHID("0x87ffb703f8a94d8").build();
             Message.ARMessage msg = Message.ARMessage.newBuilder().setHeader(header).setAction(Message.ARMessage.Action.STORE_DATA).addPayload("5").build();
             
-            System.out.println("DHT Query start: " + System.currentTimeMillis());
             consumer.post(msg);
 
         } catch (NoSuchAlgorithmException | InvalidKeySpecException | IOException | InterruptedException ex) {

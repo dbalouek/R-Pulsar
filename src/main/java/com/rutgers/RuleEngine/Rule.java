@@ -7,47 +7,35 @@ package com.rutgers.RuleEngine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-/**
- *
- * @author eduard
- */
-public class Rule 
+public class Rule
 {
-    public String expressions;
-    public List<String> timeExpressions;
-    public String dispatcher;
-    public Integer priority;
+    public List<Expression> expressions;
+    public ActionDispatcher dispatcher;
+    public Integer priority = 0;
 
     public static class Builder
     {
-        private List<String> timeExpressions = new ArrayList<>();
-        private String expressions;
-        private String dispatcher;
+        private List<Expression> expressions = new ArrayList<>();
+        private ActionDispatcher dispatcher = new NullActionDispatcher();
         private Integer priority;
 
-//        public Builder withExpression(Expression expr)
-//        {
-//            expressions.add(expr);
-//            return this;
-//        }
+        public Builder withExpression(Expression expr)
+        {
+            expressions.add(expr);
+            return this;
+        }
         
         public Builder withCondition(String expr)
         {
-            expressions = expr;
+            expressions.add(ExpressionParser.fromString(expr));
             return this;
         }
 
         public Builder withConsequence(ActionDispatcher dispatcher)
         {
-            String[] c = dispatcher.getClass().toString().split(" ");
-            this.dispatcher = c[1];
-            return this;
-        }
-        
-        public Builder withTimeCondition(String expr)
-        {
-            timeExpressions.add(ExpressionParser.fromTimeString(expr));
+            this.dispatcher = dispatcher;
             return this;
         }
         
@@ -58,23 +46,22 @@ public class Rule
 
         public Rule build()
         {
-            return new Rule(expressions, timeExpressions, dispatcher, priority);
+            return new Rule(expressions, dispatcher, priority);
         }
     }
 
-    private Rule(String expressions, List<String> timeExpressions, String dispatcher, Integer priority)
+    private Rule(List<Expression> expressions, ActionDispatcher dispatcher, Integer priority)
     {
         this.expressions = expressions;
-        this.timeExpressions = timeExpressions;
         this.dispatcher = dispatcher;
         this.priority = priority;
     }
     
-    public String getExpression() {
+    public List<Expression> getExpression() {
         return this.expressions;
     }
     
-    public String getDispatcher() {
+    public ActionDispatcher getDispatcher() {
         return this.dispatcher;
     }
     

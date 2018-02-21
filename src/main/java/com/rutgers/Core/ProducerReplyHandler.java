@@ -18,8 +18,8 @@ import net.tomp2p.rpc.ObjectDataReply;
  */
 public class ProducerReplyHandler implements ObjectDataReply{
     
-    private BlockingQueue<Pair<PeerAddress, ARMessage>> queue;
-    private int type;
+    private final BlockingQueue<Pair<PeerAddress, ARMessage>> queue;
+    private final int type;
     
     public ProducerReplyHandler(BlockingQueue<Pair<PeerAddress, ARMessage>>  queue, int type) throws  IOException {
         this.queue = queue;
@@ -29,7 +29,7 @@ public class ProducerReplyHandler implements ObjectDataReply{
     @Override
     public Object reply(PeerAddress pa, Object o) throws IOException {
         ARMessage msg = ARMessage.class.cast(o);
-        Pair p = new Pair<PeerAddress, ARMessage>(pa, msg);
+        Pair p = new Pair<>(pa, msg);
         queue.add(p);   
         
         if(msg.getAction() == HELLO)

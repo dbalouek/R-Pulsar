@@ -289,16 +289,16 @@ public final class HilbertCurve {
         return index(points);
     }
     
-    public Number160 index(Profile profile, String... payload) {
+    public Number160 index(List<String> profile, String... payload) {
         long [] points;
         int index = 0; 
-        List<String> singleList = profile.getSingleList();
+        //List<String> singleList = profile.getSingleList();
         
-        int size = singleList.size(); //+ payload.length;
+        int size = profile.size(); //+ payload.length;
         points = new long[size];
         
         
-        for(String single : singleList) {
+        for(String single : profile) {
             points[index] = Base39.decodeBase39(single);
             index++;
         }

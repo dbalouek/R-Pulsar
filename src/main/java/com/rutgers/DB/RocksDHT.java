@@ -11,6 +11,7 @@ import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.Set;
@@ -84,7 +85,7 @@ public class RocksDHT implements Storage{
     public void writeBatch() {
         try {
             dataMap.write(writeOpts, writeBatch);
-            System.out.println("DHT Insert stop: " + System.currentTimeMillis());
+            //System.out.println("DHT Insert stop: " + System.currentTimeMillis());
         } catch (RocksDBException ex) {
             Logger.getLogger(RocksDHT.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -116,7 +117,23 @@ public class RocksDHT implements Storage{
 
     @Override
     public int contains(Number640 nmbr, Number640 nmbr1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Map<byte[], byte[]> multiGet = null;
+        
+        try {
+            List<byte[]> list = new ArrayList<byte[]>();
+       
+            int i = nmbr.contentKey().intValue();
+            while(i < nmbr1.contentKey().intValue()) {
+                i++;
+                Number640 tmp = new Number640(nmbr.locationKey(),nmbr.domainKey(),new Number160(i), nmbr.versionKey());
+                list.add(new byte[tmp.byteValue()]);
+            }
+            
+            multiGet = dataMap.multiGet(list);
+        } catch (RocksDBException ex) {
+            Logger.getLogger(RocksDHT.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return multiGet.size();
     }
 
     @Override
@@ -134,7 +151,14 @@ public class RocksDHT implements Storage{
 
     @Override
     public NavigableMap<Number640, Data> remove(Number640 nmbr, Number640 nmbr1) {
-       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            byte k[] = new byte[nmbr.byteValue()];
+            byte k1[] = new byte[nmbr1.byteValue()];
+            dataMap.deleteRange(k, k1);
+        } catch (RocksDBException ex) {
+            Logger.getLogger(RocksDHT.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     @Override

@@ -54,7 +54,6 @@ public class DHTPublisher {
             Message.ARMessage msg = Message.ARMessage.newBuilder().setHeader(header).setAction(Message.ARMessage.Action.STORE_DATA).addAllPayload(payloadList).build();
            
             System.out.println("DHT Insert start: " + System.currentTimeMillis());
-            
             producer.post(msg, profile);
             
             

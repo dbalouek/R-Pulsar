@@ -7,10 +7,13 @@ package com.rutgers.Core;
 
 import com.google.protobuf.ProtocolStringList;
 import static com.rutgers.Core.Message.ARMessage.Action.*;
+import com.rutgers.RuleEngine.Rule;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import net.tomp2p.peers.Number160;
 import net.tomp2p.peers.PeerAddress;
@@ -31,7 +34,8 @@ public class PulsarConsumer extends Pulsar{
         } else {
             Message.ARMessage.Header.Profile profile = msg.getHeader().getProfile();
             ProtocolStringList payloadList = msg.getPayloadList();
-            Number160 index = hc.index(profile, payloadList.toArray(new String[payloadList.size()]));
+            List<String> singleList = profile.getSingleList();
+            Number160 index = hc.index(singleList, payloadList.toArray(new String[payloadList.size()]));
  //           System.out.println(index);
             PeerAddress peer = lkManager.nearestKey(index);
             rp.sendDirectMessageNonBlocking(peer, msg); 
@@ -70,5 +74,13 @@ public class PulsarConsumer extends Pulsar{
             rp.sendDirectMessageNonBlocking(exactKey, msg);
             return pollQueue.take();
         }
+    }
+    
+    public void addRule(Rule rule) {
+        rules.addRule(rule);
+    }
+    
+    public void evaluateRules(Map<String, String> bindings) {
+        rules.eval(bindings);
     }
 }

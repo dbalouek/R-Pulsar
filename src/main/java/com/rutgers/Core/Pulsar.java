@@ -9,6 +9,15 @@ import static com.rutgers.Core.Globals.*;
 import com.rutgers.Core.Message.ARMessage;
 import com.rutgers.Encryption.RSAEncryption;
 import com.rutgers.Hilbert.HilbertCurve;
+import com.rutgers.RuleEngine.And;
+import com.rutgers.RuleEngine.Equals;
+import com.rutgers.RuleEngine.GreaterThan;
+import com.rutgers.RuleEngine.GreaterThanEqual;
+import com.rutgers.RuleEngine.LessThan;
+import com.rutgers.RuleEngine.Not;
+import com.rutgers.RuleEngine.Operations;
+import com.rutgers.RuleEngine.Or;
+import com.rutgers.RuleEngine.Rules;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
@@ -39,7 +48,6 @@ public class Pulsar {
     Manager manager = null;
     HeartBeat ping = null;
     RP rp = null;
-    HilbertCurve hcurce = null; 
     RSAEncryption rsa = null;
     Cli c = null;
     HilbertCurve hc = null;
@@ -47,18 +55,31 @@ public class Pulsar {
     LocationKeyManager lkManager = null;
     BlockingQueue<ARMessage> userQueue;
     BlockingQueue<ARMessage> pollQueue;
-
+    Rules rules = null;
+    Operations operations = null;
+        
     public Pulsar(Properties args) throws IOException, UnknownHostException, InterruptedException, NoSuchAlgorithmException {
         rp = new RP(args.getProperty("port"), args.getProperty("keys.dir"));
         executorService = Executors.newFixedThreadPool(_THREAD_POOL_); 
         manager = Manager.getInstance();
         manager.setRpOne(rp);
-        hcurce = HilbertCurve.bits(5).dimensions(_MAX_QUERY_DIM_);
         rsa = new RSAEncryption();
         hc = HilbertCurve.bits(_QUERY_BITS_).dimensions(_MAX_QUERY_DIM_);
         prop = args;
         lkManager = new LocationKeyManager();
         executorClass = new ArrayList();
+        
+        // create a singleton container for operations
+        operations = Operations.INSTANCE;
+        
+        // register new operations with the previously created container
+        operations.registerOperation(new And());
+        operations.registerOperation(new Equals());
+        operations.registerOperation(new Not());
+        operations.registerOperation(new Or());
+        operations.registerOperation(new GreaterThan());
+        operations.registerOperation(new GreaterThanEqual());
+        operations.registerOperation(new LessThan());
     }
         
     public Pulsar init() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException, UnknownHostException, ClassNotFoundException {

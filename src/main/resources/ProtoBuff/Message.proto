@@ -39,6 +39,10 @@ enum Action {
   STOP = 17;
   DELETE_INTEREST = 18;
   DELETE_DATA = 19; 
+  STORE_EDGENT_TOPOLOGY = 20;
+  START_EDGENT_TOPOLOGY = 21;
+  STOP_EDGENT_TOPOLOGY = 22;
+
 }
 
 message Header {
