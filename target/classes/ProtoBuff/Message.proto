@@ -1,0 +1,69 @@
+syntax = "proto3";
+package tutorial;
+// [END declaration]
+
+// [START java_declaration]
+option java_package = "com.rutgers.Core";
+option java_outer_classname = "Message";
+// [END java_declaration]
+
+// [START messages]
+message ARMessage {
+
+enum RPType {
+  AR_CONSUMER = 0;
+  AR_USER = 1;
+  AR_PRODUCER = 2;
+  AR_ANDROID_USER = 3;
+  AR_RP = 4;
+}
+
+enum Action {
+  REQUEST_RESPONSE = 0;
+  STORE_DATA = 1;
+  STORE_QUEUE = 2;
+  UPDATE = 3;
+  REQUEST = 4;
+  HELLO = 5;
+  NOTIFY_DATA = 6;
+  NOTIFY_INTEREST = 7;
+  NOTIFY_DATA_ANDROID = 8;
+  QUERY = 9;
+  STORE_STORM_TOPOLOGY = 10;
+  START_STORM_TOPOLOGY = 11;
+  STOP_STORM_TOPOLOGY = 12;
+  PROFILE_REQUEST = 13;
+  PROFILE_RESPONSE = 14;
+  NOTIFY_START = 15;
+  NOTIFY_STOP = 16;
+  STOP = 17;
+  DELETE_INTEREST = 18;
+  DELETE_DATA = 19; 
+  STORE_EDGENT_TOPOLOGY = 20;
+  START_EDGENT_TOPOLOGY = 21;
+  STOP_EDGENT_TOPOLOGY = 22;
+
+}
+
+message Header {
+
+message Profile {
+  repeated string single = 3;
+}
+
+  Profile profile = 1;
+  RPType type = 2;
+  double latitude = 3;
+  double longitude = 4;
+  string peer_id = 5;
+  repeated string hID = 6;
+  int32 hDimension = 7;
+  string domain = 8;
+}
+
+  Header header = 1;
+  Action action = 2;
+  repeated string payload = 3;
+  string topic = 4;
+}
+// [END messages]
