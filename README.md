@@ -7,6 +7,33 @@ R-Pulsar is an IoT Edge Framework, that extends cloud capabilities to local devi
 * A data-driven programming framework.
 * Support for Raspberry Pi and Android Phones.
 
+## Quick Start
+
+Compiling the project using Maven
+
+```
+mvn clean package
+```
+
+Executing an RP
+
+```
+java -jar P2P-1.0-SNAPSHOT-jar-with-dependencies.jar  x -gps 40:-74 -p 5000
+```
+
+Executing a Publisher
+
+```
+java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar c.rutgers.Examples.Publisher
+```
+
+Executing a Consumer
+
+```
+java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar c.rutgers.Examples.Consumer
+
+```
+
 ## Code Examples
 ```java
 //create a R-Pulsar producer
@@ -21,8 +48,8 @@ Message.ARMessage msg = Message.ARMessage.newBuilder().setHeader(header).setActi
 ```
 
 ## Publications
-E. Gibert Renart, D. Balouek-Thomert and M. Parashar. An Edge-Based Framework for Enabling Data-Driven Pipelines for IoT Systems (In preparation - December 2018) <br />
-E. Gibert Renart, A. Silva Veith and M. Dias de Assuncao and L. Lefèvre and D. Balouek-Thomert and M. Parashar. Cost and Latency Aware Framework for Data Stream Analytics. (In preparation - December 2018) <br />
+E. Gibert Renart, D. Balouek-Thomert and M. Parashar. An Edge-Based Framework for Enabling Data-Driven Pipelines for IoT Systems (In preparation) <br />
+E. Gibert Renart, A. Silva Veith and M. Dias de Assuncao and L. Lefèvre and D. Balouek-Thomert and M. Parashar. Cost and Latency Aware Framework for Data Stream Analytics. (CCGrid2019) <br />
 E. Gibert Renart, D. Balouek-Thomert and M. Parashar. Edge Based Data-Driven Pipelines (Technical Report - Aug 2018) <br />
 E. Gibert Renart, J. Diaz-Montes, and M. Parashar. Datadriven stream processing at the edge. In IEEE International Conference on Fog and Edge Computing, 2017.<br />
 E. Gibert Renart, D. Balouek-Thomert and M. Parashar. Pulsar: Enabling Dynamic Data-Driven IoT Applications. In IEEE Foundations and Applications of Self* Systems, 2017.<br />

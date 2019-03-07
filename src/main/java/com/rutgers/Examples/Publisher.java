@@ -47,11 +47,13 @@ public class Publisher {
         
         @Override
         public void run() {
+        	// Creation of a record
             Message.ARMessage push_msg = Message.ARMessage.newBuilder().setAction(Message.ARMessage.Action.STORE_QUEUE).setTopic(msg.getTopic()).addPayload(str).build();
 
             long start = System.currentTimeMillis();
             for(int i = 0; i < iterations; i ++) {
                 try {
+                	// Pushing a record
                     producer.stream(push_msg, msg.getHeader().getPeerId());
                 } catch (NoSuchAlgorithmException | InvalidKeySpecException | UnknownHostException | InterruptedException ex) {
                     Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
@@ -100,7 +102,7 @@ public class Publisher {
                 }
             });
             
-            ARMessage.Header.Profile profile = ARMessage.Header.Profile.newBuilder().addSingle("temperatur*").addSingle("fahrenheit").build();
+            ARMessage.Header.Profile profile = ARMessage.Header.Profile.newBuilder().addSingle("temperature").addSingle("fahrenheit").build();
             ARMessage.Header header = ARMessage.Header.newBuilder().setLatitude(0.00).setLongitude(0.00).setType(ARMessage.RPType.AR_PRODUCER).setProfile(profile).setPeerId(producer.getPeerID()).build();
             ARMessage msg = ARMessage.newBuilder().setHeader(header).setAction(ARMessage.Action.NOTIFY_INTEREST).build();
             producer.post(msg, profile);
