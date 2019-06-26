@@ -18,7 +18,7 @@ mvn clean package
 Executing an RP
 
 ```
-java -jar P2P-1.0-SNAPSHOT-jar-with-dependencies.jar  x -gps 40:-74 -p 5000
+java -jar P2P-1.0-SNAPSHOT-jar-with-dependencies.jar  -l x -gps 40:-74 -p 5000
 ```
 
 Executing a Publisher
