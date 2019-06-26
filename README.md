@@ -24,13 +24,13 @@ java -jar P2P-1.0-SNAPSHOT-jar-with-dependencies.jar  -l x -gps 40:-74 -p 5000
 Executing a Publisher
 
 ```
-java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar c.rutgers.Examples.Publisher
+java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar com.rutgers.Examples.Publisher
 ```
 
 Executing a Consumer
 
 ```
-java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar c.rutgers.Examples.Consumer
+java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar com.rutgers.Examples.Consumer
 
 ```
 
