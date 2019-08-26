@@ -8,9 +8,13 @@ package com.rutgers.Tree;
 import net.tomp2p.peers.Number640;
 
 /**
- *
- * @author eduard
- */
+* This implements a simple binary search tree.
+* This is a requirement from the DHT implementation of TomP2P.
+* 
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
+
 public class ThreadedBinarySearchTree
 {
     private TBSTNode root;

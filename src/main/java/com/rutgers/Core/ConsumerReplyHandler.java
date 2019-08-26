@@ -33,9 +33,11 @@ import net.tomp2p.peers.PeerAddress;
 import net.tomp2p.storage.Data;
 
 /**
- *
- * @author eduard
- */
+* This class reacts to the messages recived by other peers. 
+*
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
 public class ConsumerReplyHandler implements Runnable{
     private final BlockingQueue<com.rutgers.Core.Pair<PeerAddress, ARMessage>> queue;
     private Boolean running;
@@ -50,6 +52,11 @@ public class ConsumerReplyHandler implements Runnable{
     private BlockingQueue<ARMessage> pollQueue = null;
     private PointQuadTree<PeerAddress> qTree = null;
  
+	   /**
+	   * This is the main method which instantiates all the necessary components 
+	   * @param args The arguments need to follow the CLI implementation.
+	   * @return Nothing.
+	   */
     public ConsumerReplyHandler(BlockingQueue<com.rutgers.Core.Pair<PeerAddress, ARMessage>> queue, BlockingQueue<ARMessage> userQueue, BlockingQueue<ARMessage> pollQueue) throws IOException {
         this.queue = queue;
         this.running = true;
@@ -65,14 +72,26 @@ public class ConsumerReplyHandler implements Runnable{
         qTree = manager.getqTree();
     }
     
+    /**
+     * This method return if the class is currently running.
+     * @return If the thread is currently running.
+     */
     public Boolean getRunning() {
         return running;
     }
 
+    /**
+     * This method is to start or stop the thread.
+     * @param running set to true or false to start or stop the thread
+     */
     public void setRunning(Boolean running) {
         this.running = running;
     }
  
+    /**
+     * This is where to thread loops everytime we receive a message.
+     * The first set of message types are for the RP's and then the others are used for the peers.
+     */
     @Override
     public void run() {
         while (running) {
@@ -81,6 +100,9 @@ public class ConsumerReplyHandler implements Runnable{
                 if(msg != null) {
                 ARMessage ARMsg = msg.getElement1(); 
                 switch(ARMsg.getAction()) {
+	                /**
+	                 * Push message to the local queue.
+	                 */
                     case STORE_QUEUE: 
                         if(!"".equals(ARMsg.getTopic())) {
                             queueManager.addToQueue(ARMsg.getTopic(), ARMsg.toByteArray());
@@ -92,11 +114,17 @@ public class ConsumerReplyHandler implements Runnable{
                         System.out.println("Notify Data");
                         Hid = hc.index(ARMsg.getHeader().getProfile());
                         ArrayList<byte[]> rd = dbms.getInterest(Hid);
+                        /**
+                         * Check in the local database if a similar profile exists if not just store it.
+                         */
                         if(rd.isEmpty()) { 
                             dbms.putData(ARMsg.getHeader().toByteArray(),Hid);
                             PeerAddress addr = PeerAddress.class.cast(msg.getElement0());
                             manager.getLocationKeyManager().insertKey(addr.peerId(),addr);
                         }else {
+                            /**
+                             * A match exists then notify both peers to start streaming.
+                             */
                             System.out.println("Match");
                             QueueManager q = manager.getQueueManager();
                             String topic = q.randomTopic();
@@ -125,10 +153,16 @@ public class ConsumerReplyHandler implements Runnable{
                         Hid = hc.index(ARMsg.getHeader().getProfile());
                         ArrayList<byte[]> ri = dbms.getData(Hid);
                         if(ri.isEmpty()) {
+                            /**
+                             * Check in the local database if a similar profile exists if not just store it.
+                             */
                             dbms.putInterest(ARMsg.getHeader().toByteArray(), Hid);
                             PeerAddress addr = PeerAddress.class.cast(msg.getElement0());
                             manager.getLocationKeyManager().insertKey(addr.peerId(),addr);
-                        }else { 
+                        }else {
+                        	/**
+                             * A match exists then notify both peers to start streaming.
+                             */
                             System.out.println("Match");
                             QueueManager q = manager.getQueueManager();
                             String topic = q.randomTopic();
@@ -154,14 +188,23 @@ public class ConsumerReplyHandler implements Runnable{
                         break;
                     case NOTIFY_DATA_ANDROID:
                         break;
+                    /**
+                     * Delete profile that the peer previously send.
+                     */
                     case DELETE_INTEREST:
                         Hid = hc.index(ARMsg.getHeader().getProfile());
                         dbms.deleteInterest(Hid);
                         break;
+                    /**
+                     * Delete data that peer send.
+                     */
                     case DELETE_DATA:
                         //Fix
                         peer.removeDHT(Number160.ONE);
                         break;
+                    /**
+                     * Save the storm topology for later execusion.
+                     */
                     case STORE_STORM_TOPOLOGY:
                         String dir = manager.getStormDir();
                         List<String> payloadJAR = ARMsg.getPayloadList();
@@ -170,6 +213,9 @@ public class ConsumerReplyHandler implements Runnable{
                         System.out.println(full);
                         Utils.writeBytesToFile(payloadJAR.get(0).getBytes(), full);
                         break;
+                    /**
+                     * Start the storm topology.
+                     */
                     case START_STORM_TOPOLOGY:
                         List<String> payloadName = ARMsg.getPayloadList();
                         String name = payloadName.get(0);
@@ -182,6 +228,9 @@ public class ConsumerReplyHandler implements Runnable{
                             System.out.println("Jar does not exist");
                         }
                         break;
+                    /**
+                     * Stop the storm topology.
+                     */
                     case STOP_STORM_TOPOLOGY:
                         List<String> stop = ARMsg.getPayloadList();
                         Storm.KillTopology(manager.getStormDir() + stop.get(0));
@@ -233,6 +282,12 @@ public class ConsumerReplyHandler implements Runnable{
                             System.out.println("Message not inserted missing queue name.");
                         }
                         break;
+                    /**
+                     * All the following messages are used by the peers.
+                     */    
+                    /** 
+                     * New peer added to the network, we need to add it to the quadtree
+                     */
                     case HELLO:
                         ARMessage.Header header = ARMsg.getHeader();
                         if(manager.isMaster() && header.getType().equals(RPType.AR_RP)) {
@@ -245,6 +300,9 @@ public class ConsumerReplyHandler implements Runnable{
                             lk.insertKey(addr.peerId(), addr);
                         }
                         break;
+                    /**
+                     * Send back all the profiles that are currently stored in the RP.
+                     */
                     case PROFILE_REQUEST:
                         Hid = hc.index(ARMsg.getHeader().getProfile());
                         ArrayList<byte[]> result = dbms.getData(Hid);
@@ -273,6 +331,9 @@ public class ConsumerReplyHandler implements Runnable{
                     case REQUEST_RESPONSE:
                         pollQueue.put(ARMsg);
                         break;
+                    /** 
+                     * Store data in the local DHT.
+                     */
                     case STORE_DATA:
                         NavigableMap<Number640, Data> map = new TreeMap();
                         Number160 locationKey = null;
@@ -299,9 +360,15 @@ public class ConsumerReplyHandler implements Runnable{
                             peer.putDHT(locationKey, domainKey, map);
                         }
                         break;
+                    /**
+                     * Stop the peer.
+                     */
                     case STOP:
                         peer.stop();
                         break;
+                    /**
+                     * Get data from the DHT.
+                     */
                     case QUERY:
                         List<Number160> qmap = new ArrayList();
                         List<String> qdataPayload = ARMsg.getHeader().getHIDList();
@@ -323,6 +390,9 @@ public class ConsumerReplyHandler implements Runnable{
                            peer.getDHT(lK, domainKey, qmap);
                         }
                         break;
+                    /**
+                     * A new region has been created so we need to updated the peers in our network.
+                     */
                     case UPDATE:
                         int port = peer.port + 2;
                         int replication = peer.replicationFactor;

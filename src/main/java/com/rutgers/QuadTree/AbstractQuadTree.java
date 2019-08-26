@@ -1,5 +1,12 @@
 package com.rutgers.QuadTree;
 
+/**
+* This class defines the AbstractQuadTree.
+*
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
+
 public abstract class AbstractQuadTree<T> {
 
 	//protected Dimension size;

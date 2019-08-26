@@ -23,17 +23,37 @@ import net.tomp2p.peers.Number160;
 import net.tomp2p.peers.PeerAddress;
 
 /**
- *
- * @author eduard
- */
+* This class is very similar to the PulsarConsumer but this time we are making a Producer.
+* This class will be used if we want to create an R-Pulsar producer.
+* 
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
 public class PulsarProducer extends Pulsar{
     
     private static final String alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
         
+    /**
+     * Init method that needs to be called in order to create an R-Pulsar producer.
+     * @param args
+     * @throws IOException
+     * @throws UnknownHostException
+     * @throws InterruptedException
+     * @throws NoSuchAlgorithmException
+     */
     public PulsarProducer(Properties args) throws IOException, UnknownHostException, InterruptedException, NoSuchAlgorithmException {
         super(args);
     }
     
+    /**
+     * This method is used to send a message using the profile. 
+     * The space filling curve will be used to route the message.
+     * @param msg Message to send.
+     * @param profile This will determine who will receive the message.
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException
+     * @throws InterruptedException
+     */
     public void post(Message.ARMessage msg, Message.ARMessage.Header.Profile profile) throws NoSuchAlgorithmException, InvalidKeySpecException, InterruptedException {
 
         Map<Integer, ArrayList> array = new HashMap<>();
@@ -94,6 +114,15 @@ public class PulsarProducer extends Pulsar{
         rp.sendDirectMessageNonBlocking(peer, msg); 
     }
     
+    /**
+     * Stream multiple messages to an specific peer.
+     * @param msg Message to send.
+     * @param peerId Peer Id of the peer that will receive the message.
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException
+     * @throws UnknownHostException
+     * @throws InterruptedException
+     */
     public void stream(Message.ARMessage msg, String peerId) throws NoSuchAlgorithmException, InvalidKeySpecException, UnknownHostException, InterruptedException {
         PeerAddress exactKey = lkManager.exactKey(new Number160(peerId));
         if(exactKey != null)
@@ -112,6 +141,11 @@ public class PulsarProducer extends Pulsar{
         rp.sendDirectMessageNonBlocking(peer, msg);
     }
     
+    /**
+     * Method used to change teh peer Id of and RP.
+     * @param peerId
+     * @return
+     */
     public PeerAddress create(String peerId) {
         return lkManager.exactKey(new Number160(peerId));
     }
@@ -125,10 +159,18 @@ public class PulsarProducer extends Pulsar{
         rp.sendDirectMessageNonBlocking(peer, msg); 
     }
     
+    /**
+     * Add a rule in to the rule engine.
+     * @param rule
+     */
     public void addRule(Rule rule) {
         rules.addRule(rule);
     }
     
+    /**
+     * Evaluate the rules 
+     * @param bindings
+     */
     public void evaluateRules(Map<String, String> bindings) {
         rules.eval(bindings);
     }

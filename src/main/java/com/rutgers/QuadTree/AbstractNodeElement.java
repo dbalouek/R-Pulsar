@@ -1,9 +1,12 @@
 package com.rutgers.QuadTree;
 
 /**
- * 
- * @author eduard
- */
+* This class defines the Abstract Node Element
+*
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
+
 @SuppressWarnings("serial")
 public abstract class AbstractNodeElement<T> {
 

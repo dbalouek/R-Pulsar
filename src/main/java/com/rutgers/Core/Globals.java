@@ -6,9 +6,11 @@
 package com.rutgers.Core;
 
 /**
- *
- * @author eduard
- */
+* This class is contains all the global variables that are used in R-Pulsar
+*
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
 public class Globals {
     public static int _THREAD_POOL_ = 5;
     public static int _LOWER_THREAD_POOL_ = 5;

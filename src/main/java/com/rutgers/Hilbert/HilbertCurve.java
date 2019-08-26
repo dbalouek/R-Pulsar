@@ -10,14 +10,10 @@ import net.tomp2p.peers.Number160;
 
 /**
  * Converts between Hilbert index ({@code BigInteger}) and N-dimensional points.
- * 
- * <p>
- * Note: This algorithm is derived from work done by John Skilling and published
- * in "Programming the Hilbert curve". (c) 2004 American Institute of Physics.
- * With thanks also to Paul Chernoch who published a C# algorithm for Skilling's
- * work on StackOverflow and
- * <a href="https://github.com/paulchernoch/HilbertTransformation">GitHub</a>).
- */
+ *
+ * @author  Eduard Giber Renart
+ * @version 1.0
+*/
 public final class HilbertCurve {
 
     private final int bits;

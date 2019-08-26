@@ -21,8 +21,9 @@ import javax.crypto.spec.SecretKeySpec;
  */
 
 /**
- *
- * @author eduard
+ * This class is used to perform symmetric key encription.
+ * @param keys
+ * @return
  */
 public class SymmetricKeyEncryption {
     
@@ -50,12 +51,28 @@ public class SymmetricKeyEncryption {
         return s.substring(0, length).getBytes("UTF-8");
     }
 
+    /**
+     * Method used to encrypt a file.
+     * @param f
+     * @throws InvalidKeyException
+     * @throws IOException
+     * @throws IllegalBlockSizeException
+     * @throws BadPaddingException
+     */
     public void encryptFile(File f) throws InvalidKeyException, IOException, IllegalBlockSizeException, BadPaddingException {
         System.out.println("Encrypting file: " + f.getName());
         this.cipher.init(Cipher.ENCRYPT_MODE, this.secretKey);
         this.writeToFile(f);
     }
     
+    /**
+     * Method used to encript a string.
+     * @param s
+     * @return
+     * @throws InvalidKeyException
+     * @throws IllegalBlockSizeException
+     * @throws BadPaddingException
+     */
     public String encryptString(String s) throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
         System.out.println("Encrypting string: " + s);
         this.cipher.init(Cipher.ENCRYPT_MODE, this.secretKey);
@@ -63,6 +80,14 @@ public class SymmetricKeyEncryption {
         return encoder.encodeToString(encrypted);
     }
 
+    /**
+     * Method used to decrypt a file.
+     * @param f
+     * @throws InvalidKeyException
+     * @throws IOException
+     * @throws IllegalBlockSizeException
+     * @throws BadPaddingException
+     */
     public void decryptFile(File f) throws InvalidKeyException, IOException, IllegalBlockSizeException, BadPaddingException {
         System.out.println("Decrypting file: " + f.getName());
         this.cipher.init(Cipher.DECRYPT_MODE, this.secretKey);

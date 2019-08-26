@@ -1,5 +1,12 @@
 package com.rutgers.Hilbert;
 
+/**
+* This is used to implement miscellaneous tools need it the space filling curve.
+* 
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
+
 final class Util {
 
     private Util() {

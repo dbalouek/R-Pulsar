@@ -1,4 +1,4 @@
-FROM amd64/maven:3.6.1-jdk-8
+FROM maven:3.6.1-jdk-8
 
 ARG gps=40:-74
 ARG port=5000

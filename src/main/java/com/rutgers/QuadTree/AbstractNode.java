@@ -2,6 +2,13 @@ package com.rutgers.QuadTree;
 
 import java.util.Map;
 
+/**
+* This class defined the Node that will be used in the QuadTree.
+*
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
+
 public abstract class AbstractNode<T> {
 
 	/**

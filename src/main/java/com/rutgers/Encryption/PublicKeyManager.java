@@ -19,8 +19,10 @@ import net.tomp2p.p2p.Peer;
 import net.tomp2p.peers.Number160;
 
 /**
- *
- * @author eduard
+ * This class is responsible for storing all the public keys.
+ * It is used to encrypt communication between peers.
+ * @param keys
+ * @return
  */
 public class PublicKeyManager {
     
@@ -40,18 +42,41 @@ public class PublicKeyManager {
         this.peer = peer;
     }
     
+    /**
+     * Return all the public kyes stored in the system.
+     * @return
+     */
     public Map<String, PublicKey> getCachedPublicKeys() {
         return Collections.unmodifiableMap(publicKeyCache);
     }
 
+    /**
+     * Store a new public key into the system.
+     * @param userId
+     * @param publicKey
+     */
     public void putPublicKey(String userId, PublicKey publicKey) {
         publicKeyCache.put(userId, publicKey);
     }
 
+    /**
+     * Check if the given public key already existing in the system.
+     * @param userId String of the public key to check.
+     * @return
+     */
     public boolean containsPublicKey(String userId) {
         return publicKeyCache.containsKey(userId);
     }
 
+    /**
+     * Get a specific public key given a user id.
+     * @param userId
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public PublicKey getPublicKey(String userId) throws NoSuchAlgorithmException, InvalidKeySpecException, ClassNotFoundException, IOException {
         if (this.userId.equals(userId)) {
             // get the own public key

@@ -6,9 +6,12 @@
 package com.rutgers.RuleEngine;
 
 /**
- *
- * @author eduard
- */
+* This class implements the AND operator.
+* 
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
+
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;

@@ -25,8 +25,9 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 /**
- *
- * @author eduard
+ * This class is used for performing RSA encryption.
+ * @param keys
+ * @return
  */
 public final class RSAEncryption {
     /**

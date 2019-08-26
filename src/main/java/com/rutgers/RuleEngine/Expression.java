@@ -6,9 +6,12 @@
 package com.rutgers.RuleEngine;
 
 /**
- *
- * @author eduard
- */
+* Interface class for the expression.
+* 
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
+
 import java.util.Map;
 
 public interface Expression

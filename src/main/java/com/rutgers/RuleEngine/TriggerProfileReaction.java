@@ -24,9 +24,11 @@ import net.tomp2p.peers.PeerAddress;
  */
 
 /**
- *
- * @author eduard
- */
+* This class is used to send a specific AR Profile when a rule is satisfied.
+* 
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
 public class TriggerProfileReaction implements ActionDispatcher {
     
     Message.ARMessage msg;

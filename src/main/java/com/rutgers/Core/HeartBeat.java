@@ -16,9 +16,12 @@ import net.tomp2p.p2p.Peer;
 import net.tomp2p.peers.PeerAddress;
 
 /**
- *
- * @author eduard
- */
+* This class implements the heart beat message that is send 
+* to all of the RP's to make sure that they are all alive.
+*
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
 public class HeartBeat implements Runnable {
     
     private FutureChannelCreator futurecc = null;
@@ -48,25 +51,44 @@ public class HeartBeat implements Runnable {
         total = 0;
         average = 0;
     }
-    
+	/**
+	 * Check if the heart beat is running or not
+	 * @return if the heart beat is running
+	 */
     Boolean getRunning() {
         return Running;
     }
-    
+    /**
+     * Used to init the the heart beat.
+     * @param running Set it to true to start or false to stop
+     */
     void setRunning(Boolean running) {
         Running = running;
     }
     
+    /**
+     * Get the latency of all available peers.
+     * @return Returns the average latency amongst all the peers
+     */
     long getAverage() {
         return average;
     }
 
     @Override
+	   /**
+	   * This runs in a separate thread and sends pings to all of the peers in the list
+	   * @return Nothing.
+	   */
     public void run() {
         while(Running) {
             try {
+            	/**
+            	 * Iterate through the peer list
+            	 */
                 for (PeerAddress peerAddr : peer.peerBean().peerMap().all()) {
-                    
+                	/**
+                	 * Send a ping and get the latency between the two nodes.
+                	 */
                     startTime = System.currentTimeMillis();
                     futureResponse = peer.pingRPC().pingUDPProbe(peerAddr, channelCreator, new DefaultConnectionConfiguration());
                     futureResponse.awaitUninterruptibly();
@@ -78,6 +100,9 @@ public class HeartBeat implements Runnable {
                         average = total / counter;
                     }
                 }
+                /**
+                 * Calculate the average latency amongst all the peers in the list.
+                 */
                 manager.setLatency(average);
                 Thread.sleep(1500);
             } catch (InterruptedException ex) {

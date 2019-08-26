@@ -16,9 +16,13 @@ import org.rocksdb.WriteBatch;
 import org.rocksdb.WriteOptions;
 
 /**
- *
- * @author eduard
- */
+* This class implements some basic functionality of RocksDBMS.
+* This class is used to store all the profiles in the system.
+* This class in the paper is decribed as the matching engein.
+* 
+* @author  Eduard Gibert Renart
+* @version 1.0
+*/
 public class RocksDBMS {
     
     private Options options = null;
@@ -40,6 +44,11 @@ public class RocksDBMS {
         }
     }
     
+    /**
+     * Store a single element into the database.
+     * @param id
+     * @param keys
+     */
     public void putData(String[] id, Number160[] keys) {
         synchronized (data_dbs) {
             batch.clear();
@@ -54,6 +63,11 @@ public class RocksDBMS {
         }
     }
     
+    /**
+     * Store multiple elements into the database.
+     * @param id
+     * @param keys
+     */
     public void putData(byte[] id, Number160... keys) {
         synchronized (data_dbs) {
             batch.clear();
@@ -68,6 +82,11 @@ public class RocksDBMS {
         }
     }
     
+    /**
+     * Store multiple interest profiles into the DB.
+     * @param id
+     * @param keys
+     */
     public void putInterest(byte[] id, Number160... keys) {
         synchronized (interest_dbs) {
             batch.clear();
@@ -82,6 +101,7 @@ public class RocksDBMS {
         }
     }
     
+
     public ArrayList<byte[]> getData(Number160... keys) {
         ArrayList<byte[]>  result = new ArrayList<byte[]>();
         synchronized (data_dbs) {
@@ -99,6 +119,11 @@ public class RocksDBMS {
         return result;  
     }
 
+    /**
+     * Check if a set of interest profiles are present in the DB.
+     * @param keys
+     * @return
+     */
     public ArrayList<byte[]> getInterest(Number160... keys) {
         ArrayList<byte[]>  result = new ArrayList<byte[]>();
         synchronized (interest_dbs) {
@@ -116,6 +141,10 @@ public class RocksDBMS {
         return result;  
     }
     
+    /**
+     * Delete multiple interest profiles from the DB.
+     * @param keys
+     */
     public void deleteInterest(Number160... keys) {
         
         for(Number160 key : keys) {                    
@@ -127,6 +156,9 @@ public class RocksDBMS {
         }
     }
     
+    /**
+     * Close the DB.
+     */
     public void close() {
         interest_dbs.close();
         data_dbs.close();

@@ -6,9 +6,11 @@
 package com.rutgers.Core;
 
 /**
- *
- * @author eduard
- */
+* This class is the interface for the message listener.
+*
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
 public interface Listener {
     /**
      * This method is called whenever the observed object is changed. An

@@ -12,14 +12,21 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
- * @author eduard
- */
+* This class consists of a storage for all the Rules 
+* 
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
+
 public class Rules {
     
     Operations operations = Operations.INSTANCE;
     private List<Rule> rules = new ArrayList<Rule>();    
 
+    /**
+     * Add a rule to the collection of rules.
+     * @param r
+     */
     public void addRule(Rule r) {
         rules.add(r);
         
@@ -30,6 +37,11 @@ public class Rules {
         }});
     }
     
+    /**
+     * This method is called to evaluate all the rules.
+     * @param bindings
+     * @return
+     */
     public boolean eval(Map<String, ?> bindings)
     {
         boolean eval = false;

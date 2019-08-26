@@ -17,9 +17,14 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
 /**
- *
- * @author eduard
- */
+* This class is responsible for all the 
+* parameters that need to be passed to run R-Pulsar.
+* It relays on the Apache Commons CLI library for parsing command 
+* line options passed to programs. 
+*
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
 public class Cli {
     private static final Logger log = Logger.getLogger(Cli.class.getName());
     private String[] args = null;
@@ -32,26 +37,46 @@ public class Cli {
     public String dir = null;
     public int repli = 0;
 
+    /**
+     * This is the main method that is always called when the CLI class is instantiated
+     * It defines all the parameters that need to be specified in order to run R-Pulsar.
+     * @return Nothing.
+     */
     public Cli(String[] args) {
         this.args = args;
+        /*Prints the help*/ 
         options.addOption("h", "help", false, "Show help.");
+        /* This is to tell R-Pulsar if the node will be behind a NAT
+         * The flag need to be set if the node will be behind a NAT */ 
         options.addOption("n", "nat", false, "Set client Nat .");
-        options.addOption("u", "user", false, "Start as application user.");    
+        options.addOption("u", "user", false, "Start as application user.");   
+        /* Start the GUI */ 
         options.addOption("g", "gui", false, "Start GUI.");
+        /* Set the replication factor of the stored data
+         * Sets how many nodes will store the same data to prevent data being lost in case of a failure. */ 
         options.addOption("r", "replication factor", false, "Set Replication Factor.");
+        /* Port that R-Pulsar will be listening to */ 
         Option p = OptionBuilder.hasArgs(1).withArgName("Port").withDescription("Listen on port.").isRequired(true).withLongOpt("port").create("p");
         options.addOption(p);
+        /* This flag is optional and is for encripting the traffic between nodes */ 
         Option l = OptionBuilder.hasArgs(1).withArgName("Location").withDescription("Store certificate at.").isRequired(true).withLongOpt("location").create("l");
         options.addOption(l);
+        /* This is a flag creating an R-Pulsar node that that will be an RP Slave */ 
         Option b = OptionBuilder.hasArgs(2).withArgName("IP>:<Port").withValueSeparator(':').withLongOpt("bootstrap").withDescription("Set bootstrap ip address and port").create("b");
         options.addOption(b);
+        /* Set the location of the RP */ 
         Option gps = OptionBuilder.hasArgs(2).withArgName("Latitude>:<Longitude").withValueSeparator(':').withLongOpt("gps-location").withDescription("Set gps location").isRequired(true).create("gps");
         options.addOption(gps);
+        /* Set the geographical area of where all RP will be located so the quadtree can automatically split. */ 
         Option area = OptionBuilder.hasArgs(4).withArgName("north>:<south>:<east>:<west").withValueSeparator(':').withLongOpt("area").withDescription("Set working area coordinates").create("a");
         options.addOption(area);
         
     }
 
+    /**
+     * This is method is called to parse all the parameters that the users inputs.
+     * @return Nothing.
+     */
     public void parse() {
         parser = new BasicParser();        
         try {
@@ -86,6 +111,10 @@ public class Cli {
         }
     }
     
+    /**
+     * Prints in the terminal the parameters that are required to pass so R-Pulsar can start.
+     * @return Nothing.
+     */
     private void help() {
         // This prints out some help
         HelpFormatter formater = new HelpFormatter();

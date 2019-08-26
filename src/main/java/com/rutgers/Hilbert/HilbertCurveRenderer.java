@@ -9,7 +9,23 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import net.tomp2p.peers.Number160;
 
+/**
+* This class is used to render the space filling curve.
+* The class is not in use by R-Pulsar it is only used for debugging purposes.
+*
+* @author  Eduard Giber Renart
+* @version 1.0
+* 
+*/
+
 import org.davidmoten.hilbert.exceptions.IORuntimeException;
+
+/**
+ * This class is used to render a png of the space filling curve.
+ * This class is not used in R-Pulsar is only used for debug.
+ * @param keys
+ * @return
+ */
 
 public final class HilbertCurveRenderer {
 

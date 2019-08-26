@@ -18,8 +18,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author eduard
+ * This is and example of the use of the R-Pulsar API.
+ * This example shows how to perform DHT queries.
+ * @param keys
+ * @return
  */
 public class DHTQuery {
     

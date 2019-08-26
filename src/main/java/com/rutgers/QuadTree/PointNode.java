@@ -6,9 +6,11 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 
 /**
- * 
- * @author eduard
- */
+* This class defines the Point Node.
+*
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
 public class PointNode<T> extends AbstractNode {
 
 	protected static Logger log = Logger.getLogger(PointNode.class);

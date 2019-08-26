@@ -1,0 +1,173 @@
+\hypertarget{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{}\section{com.\+rutgers.\+Quad\+Tree.\+Point\+Node$<$ T $>$ Class Template Reference}
+\label{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}\index{com.\+rutgers.\+Quad\+Tree.\+Point\+Node$<$ T $>$@{com.\+rutgers.\+Quad\+Tree.\+Point\+Node$<$ T $>$}}
+Inheritance diagram for com.\+rutgers.\+Quad\+Tree.\+Point\+Node$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a3c57944cb98cfd710608b57fefcd64c2}{Point\+Node} (double north, double south, double east, double west, int depth, int max\+Depth, int max\+Children)
+\item 
+Map$<$ Cell, \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{Point\+Node}$<$ T $>$ $>$ \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a0e45f85c9b62f83648033a73c4d8247a}{get\+Sub\+Nodes} ()
+\item 
+Vector$<$ \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNodeElement}{Point\+Node\+Element}$<$ T $>$ $>$ \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a59932b71d5045e3192a093ed57361140}{get\+Elements} ()
+\item 
+Vector$<$ \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNodeElement}{Point\+Node\+Element}$<$ T $>$ $>$ \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_abf17594daa50fa4958b91a2991fcb1a1}{get\+Elements} (double latitude, double longitude)
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a8b9eceb7216cbb98a251c6fbc3d42d4b}{insert} (\hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNodeElement}{Point\+Node\+Element}$<$ T $>$ element)
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a0177d4d297bf8a6fdeac5b014f1205df}{subdivide} ()
+\item 
+boolean \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_ad9eb9b306f9604a2c688a6c906cb6e83}{test\+Subdivide} ()
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a806f2958ac623cadc0687adc2b7df724}{clear} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Cell \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a6d835e3113b4c96c6300a09dd3702d81}{find\+Index} (double latitude, double longitude)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vector$<$ \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNodeElement}{Point\+Node\+Element}$<$ T $>$ $>$ \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a0e05238a78062b65ab3953980cb8889c}{elements} = new Vector$<$\hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNodeElement}{Point\+Node\+Element}$<$T$>$$>$()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This class defines the Point Node.
+
+\begin{DoxyAuthor}{Author}
+Eduard Giber Renart 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a3c57944cb98cfd710608b57fefcd64c2}\label{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a3c57944cb98cfd710608b57fefcd64c2}} 
+\index{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}!Point\+Node@{Point\+Node}}
+\index{Point\+Node@{Point\+Node}!com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}}
+\subsubsection{\texorpdfstring{Point\+Node()}{PointNode()}}
+{\footnotesize\ttfamily \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{com.\+rutgers.\+Quad\+Tree.\+Point\+Node}$<$ T $>$.\hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{Point\+Node} (\begin{DoxyParamCaption}\item[{double}]{north,  }\item[{double}]{south,  }\item[{double}]{east,  }\item[{double}]{west,  }\item[{int}]{depth,  }\item[{int}]{max\+Depth,  }\item[{int}]{max\+Children }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Coordinates} & \\
+\hline
+{\em bounds} & \\
+\hline
+{\em depth} & \\
+\hline
+{\em max\+Depth} & \\
+\hline
+{\em max\+Children} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a806f2958ac623cadc0687adc2b7df724}\label{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a806f2958ac623cadc0687adc2b7df724}} 
+\index{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}!clear@{clear}}
+\index{clear@{clear}!com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{com.\+rutgers.\+Quad\+Tree.\+Point\+Node}$<$ T $>$.clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clears this node and all subnodes \mbox{\Hypertarget{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a6d835e3113b4c96c6300a09dd3702d81}\label{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a6d835e3113b4c96c6300a09dd3702d81}} 
+\index{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}!find\+Index@{find\+Index}}
+\index{find\+Index@{find\+Index}!com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}}
+\subsubsection{\texorpdfstring{find\+Index()}{findIndex()}}
+{\footnotesize\ttfamily Cell \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{com.\+rutgers.\+Quad\+Tree.\+Point\+Node}$<$ T $>$.find\+Index (\begin{DoxyParamCaption}\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Returns the cell of this element
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a59932b71d5045e3192a093ed57361140}\label{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a59932b71d5045e3192a093ed57361140}} 
+\index{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}!get\+Elements@{get\+Elements}}
+\index{get\+Elements@{get\+Elements}!com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}}
+\subsubsection{\texorpdfstring{get\+Elements()}{getElements()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Vector$<$\hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNodeElement}{Point\+Node\+Element}$<$T$>$ $>$ \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{com.\+rutgers.\+Quad\+Tree.\+Point\+Node}$<$ T $>$.get\+Elements (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns all elements for this node
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_abf17594daa50fa4958b91a2991fcb1a1}\label{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_abf17594daa50fa4958b91a2991fcb1a1}} 
+\index{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}!get\+Elements@{get\+Elements}}
+\index{get\+Elements@{get\+Elements}!com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}}
+\subsubsection{\texorpdfstring{get\+Elements()}{getElements()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Vector$<$\hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNodeElement}{Point\+Node\+Element}$<$T$>$ $>$ \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{com.\+rutgers.\+Quad\+Tree.\+Point\+Node}$<$ T $>$.get\+Elements (\begin{DoxyParamCaption}\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+Returns all elements within the cell that matches the given coordinates
+
+
+\begin{DoxyParams}{Parameters}
+{\em coordinates} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a0e45f85c9b62f83648033a73c4d8247a}\label{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a0e45f85c9b62f83648033a73c4d8247a}} 
+\index{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}!get\+Sub\+Nodes@{get\+Sub\+Nodes}}
+\index{get\+Sub\+Nodes@{get\+Sub\+Nodes}!com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}}
+\subsubsection{\texorpdfstring{get\+Sub\+Nodes()}{getSubNodes()}}
+{\footnotesize\ttfamily Map$<$Cell, \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{Point\+Node}$<$T$>$ $>$ \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{com.\+rutgers.\+Quad\+Tree.\+Point\+Node}$<$ T $>$.get\+Sub\+Nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the subnodes of this node
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a8b9eceb7216cbb98a251c6fbc3d42d4b}\label{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a8b9eceb7216cbb98a251c6fbc3d42d4b}} 
+\index{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}!insert@{insert}}
+\index{insert@{insert}!com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}}
+\subsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily void \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{com.\+rutgers.\+Quad\+Tree.\+Point\+Node}$<$ T $>$.insert (\begin{DoxyParamCaption}\item[{\hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNodeElement}{Point\+Node\+Element}$<$ T $>$}]{element }\end{DoxyParamCaption})}
+
+Insert the element into this node. If needed a subdivision will be performed
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a0177d4d297bf8a6fdeac5b014f1205df}\label{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a0177d4d297bf8a6fdeac5b014f1205df}} 
+\index{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}!subdivide@{subdivide}}
+\index{subdivide@{subdivide}!com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}}
+\subsubsection{\texorpdfstring{subdivide()}{subdivide()}}
+{\footnotesize\ttfamily void \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{com.\+rutgers.\+Quad\+Tree.\+Point\+Node}$<$ T $>$.subdivide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Subdivide the current node and add subnodes \mbox{\Hypertarget{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_ad9eb9b306f9604a2c688a6c906cb6e83}\label{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_ad9eb9b306f9604a2c688a6c906cb6e83}} 
+\index{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}!test\+Subdivide@{test\+Subdivide}}
+\index{test\+Subdivide@{test\+Subdivide}!com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}}
+\subsubsection{\texorpdfstring{test\+Subdivide()}{testSubdivide()}}
+{\footnotesize\ttfamily boolean \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{com.\+rutgers.\+Quad\+Tree.\+Point\+Node}$<$ T $>$.test\+Subdivide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Test if we can subdivide the current node and add subnodes 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a0e05238a78062b65ab3953980cb8889c}\label{classcom_1_1rutgers_1_1QuadTree_1_1PointNode_a0e05238a78062b65ab3953980cb8889c}} 
+\index{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}!elements@{elements}}
+\index{elements@{elements}!com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node@{com\+::rutgers\+::\+Quad\+Tree\+::\+Point\+Node}}
+\subsubsection{\texorpdfstring{elements}{elements}}
+{\footnotesize\ttfamily Vector$<$\hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNodeElement}{Point\+Node\+Element}$<$T$>$ $>$ \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNode}{com.\+rutgers.\+Quad\+Tree.\+Point\+Node}$<$ T $>$.elements = new Vector$<$\hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointNodeElement}{Point\+Node\+Element}$<$T$>$$>$()\hspace{0.3cm}{\ttfamily [protected]}}
+
+Holds all elements for this node 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/rutgers/\+Quad\+Tree/Point\+Node.\+java\end{DoxyCompactItemize}

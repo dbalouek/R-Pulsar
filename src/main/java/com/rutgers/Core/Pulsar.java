@@ -35,9 +35,11 @@ import net.tomp2p.p2p.Peer;
 import net.tomp2p.peers.PeerAddress;
 
 /**
- *
- * @author eduard
- */
+* This is the main API that will be used by developers to interact with R-Pulsar.
+* 
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
 public class Pulsar {
     
     BlockingQueue<com.rutgers.Core.Pair<PeerAddress, ARMessage>> messageQueue = null;
@@ -57,7 +59,15 @@ public class Pulsar {
     BlockingQueue<ARMessage> pollQueue;
     Rules rules = null;
     Operations operations = null;
-        
+    
+    /**
+     * Instantiate R-Pulsar by passing all the commands that the CLI class requires.
+     * @param args
+     * @throws IOException
+     * @throws UnknownHostException
+     * @throws InterruptedException
+     * @throws NoSuchAlgorithmException
+     */
     public Pulsar(Properties args) throws IOException, UnknownHostException, InterruptedException, NoSuchAlgorithmException {
         rp = new RP(args.getProperty("port"), args.getProperty("keys.dir"));
         executorService = Executors.newFixedThreadPool(_THREAD_POOL_); 
@@ -81,7 +91,16 @@ public class Pulsar {
         operations.registerOperation(new GreaterThanEqual());
         operations.registerOperation(new LessThan());
     }
-        
+    
+    /**
+     * This is the first API call the needs to be performed by developers in order to init all the R-Pulsar components. 
+     * @return Return and R-Pulsar object that will be used to interact with the API.
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException
+     * @throws UnknownHostException
+     * @throws ClassNotFoundException
+     */
     public Pulsar init() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException, UnknownHostException, ClassNotFoundException {
 //        if(prop.getProperty("start.gui").compareToIgnoreCase("true") == 1) {
 //            System.out.println("Starting GUI.");
@@ -125,14 +144,25 @@ public class Pulsar {
         return this;
     }
     
+    /**
+     * Set the listener that will be called every time a message is received by R-Pulsar.
+     * @param o Needs to tbe a Listener implemntation.
+     */
     public void replayListener(Listener o) {
         rp.addMessageListener(o);
     }
     
+    /**
+     * Get the Peer ID of this instance of the R-Pulsar.
+     * @return String with the Peer ID.
+     */
     public String getPeerID() {
         return rp.getId().toString();
     }
     
+    /**
+     * Stop R-Pulsar
+     */
     public void shutdown() {
         executorClass.stream().forEach((temp) -> {
             temp.setRunning(false);
@@ -141,6 +171,10 @@ public class Pulsar {
         executorService.shutdown();
     }
     
+    /**
+     * Get the Peer object.
+     * @return
+     */
     public Peer getPeer() {
         return rp.getPeer();
     }

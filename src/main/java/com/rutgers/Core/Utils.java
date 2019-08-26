@@ -14,11 +14,18 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- *
- * @author eduard
- */
+* This is used to implement miscellaneous tools need it in R-Pulsar.
+* 
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
 public class Utils {
     
+	/** 
+	 * Method used to execute linux commands.
+	 * @param command Linux command to execute.
+	 * @return
+	 */
     public static String executeCommand(String command) {
         StringBuffer output = new StringBuffer();        
         System.out.println("Command: " + command);
@@ -37,6 +44,11 @@ public class Utils {
         return output.toString();
     }
     
+    /**
+     * Convert a long to a byte array.
+     * @param value
+     * @return
+     */
     public static byte[] longToByteArray(long value) {
         return new byte[] {
             (byte) (value >> 56),
@@ -50,10 +62,22 @@ public class Utils {
         };
     }
     
+    /**
+     * Get the bigger number given two numbers.
+     * @param first
+     * @param second
+     * @return
+     */
     public static int getMax(int first, int second) {
         return first > second ? first : second;
     }
     
+    /**
+     * Write a string to a File.
+     * @param file
+     * @return
+     * @throws IOException
+     */
     public static byte[] writeFileToBytes(String file) throws IOException {
         Path path = Paths.get(file);
         return Files.readAllBytes(path);

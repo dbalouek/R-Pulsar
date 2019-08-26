@@ -1,0 +1,106 @@
+\hypertarget{classcom_1_1rutgers_1_1DB_1_1RocksDBMS}{}\section{com.\+rutgers.\+D\+B.\+Rocks\+D\+B\+MS Class Reference}
+\label{classcom_1_1rutgers_1_1DB_1_1RocksDBMS}\index{com.\+rutgers.\+D\+B.\+Rocks\+D\+B\+MS@{com.\+rutgers.\+D\+B.\+Rocks\+D\+B\+MS}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a3457d063685184152707f7e25b7bcb6c}{put\+Data} (String\mbox{[}$\,$\mbox{]} id, Number160\mbox{[}$\,$\mbox{]} keys)
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a8f19edec5bd60c75362223c880cd8a2f}{put\+Data} (byte\mbox{[}$\,$\mbox{]} id, Number160... keys)
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a61ac1a0207af7dff4cc4de59f10fbcc8}{put\+Interest} (byte\mbox{[}$\,$\mbox{]} id, Number160... keys)
+\item 
+Array\+List$<$ byte\mbox{[}$\,$\mbox{]}$>$ \hyperlink{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a58fdef51ec9602cabebb09a2448dc3c6}{get\+Interest} (Number160... keys)
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a00912a8d8d29f3692ffb6974ad7f683c}{delete\+Interest} (Number160... keys)
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a4231ce755ceddab79d715d44a9f98d7d}{close} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class implements some basic functionality of \hyperlink{classcom_1_1rutgers_1_1DB_1_1RocksDBMS}{Rocks\+D\+B\+MS}. This class is used to store all the profiles in the system. This class in the paper is decribed as the matching engein.
+
+\begin{DoxyAuthor}{Author}
+Eduard Gibert Renart 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a4231ce755ceddab79d715d44a9f98d7d}\label{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a4231ce755ceddab79d715d44a9f98d7d}} 
+\index{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS@{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS}!close@{close}}
+\index{close@{close}!com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS@{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void com.\+rutgers.\+D\+B.\+Rocks\+D\+B\+M\+S.\+close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Close the DB. \mbox{\Hypertarget{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a00912a8d8d29f3692ffb6974ad7f683c}\label{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a00912a8d8d29f3692ffb6974ad7f683c}} 
+\index{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS@{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS}!delete\+Interest@{delete\+Interest}}
+\index{delete\+Interest@{delete\+Interest}!com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS@{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS}}
+\subsubsection{\texorpdfstring{delete\+Interest()}{deleteInterest()}}
+{\footnotesize\ttfamily void com.\+rutgers.\+D\+B.\+Rocks\+D\+B\+M\+S.\+delete\+Interest (\begin{DoxyParamCaption}\item[{Number160...}]{keys }\end{DoxyParamCaption})}
+
+Delete multiple interest profiles from the DB. 
+\begin{DoxyParams}{Parameters}
+{\em keys} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a58fdef51ec9602cabebb09a2448dc3c6}\label{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a58fdef51ec9602cabebb09a2448dc3c6}} 
+\index{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS@{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS}!get\+Interest@{get\+Interest}}
+\index{get\+Interest@{get\+Interest}!com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS@{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS}}
+\subsubsection{\texorpdfstring{get\+Interest()}{getInterest()}}
+{\footnotesize\ttfamily Array\+List$<$byte\mbox{[}$\,$\mbox{]}$>$ com.\+rutgers.\+D\+B.\+Rocks\+D\+B\+M\+S.\+get\+Interest (\begin{DoxyParamCaption}\item[{Number160...}]{keys }\end{DoxyParamCaption})}
+
+Check if a set of interest profiles are present in the DB. 
+\begin{DoxyParams}{Parameters}
+{\em keys} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a3457d063685184152707f7e25b7bcb6c}\label{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a3457d063685184152707f7e25b7bcb6c}} 
+\index{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS@{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS}!put\+Data@{put\+Data}}
+\index{put\+Data@{put\+Data}!com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS@{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS}}
+\subsubsection{\texorpdfstring{put\+Data()}{putData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void com.\+rutgers.\+D\+B.\+Rocks\+D\+B\+M\+S.\+put\+Data (\begin{DoxyParamCaption}\item[{String \mbox{[}$\,$\mbox{]}}]{id,  }\item[{Number160 \mbox{[}$\,$\mbox{]}}]{keys }\end{DoxyParamCaption})}
+
+Store a single element into the database. 
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+{\em keys} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a8f19edec5bd60c75362223c880cd8a2f}\label{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a8f19edec5bd60c75362223c880cd8a2f}} 
+\index{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS@{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS}!put\+Data@{put\+Data}}
+\index{put\+Data@{put\+Data}!com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS@{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS}}
+\subsubsection{\texorpdfstring{put\+Data()}{putData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void com.\+rutgers.\+D\+B.\+Rocks\+D\+B\+M\+S.\+put\+Data (\begin{DoxyParamCaption}\item[{byte \mbox{[}$\,$\mbox{]}}]{id,  }\item[{Number160...}]{keys }\end{DoxyParamCaption})}
+
+Store multiple elements into the database. 
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+{\em keys} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a61ac1a0207af7dff4cc4de59f10fbcc8}\label{classcom_1_1rutgers_1_1DB_1_1RocksDBMS_a61ac1a0207af7dff4cc4de59f10fbcc8}} 
+\index{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS@{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS}!put\+Interest@{put\+Interest}}
+\index{put\+Interest@{put\+Interest}!com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS@{com\+::rutgers\+::\+D\+B\+::\+Rocks\+D\+B\+MS}}
+\subsubsection{\texorpdfstring{put\+Interest()}{putInterest()}}
+{\footnotesize\ttfamily void com.\+rutgers.\+D\+B.\+Rocks\+D\+B\+M\+S.\+put\+Interest (\begin{DoxyParamCaption}\item[{byte \mbox{[}$\,$\mbox{]}}]{id,  }\item[{Number160...}]{keys }\end{DoxyParamCaption})}
+
+Store multiple interest profiles into the DB. 
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+{\em keys} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/rutgers/\+D\+B/Rocks\+D\+B\+M\+S.\+java\end{DoxyCompactItemize}

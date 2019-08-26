@@ -31,6 +31,11 @@ import net.tomp2p.peers.PeerAddress;
  */
 public class Core {
     
+	   /**
+	   * This is the main method which instantiates the R-Pulsar node
+	   * @param args The arguments need to follow the CLI implementation.
+	   * @return Nothing.
+	   */
     public static void main(String[] args) throws InterruptedException, IOException, InvalidKeySpecException, ClassNotFoundException {
         BlockingQueue<Pair<PeerAddress, ARMessage>> messageQueue;
         BlockingQueue<ARMessage> userQueue;
@@ -60,7 +65,15 @@ public class Core {
             manager.setLatitude(Double.parseDouble(c.gps[0]));
             manager.setLongitude(Double.parseDouble(c.gps[1]));
             
+            /**
+             * Checks if the boot flag in the CLI is set to true
+             * If set to false will start and R-Pulsar Master
+             * If set the true will start and R-Pulsar Slave
+             */
             if(!c.boot[0].equals("")) {
+            	/**
+            	 * Start RP slave.
+            	 */
                 manager.setMaster(false);
                 
                 if(c.repli != 0)
@@ -81,6 +94,9 @@ public class Core {
                 String publicString = Base64.encode(rp.getUserProfile().getPublicKey().getEncoded());       
                 rp.putDHT(rp.getId(), new Number160("RP".getBytes()), publicString);
                 
+                /**
+                 * Send AR_HELLO to the Master RP so he can add us to the list.
+                 */
                 Profile.Builder p = ARMessage.Header.Profile.newBuilder();
                 Header h = ARMessage.Header.newBuilder().setLatitude(manager.getLatitude()).setLongitude(manager.getLongitude()).setType(ARMessage.RPType.AR_RP).setProfile(p).addHID(rp.getId().toString()).build();
                 ARMessage msg = ARMessage.newBuilder().setHeader(h).setAction(ARMessage.Action.HELLO).build();
@@ -91,8 +107,13 @@ public class Core {
                     if(type == 1)
                         lkManager.insertKey(element.peerId(), element);
                 }
-                
+                /**
+                 * Start and R-Pulsar master.
+                 */
             }else {
+            	/**
+            	 * Check if user specified a replication factor.
+            	 */
                 if(c.repli != 0)
                     rp.startDHTMaster(c.repli);
                 else 
@@ -109,7 +130,9 @@ public class Core {
                     pingThread = new Thread(ping);
                     pingThread.start();
                 }
-                
+                /**
+                 * Init the quadtree and add yourself into it.
+                 */
                 if("".equals(c.area[0])) {
                     qTree = new PointQuadTree<PeerAddress>(_DEF_NORTH_, _DEF_SOUTH_, _DEF_EAST_, _DEF_WEST_, 4, 4);
                 } else {

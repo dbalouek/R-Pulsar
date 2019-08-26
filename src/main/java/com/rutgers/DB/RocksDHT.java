@@ -33,6 +33,8 @@ import org.rocksdb.WriteBatch;
 import org.rocksdb.WriteOptions;
 
 /**
+ * This class implements the DHT functionality.
+ * It implements the Storage abstraction from TomP2P.
  *
  * @author eduard
  */

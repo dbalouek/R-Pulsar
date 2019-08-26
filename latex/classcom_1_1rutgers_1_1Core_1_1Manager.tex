@@ -1,0 +1,198 @@
+\hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager}{}\section{com.\+rutgers.\+Core.\+Manager Class Reference}
+\label{classcom_1_1rutgers_1_1Core_1_1Manager}\index{com.\+rutgers.\+Core.\+Manager@{com.\+rutgers.\+Core.\+Manager}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_adbd253cc2bb0c2b905702bc9b214364e}{set\+Rp\+One} (\hyperlink{classcom_1_1rutgers_1_1Core_1_1RP}{RP} rp)
+\item 
+\hyperlink{classcom_1_1rutgers_1_1Core_1_1RP}{RP} \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_aea68f7e919ad032b36085124e38431d1}{get\+Rp\+One} ()
+\item 
+synchronized long \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_abe5c0bf3e6854ec547c1a022c12837b1}{get\+Latency} ()
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_ae4f9a9930d85b52eb2ce3b69d2213d11}{set\+Rocks\+D\+B\+MS} (\hyperlink{classcom_1_1rutgers_1_1DB_1_1RocksDBMS}{Rocks\+D\+B\+MS} dbms)
+\item 
+\hyperlink{classcom_1_1rutgers_1_1DB_1_1RocksDBMS}{Rocks\+D\+B\+MS} \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_a04e680889d4e29de3e18e8fe18f0e99e}{get\+Rocks\+D\+B\+MS} ()
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_a4803749462ebf23b95f384bb9215c52c}{set\+Latitude} (double latitude)
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_a7e1ca7f9d0791baaf3b2a839dacbdc0e}{set\+Longitude} (double longitude)
+\item 
+double \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_aea86a8ba9d78dc6c6b0f6ed5e862c70d}{get\+Latitude} ()
+\item 
+double \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_aea1529f07fb8579f95b51e9463af525b}{get\+Longitude} ()
+\item 
+boolean \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_a0f6d15208fafb97bf0e93ba3b02650bc}{is\+Master} ()
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_ac1a4df15343f09e222e19aecc1a2c6f6}{set\+Master} (boolean master)
+\item 
+\hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointQuadTree}{Point\+Quad\+Tree}$<$ Peer\+Address $>$ \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_afdfd0fe7b73ad6e3db515ff370095e20}{getq\+Tree} ()
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_ab77114e891d4055addf589da5bd5c089}{setq\+Tree} (\hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointQuadTree}{Point\+Quad\+Tree}$<$ Peer\+Address $>$ q\+Tree)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager}{Manager} \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager_ab0493d895017b9cb16f383a2f9915a78}{get\+Instance} ()  throws I\+O\+Exception 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is singelton class that will store values and parameters that will be need it at runtime. This class is only instantated once.
+
+\begin{DoxyAuthor}{Author}
+Eduard Giber Renart 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_ab0493d895017b9cb16f383a2f9915a78}\label{classcom_1_1rutgers_1_1Core_1_1Manager_ab0493d895017b9cb16f383a2f9915a78}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Instance()}{getInstance()}}
+{\footnotesize\ttfamily static \hyperlink{classcom_1_1rutgers_1_1Core_1_1Manager}{Manager} com.\+rutgers.\+Core.\+Manager.\+get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+Creates the singelton class \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_abe5c0bf3e6854ec547c1a022c12837b1}\label{classcom_1_1rutgers_1_1Core_1_1Manager_abe5c0bf3e6854ec547c1a022c12837b1}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!get\+Latency@{get\+Latency}}
+\index{get\+Latency@{get\+Latency}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Latency()}{getLatency()}}
+{\footnotesize\ttfamily synchronized long com.\+rutgers.\+Core.\+Manager.\+get\+Latency (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the current latency amongst all the \hyperlink{classcom_1_1rutgers_1_1Core_1_1RP}{RP}\textquotesingle{}s. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_aea86a8ba9d78dc6c6b0f6ed5e862c70d}\label{classcom_1_1rutgers_1_1Core_1_1Manager_aea86a8ba9d78dc6c6b0f6ed5e862c70d}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!get\+Latitude@{get\+Latitude}}
+\index{get\+Latitude@{get\+Latitude}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Latitude()}{getLatitude()}}
+{\footnotesize\ttfamily double com.\+rutgers.\+Core.\+Manager.\+get\+Latitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the current latitude of the \hyperlink{classcom_1_1rutgers_1_1Core_1_1RP}{RP}. \begin{DoxyReturn}{Returns}
+latitude 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_aea1529f07fb8579f95b51e9463af525b}\label{classcom_1_1rutgers_1_1Core_1_1Manager_aea1529f07fb8579f95b51e9463af525b}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!get\+Longitude@{get\+Longitude}}
+\index{get\+Longitude@{get\+Longitude}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Longitude()}{getLongitude()}}
+{\footnotesize\ttfamily double com.\+rutgers.\+Core.\+Manager.\+get\+Longitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the current longitude of the \hyperlink{classcom_1_1rutgers_1_1Core_1_1RP}{RP}. \begin{DoxyReturn}{Returns}
+longitude 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_afdfd0fe7b73ad6e3db515ff370095e20}\label{classcom_1_1rutgers_1_1Core_1_1Manager_afdfd0fe7b73ad6e3db515ff370095e20}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!getq\+Tree@{getq\+Tree}}
+\index{getq\+Tree@{getq\+Tree}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{getq\+Tree()}{getqTree()}}
+{\footnotesize\ttfamily \hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointQuadTree}{Point\+Quad\+Tree}$<$Peer\+Address$>$ com.\+rutgers.\+Core.\+Manager.\+getq\+Tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the quadtree object. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_a04e680889d4e29de3e18e8fe18f0e99e}\label{classcom_1_1rutgers_1_1Core_1_1Manager_a04e680889d4e29de3e18e8fe18f0e99e}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!get\+Rocks\+D\+B\+MS@{get\+Rocks\+D\+B\+MS}}
+\index{get\+Rocks\+D\+B\+MS@{get\+Rocks\+D\+B\+MS}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Rocks\+D\+B\+M\+S()}{getRocksDBMS()}}
+{\footnotesize\ttfamily \hyperlink{classcom_1_1rutgers_1_1DB_1_1RocksDBMS}{Rocks\+D\+B\+MS} com.\+rutgers.\+Core.\+Manager.\+get\+Rocks\+D\+B\+MS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the instance of the Rock D\+B\+MS \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_aea68f7e919ad032b36085124e38431d1}\label{classcom_1_1rutgers_1_1Core_1_1Manager_aea68f7e919ad032b36085124e38431d1}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!get\+Rp\+One@{get\+Rp\+One}}
+\index{get\+Rp\+One@{get\+Rp\+One}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{get\+Rp\+One()}{getRpOne()}}
+{\footnotesize\ttfamily \hyperlink{classcom_1_1rutgers_1_1Core_1_1RP}{RP} com.\+rutgers.\+Core.\+Manager.\+get\+Rp\+One (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return the value of \hyperlink{classcom_1_1rutgers_1_1Core_1_1RP}{RP} one \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_a0f6d15208fafb97bf0e93ba3b02650bc}\label{classcom_1_1rutgers_1_1Core_1_1Manager_a0f6d15208fafb97bf0e93ba3b02650bc}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!is\+Master@{is\+Master}}
+\index{is\+Master@{is\+Master}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{is\+Master()}{isMaster()}}
+{\footnotesize\ttfamily boolean com.\+rutgers.\+Core.\+Manager.\+is\+Master (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check if we are the master or not \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_a4803749462ebf23b95f384bb9215c52c}\label{classcom_1_1rutgers_1_1Core_1_1Manager_a4803749462ebf23b95f384bb9215c52c}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!set\+Latitude@{set\+Latitude}}
+\index{set\+Latitude@{set\+Latitude}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{set\+Latitude()}{setLatitude()}}
+{\footnotesize\ttfamily void com.\+rutgers.\+Core.\+Manager.\+set\+Latitude (\begin{DoxyParamCaption}\item[{double}]{latitude }\end{DoxyParamCaption})}
+
+Set the current latitude of the \hyperlink{classcom_1_1rutgers_1_1Core_1_1RP}{RP}. 
+\begin{DoxyParams}{Parameters}
+{\em latitude} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_a7e1ca7f9d0791baaf3b2a839dacbdc0e}\label{classcom_1_1rutgers_1_1Core_1_1Manager_a7e1ca7f9d0791baaf3b2a839dacbdc0e}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!set\+Longitude@{set\+Longitude}}
+\index{set\+Longitude@{set\+Longitude}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{set\+Longitude()}{setLongitude()}}
+{\footnotesize\ttfamily void com.\+rutgers.\+Core.\+Manager.\+set\+Longitude (\begin{DoxyParamCaption}\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+Set the current longitude of the \hyperlink{classcom_1_1rutgers_1_1Core_1_1RP}{RP} 
+\begin{DoxyParams}{Parameters}
+{\em longitude} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_ac1a4df15343f09e222e19aecc1a2c6f6}\label{classcom_1_1rutgers_1_1Core_1_1Manager_ac1a4df15343f09e222e19aecc1a2c6f6}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!set\+Master@{set\+Master}}
+\index{set\+Master@{set\+Master}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{set\+Master()}{setMaster()}}
+{\footnotesize\ttfamily void com.\+rutgers.\+Core.\+Manager.\+set\+Master (\begin{DoxyParamCaption}\item[{boolean}]{master }\end{DoxyParamCaption})}
+
+Define who will be the master and save it. 
+\begin{DoxyParams}{Parameters}
+{\em master} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_ab77114e891d4055addf589da5bd5c089}\label{classcom_1_1rutgers_1_1Core_1_1Manager_ab77114e891d4055addf589da5bd5c089}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!setq\+Tree@{setq\+Tree}}
+\index{setq\+Tree@{setq\+Tree}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{setq\+Tree()}{setqTree()}}
+{\footnotesize\ttfamily void com.\+rutgers.\+Core.\+Manager.\+setq\+Tree (\begin{DoxyParamCaption}\item[{\hyperlink{classcom_1_1rutgers_1_1QuadTree_1_1PointQuadTree}{Point\+Quad\+Tree}$<$ Peer\+Address $>$}]{q\+Tree }\end{DoxyParamCaption})}
+
+Set the quadtree object. 
+\begin{DoxyParams}{Parameters}
+{\em q\+Tree} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_ae4f9a9930d85b52eb2ce3b69d2213d11}\label{classcom_1_1rutgers_1_1Core_1_1Manager_ae4f9a9930d85b52eb2ce3b69d2213d11}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!set\+Rocks\+D\+B\+MS@{set\+Rocks\+D\+B\+MS}}
+\index{set\+Rocks\+D\+B\+MS@{set\+Rocks\+D\+B\+MS}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{set\+Rocks\+D\+B\+M\+S()}{setRocksDBMS()}}
+{\footnotesize\ttfamily void com.\+rutgers.\+Core.\+Manager.\+set\+Rocks\+D\+B\+MS (\begin{DoxyParamCaption}\item[{\hyperlink{classcom_1_1rutgers_1_1DB_1_1RocksDBMS}{Rocks\+D\+B\+MS}}]{dbms }\end{DoxyParamCaption})}
+
+Set the instance of the Rock D\+B\+MS 
+\begin{DoxyParams}{Parameters}
+{\em dbms} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1Manager_adbd253cc2bb0c2b905702bc9b214364e}\label{classcom_1_1rutgers_1_1Core_1_1Manager_adbd253cc2bb0c2b905702bc9b214364e}} 
+\index{com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}!set\+Rp\+One@{set\+Rp\+One}}
+\index{set\+Rp\+One@{set\+Rp\+One}!com\+::rutgers\+::\+Core\+::\+Manager@{com\+::rutgers\+::\+Core\+::\+Manager}}
+\subsubsection{\texorpdfstring{set\+Rp\+One()}{setRpOne()}}
+{\footnotesize\ttfamily void com.\+rutgers.\+Core.\+Manager.\+set\+Rp\+One (\begin{DoxyParamCaption}\item[{\hyperlink{classcom_1_1rutgers_1_1Core_1_1RP}{RP}}]{rp }\end{DoxyParamCaption})}
+
+Set Rp one 
+\begin{DoxyParams}{Parameters}
+{\em rp} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/rutgers/\+Core/Manager.\+java\end{DoxyCompactItemize}

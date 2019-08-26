@@ -8,9 +8,10 @@ package com.rutgers.Core;
 import java.util.Vector;
 
 /**
- *
- * @author eduard
- */
+*
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
 public class MessageListener {
     private boolean changed = false;
     private Vector<Listener> obs;

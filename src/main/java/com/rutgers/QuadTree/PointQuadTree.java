@@ -12,9 +12,12 @@ import java.util.Vector;
 import net.tomp2p.peers.PeerAddress;
 
 /**
- * 
- * @author eduard
- */
+* This is the main class of the quadtree
+*
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
+
 public class PointQuadTree<T> extends AbstractQuadTree<T> {
 
 	protected PointNode<T> rootNode = null;

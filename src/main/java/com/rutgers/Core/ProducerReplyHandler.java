@@ -13,9 +13,11 @@ import net.tomp2p.peers.PeerAddress;
 import net.tomp2p.rpc.ObjectDataReply;
 
 /**
- *
- * @author eduard
- */
+* Simple class implementation for pushing the messages to the queue.
+* 
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
 public class ProducerReplyHandler implements ObjectDataReply{
     
     private final BlockingQueue<Pair<PeerAddress, ARMessage>> queue;
@@ -27,6 +29,9 @@ public class ProducerReplyHandler implements ObjectDataReply{
     }
 
     @Override
+    /**
+     * Implements a TomP2P method in order to get the messages and bring it to the RP space.
+     */
     public Object reply(PeerAddress pa, Object o) throws IOException {
         ARMessage msg = ARMessage.class.cast(o);
         Pair p = new Pair<>(pa, msg);

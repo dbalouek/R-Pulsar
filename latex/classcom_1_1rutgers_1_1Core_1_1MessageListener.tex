@@ -1,0 +1,182 @@
+\hypertarget{classcom_1_1rutgers_1_1Core_1_1MessageListener}{}\section{com.\+rutgers.\+Core.\+Message\+Listener Class Reference}
+\label{classcom_1_1rutgers_1_1Core_1_1MessageListener}\index{com.\+rutgers.\+Core.\+Message\+Listener@{com.\+rutgers.\+Core.\+Message\+Listener}}
+Inheritance diagram for com.\+rutgers.\+Core.\+Message\+Listener\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1rutgers_1_1Core_1_1MessageListener}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener_a62c2c226668ee66cb62b0f9c0070fe17}{Message\+Listener} ()
+\item 
+synchronized void \hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener_a36123785cf1a468272d74d7a394779eb}{add\+Message\+Listener} (\hyperlink{interfacecom_1_1rutgers_1_1Core_1_1Listener}{Listener} o)
+\item 
+synchronized void \hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener_a58dde408a2879983fe3f1a16b7430a2e}{delete\+Message\+Listener} (\hyperlink{interfacecom_1_1rutgers_1_1Core_1_1Listener}{Listener} o)
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener_a2da962a5db69e62ea529759b9f643851}{notify\+Users} ()
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener_a30277268e1459416379eefa0955db46b}{notify\+Users} (Message.\+A\+R\+Message arg)
+\item 
+synchronized void \hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener_abdf30a5ebb8f88e5a0083c9ea0ac48c2}{delete\+Users} ()
+\item 
+synchronized boolean \hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener_a00241c82f572dc5e692a888f450b78d9}{has\+Changed} ()
+\item 
+synchronized int \hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener_a724d20378cbeac3df288bf36622a8bc5}{count\+Observers} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+synchronized void \hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener_a98f9b666ae0b37f818ae53024a10ddad}{set\+Changed} ()
+\item 
+synchronized void \hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener_ad677331c0373ba3a7907119a35ce3a8f}{clear\+Changed} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Eduard Giber Renart 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1MessageListener_a62c2c226668ee66cb62b0f9c0070fe17}\label{classcom_1_1rutgers_1_1Core_1_1MessageListener_a62c2c226668ee66cb62b0f9c0070fe17}} 
+\index{com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}!Message\+Listener@{Message\+Listener}}
+\index{Message\+Listener@{Message\+Listener}!com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}}
+\subsubsection{\texorpdfstring{Message\+Listener()}{MessageListener()}}
+{\footnotesize\ttfamily com.\+rutgers.\+Core.\+Message\+Listener.\+Message\+Listener (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Construct an Observable with zero Observers. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1MessageListener_a36123785cf1a468272d74d7a394779eb}\label{classcom_1_1rutgers_1_1Core_1_1MessageListener_a36123785cf1a468272d74d7a394779eb}} 
+\index{com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}!add\+Message\+Listener@{add\+Message\+Listener}}
+\index{add\+Message\+Listener@{add\+Message\+Listener}!com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}}
+\subsubsection{\texorpdfstring{add\+Message\+Listener()}{addMessageListener()}}
+{\footnotesize\ttfamily synchronized void com.\+rutgers.\+Core.\+Message\+Listener.\+add\+Message\+Listener (\begin{DoxyParamCaption}\item[{\hyperlink{interfacecom_1_1rutgers_1_1Core_1_1Listener}{Listener}}]{o }\end{DoxyParamCaption})}
+
+Adds an observer to the set of observers for this object, provided that it is not the same as some observer already in the set. The order in which notifications will be delivered to multiple observers is not specified. See the class comment.
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & an observer to be added. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Null\+Pointer\+Exception} & if the parameter o is null. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1MessageListener_ad677331c0373ba3a7907119a35ce3a8f}\label{classcom_1_1rutgers_1_1Core_1_1MessageListener_ad677331c0373ba3a7907119a35ce3a8f}} 
+\index{com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}!clear\+Changed@{clear\+Changed}}
+\index{clear\+Changed@{clear\+Changed}!com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}}
+\subsubsection{\texorpdfstring{clear\+Changed()}{clearChanged()}}
+{\footnotesize\ttfamily synchronized void com.\+rutgers.\+Core.\+Message\+Listener.\+clear\+Changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Indicates that this object has no longer changed, or that it has already notified all of its observers of its most recent change, so that the {\ttfamily has\+Changed} method will now return {\ttfamily false}. This method is called automatically by the {\ttfamily notify\+Observers} methods.
+
+\begin{DoxySeeAlso}{See also}
+java.\+util.\+Observable\+::notify\+Observers() 
+
+java.\+util.\+Observable\+::notify\+Observers(java.\+lang.\+Object) 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1MessageListener_a724d20378cbeac3df288bf36622a8bc5}\label{classcom_1_1rutgers_1_1Core_1_1MessageListener_a724d20378cbeac3df288bf36622a8bc5}} 
+\index{com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}!count\+Observers@{count\+Observers}}
+\index{count\+Observers@{count\+Observers}!com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}}
+\subsubsection{\texorpdfstring{count\+Observers()}{countObservers()}}
+{\footnotesize\ttfamily synchronized int com.\+rutgers.\+Core.\+Message\+Listener.\+count\+Observers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the number of observers of this {\ttfamily Observable} object.
+
+\begin{DoxyReturn}{Returns}
+the number of observers of this object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1MessageListener_a58dde408a2879983fe3f1a16b7430a2e}\label{classcom_1_1rutgers_1_1Core_1_1MessageListener_a58dde408a2879983fe3f1a16b7430a2e}} 
+\index{com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}!delete\+Message\+Listener@{delete\+Message\+Listener}}
+\index{delete\+Message\+Listener@{delete\+Message\+Listener}!com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}}
+\subsubsection{\texorpdfstring{delete\+Message\+Listener()}{deleteMessageListener()}}
+{\footnotesize\ttfamily synchronized void com.\+rutgers.\+Core.\+Message\+Listener.\+delete\+Message\+Listener (\begin{DoxyParamCaption}\item[{\hyperlink{interfacecom_1_1rutgers_1_1Core_1_1Listener}{Listener}}]{o }\end{DoxyParamCaption})}
+
+Deletes an observer from the set of observers of this object. Passing {\ttfamily null} to this method will have no effect. 
+\begin{DoxyParams}{Parameters}
+{\em o} & the observer to be deleted. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1MessageListener_abdf30a5ebb8f88e5a0083c9ea0ac48c2}\label{classcom_1_1rutgers_1_1Core_1_1MessageListener_abdf30a5ebb8f88e5a0083c9ea0ac48c2}} 
+\index{com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}!delete\+Users@{delete\+Users}}
+\index{delete\+Users@{delete\+Users}!com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}}
+\subsubsection{\texorpdfstring{delete\+Users()}{deleteUsers()}}
+{\footnotesize\ttfamily synchronized void com.\+rutgers.\+Core.\+Message\+Listener.\+delete\+Users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clears the observer list so that this object no longer has any observers. \mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1MessageListener_a00241c82f572dc5e692a888f450b78d9}\label{classcom_1_1rutgers_1_1Core_1_1MessageListener_a00241c82f572dc5e692a888f450b78d9}} 
+\index{com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}!has\+Changed@{has\+Changed}}
+\index{has\+Changed@{has\+Changed}!com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}}
+\subsubsection{\texorpdfstring{has\+Changed()}{hasChanged()}}
+{\footnotesize\ttfamily synchronized boolean com.\+rutgers.\+Core.\+Message\+Listener.\+has\+Changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tests if this object has changed.
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if and only if the {\ttfamily set\+Changed} method has been called more recently than the {\ttfamily clear\+Changed} method on this object; {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+java.\+util.\+Observable\+::clear\+Changed() 
+
+java.\+util.\+Observable\+::set\+Changed() 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1MessageListener_a2da962a5db69e62ea529759b9f643851}\label{classcom_1_1rutgers_1_1Core_1_1MessageListener_a2da962a5db69e62ea529759b9f643851}} 
+\index{com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}!notify\+Users@{notify\+Users}}
+\index{notify\+Users@{notify\+Users}!com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}}
+\subsubsection{\texorpdfstring{notify\+Users()}{notifyUsers()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void com.\+rutgers.\+Core.\+Message\+Listener.\+notify\+Users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+If this object has changed, as indicated by the {\ttfamily has\+Changed} method, then notify all of its observers and then call the {\ttfamily clear\+Changed} method to indicate that this object has no longer changed. 
+
+Each observer has its {\ttfamily update} method called with two arguments\+: this observable object and {\ttfamily null}. In other words, this method is equivalent to\+: \begin{quote}
+{\ttfamily  notify\+Observers(null)}\end{quote}
+
+
+\begin{DoxySeeAlso}{See also}
+java.\+util.\+Observable\+::clear\+Changed() 
+
+java.\+util.\+Observable\+::has\+Changed() 
+
+java.\+util.\+Observer\+::update(java.\+util.\+Observable, java.\+lang.\+Object) 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1MessageListener_a30277268e1459416379eefa0955db46b}\label{classcom_1_1rutgers_1_1Core_1_1MessageListener_a30277268e1459416379eefa0955db46b}} 
+\index{com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}!notify\+Users@{notify\+Users}}
+\index{notify\+Users@{notify\+Users}!com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}}
+\subsubsection{\texorpdfstring{notify\+Users()}{notifyUsers()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void com.\+rutgers.\+Core.\+Message\+Listener.\+notify\+Users (\begin{DoxyParamCaption}\item[{Message.\+A\+R\+Message}]{arg }\end{DoxyParamCaption})}
+
+If this object has changed, as indicated by the {\ttfamily has\+Changed} method, then notify all of its observers and then call the {\ttfamily clear\+Changed} method to indicate that this object has no longer changed. 
+
+Each observer has its {\ttfamily update} method called with two arguments\+: this observable object and the {\ttfamily arg} argument.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & any object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+java.\+util.\+Observable\+::clear\+Changed() 
+
+java.\+util.\+Observable\+::has\+Changed() 
+
+java.\+util.\+Observer\+::update(java.\+util.\+Observable, java.\+lang.\+Object) 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Core_1_1MessageListener_a98f9b666ae0b37f818ae53024a10ddad}\label{classcom_1_1rutgers_1_1Core_1_1MessageListener_a98f9b666ae0b37f818ae53024a10ddad}} 
+\index{com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}!set\+Changed@{set\+Changed}}
+\index{set\+Changed@{set\+Changed}!com\+::rutgers\+::\+Core\+::\+Message\+Listener@{com\+::rutgers\+::\+Core\+::\+Message\+Listener}}
+\subsubsection{\texorpdfstring{set\+Changed()}{setChanged()}}
+{\footnotesize\ttfamily synchronized void com.\+rutgers.\+Core.\+Message\+Listener.\+set\+Changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Marks this {\ttfamily Observable} object as having been changed; the {\ttfamily has\+Changed} method will now return {\ttfamily true}. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/rutgers/\+Core/Message\+Listener.\+java\end{DoxyCompactItemize}

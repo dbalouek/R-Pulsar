@@ -6,9 +6,12 @@
 package com.rutgers.RuleEngine;
 
 /**
- *
- * @author eduard
- */
+* This class implements the OR operator.
+* 
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
+
 import java.util.Map;
 import java.util.Stack;
 

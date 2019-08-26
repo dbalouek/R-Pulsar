@@ -1,0 +1,237 @@
+\hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree}{}\section{com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree Class Reference}
+\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree}\index{com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree@{com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree}}
+Inheritance diagram for com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.400000cm]{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Node \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a91602e347d8f02a67319b1bdc02ce60f}{search} (int element)
+\item 
+Node \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a0c7ca514dacdeb9085d258af23a7795e}{insert} (int element)
+\item 
+Node \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_ae4be00a93f577025f71dd9560c11794b}{delete} (int element)
+\item 
+boolean \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a3fa83547331d30e71ef6906cfc67d686}{contains} (int element)
+\item 
+int \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a381c986a1e005fb07a5fb79d90218d79}{get\+Minimum} ()
+\item 
+int \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a19fac32887573d0c421ef6f191b694d1}{get\+Maximum} ()
+\item 
+int \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a91f7a4935262e9fd21035f3c795acbe1}{get\+Successor} (int element)
+\item 
+int \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a0d8f3f8b88ef6f741c0a0308f4ed0617}{get\+Size} ()
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a8757f96dff7c12848301f666fe2cc566}{print\+Tree\+In\+Order} ()
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a53e70e7883a86f60584f4585c07900ff}{print\+Tree\+Pre\+Order} ()
+\item 
+void \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a8efda65ce2fb4df01a22b7168882843a}{print\+Tree\+Post\+Order} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Node \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_aeeef22ff6ee25b6d8b9ceac2f17e8fe5}{root}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract Node \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a4413dcd9175fd180bf7bd75aa0b94b73}{create\+Node} (int value, Node parent, Node left, Node right)
+\item 
+Node \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_ab0b52e6fb9cdac67ef88ac7be48a3b60}{delete} (Node delete\+Node)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_aea91d533d1a9c4fa552c1625c50dd65d}{size}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+eduard 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a3fa83547331d30e71ef6906cfc67d686}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a3fa83547331d30e71ef6906cfc67d686}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!contains@{contains}}
+\index{contains@{contains}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily boolean com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+contains (\begin{DoxyParamCaption}\item[{int}]{element }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if tree contains element. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a4413dcd9175fd180bf7bd75aa0b94b73}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a4413dcd9175fd180bf7bd75aa0b94b73}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!create\+Node@{create\+Node}}
+\index{create\+Node@{create\+Node}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{create\+Node()}{createNode()}}
+{\footnotesize\ttfamily abstract Node com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+create\+Node (\begin{DoxyParamCaption}\item[{int}]{value,  }\item[{Node}]{parent,  }\item[{Node}]{left,  }\item[{Node}]{right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}, {\ttfamily [protected]}}
+
+Because this is abstract class and various trees have different additional information on different nodes subclasses uses this abstract method to create nodes (maybe of class \hyperlink{}{Node} or maybe some different node sub class).
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Value that node will have. \\
+\hline
+{\em parent} & Node\textquotesingle{}s parent. \\
+\hline
+{\em left} & Node\textquotesingle{}s left child. \\
+\hline
+{\em right} & Node\textquotesingle{}s right child. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Created node instance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_ae4be00a93f577025f71dd9560c11794b}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_ae4be00a93f577025f71dd9560c11794b}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!delete@{delete}}
+\index{delete@{delete}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{delete()}{delete()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Node com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+delete (\begin{DoxyParamCaption}\item[{int}]{element }\end{DoxyParamCaption})}
+
+Removes element if node with such value exists.
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & Element value to remove.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New node that is in place of deleted node. Or null if element for delete was not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_ab0b52e6fb9cdac67ef88ac7be48a3b60}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_ab0b52e6fb9cdac67ef88ac7be48a3b60}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!delete@{delete}}
+\index{delete@{delete}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{delete()}{delete()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Node com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+delete (\begin{DoxyParamCaption}\item[{Node}]{delete\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Delete logic when node is already found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delete\+Node} & Node that needs to be deleted.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New node that is in place of deleted node. Or null if element for delete was not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a19fac32887573d0c421ef6f191b694d1}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a19fac32887573d0c421ef6f191b694d1}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!get\+Maximum@{get\+Maximum}}
+\index{get\+Maximum@{get\+Maximum}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{get\+Maximum()}{getMaximum()}}
+{\footnotesize\ttfamily int com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+get\+Maximum (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Maximum element in tree. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a381c986a1e005fb07a5fb79d90218d79}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a381c986a1e005fb07a5fb79d90218d79}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!get\+Minimum@{get\+Minimum}}
+\index{get\+Minimum@{get\+Minimum}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{get\+Minimum()}{getMinimum()}}
+{\footnotesize\ttfamily int com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+get\+Minimum (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Minimum element in tree. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a0d8f3f8b88ef6f741c0a0308f4ed0617}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a0d8f3f8b88ef6f741c0a0308f4ed0617}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!get\+Size@{get\+Size}}
+\index{get\+Size@{get\+Size}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{get\+Size()}{getSize()}}
+{\footnotesize\ttfamily int com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Number of elements in the tree. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a91f7a4935262e9fd21035f3c795acbe1}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a91f7a4935262e9fd21035f3c795acbe1}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!get\+Successor@{get\+Successor}}
+\index{get\+Successor@{get\+Successor}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{get\+Successor()}{getSuccessor()}}
+{\footnotesize\ttfamily int com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+get\+Successor (\begin{DoxyParamCaption}\item[{int}]{element }\end{DoxyParamCaption})}
+
+Get next element element who is bigger than provided element.
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & Element for whom descendand element is searched \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Successor value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a0c7ca514dacdeb9085d258af23a7795e}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a0c7ca514dacdeb9085d258af23a7795e}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!insert@{insert}}
+\index{insert@{insert}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily Node com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+insert (\begin{DoxyParamCaption}\item[{int}]{element }\end{DoxyParamCaption})}
+
+Insert new element to tree.
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & Element to insert. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a8757f96dff7c12848301f666fe2cc566}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a8757f96dff7c12848301f666fe2cc566}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!print\+Tree\+In\+Order@{print\+Tree\+In\+Order}}
+\index{print\+Tree\+In\+Order@{print\+Tree\+In\+Order}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{print\+Tree\+In\+Order()}{printTreeInOrder()}}
+{\footnotesize\ttfamily void com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+print\+Tree\+In\+Order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tree traversal with printing element values. In order method. \mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a8efda65ce2fb4df01a22b7168882843a}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a8efda65ce2fb4df01a22b7168882843a}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!print\+Tree\+Post\+Order@{print\+Tree\+Post\+Order}}
+\index{print\+Tree\+Post\+Order@{print\+Tree\+Post\+Order}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{print\+Tree\+Post\+Order()}{printTreePostOrder()}}
+{\footnotesize\ttfamily void com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+print\+Tree\+Post\+Order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tree traversal with printing element values. Post order method. \mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a53e70e7883a86f60584f4585c07900ff}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a53e70e7883a86f60584f4585c07900ff}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!print\+Tree\+Pre\+Order@{print\+Tree\+Pre\+Order}}
+\index{print\+Tree\+Pre\+Order@{print\+Tree\+Pre\+Order}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{print\+Tree\+Pre\+Order()}{printTreePreOrder()}}
+{\footnotesize\ttfamily void com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+print\+Tree\+Pre\+Order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tree traversal with printing element values. Pre order method. \mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a91602e347d8f02a67319b1bdc02ce60f}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_a91602e347d8f02a67319b1bdc02ce60f}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!search@{search}}
+\index{search@{search}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{search()}{search()}}
+{\footnotesize\ttfamily Node com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+search (\begin{DoxyParamCaption}\item[{int}]{element }\end{DoxyParamCaption})}
+
+Finds a node with concrete value. If it is not found then null is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & Element value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Node with value provided, or null if not found. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_aeeef22ff6ee25b6d8b9ceac2f17e8fe5}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_aeeef22ff6ee25b6d8b9ceac2f17e8fe5}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!root@{root}}
+\index{root@{root}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{root}{root}}
+{\footnotesize\ttfamily Node com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+root}
+
+Root node where whole tree starts. \mbox{\Hypertarget{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_aea91d533d1a9c4fa552c1625c50dd65d}\label{classcom_1_1rutgers_1_1Tree_1_1AbstractBinarySearchTree_aea91d533d1a9c4fa552c1625c50dd65d}} 
+\index{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}!size@{size}}
+\index{size@{size}!com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree@{com\+::rutgers\+::\+Tree\+::\+Abstract\+Binary\+Search\+Tree}}
+\subsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily int com.\+rutgers.\+Tree.\+Abstract\+Binary\+Search\+Tree.\+size\hspace{0.3cm}{\ttfamily [protected]}}
+
+Tree size. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/rutgers/\+Tree/Abstract\+Binary\+Search\+Tree.\+java\end{DoxyCompactItemize}

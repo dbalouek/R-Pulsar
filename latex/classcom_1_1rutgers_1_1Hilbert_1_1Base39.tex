@@ -1,0 +1,68 @@
+\hypertarget{classcom_1_1rutgers_1_1Hilbert_1_1Base39}{}\section{com.\+rutgers.\+Hilbert.\+Base39 Class Reference}
+\label{classcom_1_1rutgers_1_1Hilbert_1_1Base39}\index{com.\+rutgers.\+Hilbert.\+Base39@{com.\+rutgers.\+Hilbert.\+Base39}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+String \hyperlink{classcom_1_1rutgers_1_1Hilbert_1_1Base39_a042a8fe52c1e68fcbde5bcb10f9cae5e}{encode\+Base10} (long b10)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static long \hyperlink{classcom_1_1rutgers_1_1Hilbert_1_1Base39_ad90f8e29d50c7384c1f149e1bd136de1}{decode\+Base39} (String b62)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class defined the \hyperlink{classcom_1_1rutgers_1_1Hilbert_1_1Base39}{Base39} encoding.
+
+\begin{DoxyAuthor}{Author}
+Eduard Giber Renart 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Hilbert_1_1Base39_ad90f8e29d50c7384c1f149e1bd136de1}\label{classcom_1_1rutgers_1_1Hilbert_1_1Base39_ad90f8e29d50c7384c1f149e1bd136de1}} 
+\index{com\+::rutgers\+::\+Hilbert\+::\+Base39@{com\+::rutgers\+::\+Hilbert\+::\+Base39}!decode\+Base39@{decode\+Base39}}
+\index{decode\+Base39@{decode\+Base39}!com\+::rutgers\+::\+Hilbert\+::\+Base39@{com\+::rutgers\+::\+Hilbert\+::\+Base39}}
+\subsubsection{\texorpdfstring{decode\+Base39()}{decodeBase39()}}
+{\footnotesize\ttfamily static long com.\+rutgers.\+Hilbert.\+Base39.\+decode\+Base39 (\begin{DoxyParamCaption}\item[{String}]{b62 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Decodes a \hyperlink{classcom_1_1rutgers_1_1Hilbert_1_1Base39}{Base39} {\ttfamily String} returning a {\ttfamily long}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em b62} & the \hyperlink{classcom_1_1rutgers_1_1Hilbert_1_1Base39}{Base39} {\ttfamily String} to decode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the decoded number as a {\ttfamily long}. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Illegal\+Argument\+Exception} & if the given {\ttfamily String} contains characters not specified in the constructor. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classcom_1_1rutgers_1_1Hilbert_1_1Base39_a042a8fe52c1e68fcbde5bcb10f9cae5e}\label{classcom_1_1rutgers_1_1Hilbert_1_1Base39_a042a8fe52c1e68fcbde5bcb10f9cae5e}} 
+\index{com\+::rutgers\+::\+Hilbert\+::\+Base39@{com\+::rutgers\+::\+Hilbert\+::\+Base39}!encode\+Base10@{encode\+Base10}}
+\index{encode\+Base10@{encode\+Base10}!com\+::rutgers\+::\+Hilbert\+::\+Base39@{com\+::rutgers\+::\+Hilbert\+::\+Base39}}
+\subsubsection{\texorpdfstring{encode\+Base10()}{encodeBase10()}}
+{\footnotesize\ttfamily String com.\+rutgers.\+Hilbert.\+Base39.\+encode\+Base10 (\begin{DoxyParamCaption}\item[{long}]{b10 }\end{DoxyParamCaption})}
+
+Encodes a decimal value to a \hyperlink{classcom_1_1rutgers_1_1Hilbert_1_1Base39}{Base39} {\ttfamily String}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em b10} & the decimal value to encode, must be nonnegative. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number encoded as a \hyperlink{classcom_1_1rutgers_1_1Hilbert_1_1Base39}{Base39} {\ttfamily String}. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/rutgers/\+Hilbert/Base39.\+java\end{DoxyCompactItemize}

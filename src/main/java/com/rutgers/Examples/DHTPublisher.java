@@ -21,8 +21,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author eduard
+ * This is and example of the use of the R-Pulsar API.
+ * This example shows how to build a R-Pulsar DHT Publisher.
+ * @param keys
+ * @return
  */
 public class DHTPublisher {
     

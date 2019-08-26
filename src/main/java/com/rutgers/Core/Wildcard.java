@@ -8,9 +8,11 @@ package com.rutgers.Core;
 import net.tomp2p.peers.Number160;
 
 /**
- *
- * @author eduard
- */
+* This class is used to implement the wildcard in the R-Pulsar profiles.
+* 
+* @author  Eduard Giber Renart
+* @version 1.0
+*/
 public class Wildcard {
     
     final int MAX = 10001;
