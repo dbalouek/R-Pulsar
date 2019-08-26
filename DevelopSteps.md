@@ -69,7 +69,7 @@ consumer.post(msg);
 producer.port(msg);
 ```
 
-7- For furthem code syntax either take a look at the examples or at the provided documentation.
+7- For further code syntax take a look at the examples provided or at the documentation. The relevant classes for interacting with R-Pulsar are: PulsarConsumer, PulsarProducer, Rules, and Rule
 
 
 

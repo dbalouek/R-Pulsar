@@ -15,7 +15,7 @@ Compiling the project using Maven
 mvn clean package
 ```
 
-Executing an RP
+Executing an RP Master
 
 ```
 java -jar P2P-1.0-SNAPSHOT-jar-with-dependencies.jar  -l x -gps 40:-74 -p 5000
@@ -33,6 +33,12 @@ Executing a Consumer
 java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar com.rutgers.Examples.Consumer
 
 ```
+
+If we need to add more RP's into the system we need to tell them where the RP Master is located by running the following command:
+```
+java -jar P2P-1.0-SNAPSHOT-jar-with-dependencies.jar  -l x -gps 40:-74 -p 5000 -b ip:port
+```
+Where the IP is the ip address of the master RP and the port is the port where the master RP is listening to.
 
 ## Code Examples
 ```java
