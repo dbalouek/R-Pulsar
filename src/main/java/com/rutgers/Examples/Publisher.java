@@ -43,6 +43,7 @@ public class Publisher {
         
         Push(Message.ARMessage msg) {
             this.msg = msg;
+            //Each message is of size 200. Packing 1000 messages into one.
             byte[] data = new byte[200000];
             str = new String(data);
         }
@@ -53,15 +54,17 @@ public class Publisher {
             Message.ARMessage push_msg = Message.ARMessage.newBuilder().setAction(Message.ARMessage.Action.STORE_QUEUE).setTopic(msg.getTopic()).addPayload(str).build();
 
             long start = System.currentTimeMillis();
+            //Using some compression techniques to reduce network overhead
             for(int i = 0; i < iterations; i ++) {
                 try {
-                	// Pushing a record
+                	// Pushing a record to the RP
                     producer.stream(push_msg, msg.getHeader().getPeerId());
                 } catch (NoSuchAlgorithmException | InvalidKeySpecException | UnknownHostException | InterruptedException ex) {
                     Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
+            //Calculate the performance
             long ellapsed = System.currentTimeMillis() - start;
             double msgsSec = 1000.0 * numRecords / (double) ellapsed;
             double mbSec = msgsSec * recordSize / (1024.0 * 1024.0);
@@ -87,8 +90,10 @@ public class Publisher {
                 @Override
                 public void replay(MessageListener ml, Message.ARMessage o) {
                     switch(o.getAction()) {
+                    	//Start streaming the sensor data
                         case NOTIFY_START:
                             running = true;
+                            //Start a new thread with Push class
                             thread = new Thread(new Push(o));
                             thread.start();
                             break;
@@ -104,9 +109,11 @@ public class Publisher {
                 }
             });
             
+            //Create sensor profile
             ARMessage.Header.Profile profile = ARMessage.Header.Profile.newBuilder().addSingle("temperature").addSingle("fahrenheit").build();
             ARMessage.Header header = ARMessage.Header.newBuilder().setLatitude(0.00).setLongitude(0.00).setType(ARMessage.RPType.AR_PRODUCER).setProfile(profile).setPeerId(producer.getPeerID()).build();
             ARMessage msg = ARMessage.newBuilder().setHeader(header).setAction(ARMessage.Action.NOTIFY_INTEREST).build();
+            //Send the message to the RP
             producer.post(msg, profile);
             
         } catch (IOException | InterruptedException | NoSuchAlgorithmException | InvalidKeySpecException ex) {

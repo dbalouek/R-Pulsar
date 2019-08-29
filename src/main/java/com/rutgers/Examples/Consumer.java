@@ -47,6 +47,7 @@ public class Consumer {
             while(running) {
                 try {
                     Message.ARMessage consum_msg = Message.ARMessage.newBuilder().setHeader(header).setAction(Message.ARMessage.Action.REQUEST).setTopic(msg.getTopic()).build();
+                    //Get the message that was send by the sensor
                     Message.ARMessage poll = consumer.poll(consum_msg, msg.getHeader().getPeerId());
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException ex) {
@@ -63,23 +64,31 @@ public class Consumer {
      */
     public static void main(String[] args) throws UnknownHostException, ClassNotFoundException {
         try {
-            // TODO code application logic here          
+            // Load the consumer properties into an InputStream  
             InputStream props = Resources.getResource("consumer.prop").openStream();
+            //Create a java util properties object 
             Properties properties = new Properties();
+            //Load the consumer properties into memory
             properties.load(props);
             
+            //Create a new R-Pulsar consumer object
             consumer = new PulsarConsumer(properties);
+            //Init the R-Pulsar consumer
             consumer.init();
             
+            //Create a listener for incoming AR messages
             consumer.replayListener(new Listener(){
                 @Override
                 public void replay(MessageListener ml, Message.ARMessage o) {
                     switch(o.getAction()) {
+                        //When we receive a notify_start we need to start processing the data that we will receive
                         case NOTIFY_START:
                             running = true;
+                            // Start a new thread with the Consum class
                             thread = new Thread(new Consum(o));
                             thread.start();
                             break;
+                        //We will not receive any more data from the sensors
                         case NOTIFY_STOP:
                             try {
                                 running = false;
@@ -95,9 +104,13 @@ public class Consumer {
                 }
             });
             
+            //Create a profile with the data that we are interested in
             Message.ARMessage.Header.Profile profile = Message.ARMessage.Header.Profile.newBuilder().addSingle("temperature").addSingle("fahrenheit").build();
+            //Create a header and set our physical location
             Message.ARMessage.Header header = Message.ARMessage.Header.newBuilder().setLatitude(0.00).setLongitude(0.00).setType(Message.ARMessage.RPType.AR_CONSUMER).setProfile(profile).setPeerId(consumer.getPeerID()).build();
+            //Create an AR Message and tell the system to notify us if there is a profile that matches this criteria
             Message.ARMessage msg = Message.ARMessage.newBuilder().setHeader(header).setAction(Message.ARMessage.Action.NOTIFY_DATA).build();
+            //Use the consumer object to send the message
             consumer.post(msg);
             
         } catch (IOException | InterruptedException | NoSuchAlgorithmException | InvalidKeySpecException ex) {

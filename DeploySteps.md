@@ -30,13 +30,13 @@ For the -b flag you need to pass the Ip address and the port of the master RP.
 1- Deploy a Master RP:
 
 ```
-docker run erenart/rpulsar:RPMaster-ARCH 
+docker run erenart/rpulsar:RPMaster-ARCH --expose=5000
 ```
 
 2- Deploy a slave that will communicate with the other RP:
 
 ```
-docker run erenart/rpulsar:RPSlave-ARCH -e ip_port=ip:port
+docker run erenart/rpulsar:RPSlave-ARCH --expose=5001 -e "ip_port=ip:port" 
 ```
 
 Where the arch is the architecture of the node that R-Pulsar will be deployed. If you select the wrong architecture the docker image will not start. Currently, the only architectures supported are AMD64. 

@@ -69,7 +69,9 @@ consumer.post(msg);
 producer.port(msg);
 ```
 
-7- For further code syntax take a look at the examples provided or at the documentation. The relevant classes for interacting with R-Pulsar are: PulsarConsumer, PulsarProducer, Rules, and Rule
+7- Integrate Apache Storm, Apache Edgent or Apache Flink to perform data analytics.
+
+8- For further code syntax take a look at the examples provided or at the documentation. The relevant classes for interacting with R-Pulsar are: PulsarConsumer, PulsarProducer, Rules, and Rule
 
 
 
