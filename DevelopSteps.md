@@ -1,6 +1,6 @@
 # How to create custom R-Pulsar apps
 
-1- Import the R-Pulsar_x.x.jar located in the JAR folder into your current java project.
+1- Download and import the R-Pulsar_x.x.jar located in the release section of the github repo.
 
 2- Import the following packages in to your main Java class:
 
