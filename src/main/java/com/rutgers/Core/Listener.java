@@ -5,6 +5,8 @@
  */
 package com.rutgers.Core;
 
+import org.apache.storm.thrift.TException;
+
 /**
 * This class is the interface for the message listener.
 *
@@ -21,6 +23,7 @@ public interface Listener {
      * @param   o     the observable object.
      * @param   arg   an argument passed to the <code>notifyObservers</code>
      *                 method.
+     * @throws TException 
      */
-    void replay(MessageListener o, Message.ARMessage arg);
+    void replay(MessageListener o, Message.ARMessage arg) throws TException;
 }
