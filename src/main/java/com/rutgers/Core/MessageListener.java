@@ -7,6 +7,8 @@ package com.rutgers.Core;
 
 import java.util.Vector;
 
+import org.apache.storm.thrift.TException;
+
 /**
 *
 * @author  Eduard Giber Renart
@@ -110,7 +112,12 @@ public class MessageListener {
         }
 
         for (int i = arrLocal.length-1; i>=0; i--) {
-            ((Listener)arrLocal[i]).replay(this, arg);
+            try {
+				((Listener)arrLocal[i]).replay(this, arg);
+			} catch (TException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
     }
 
