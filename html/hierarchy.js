@@ -53,6 +53,7 @@ var hierarchy =
     [ "com.rutgers.DB.RocksDHT", "classcom_1_1rutgers_1_1DB_1_1RocksDHT.html", null ],
     [ "com.rutgers.Core.Message.ARMessage.RPType", "enumcom_1_1rutgers_1_1Core_1_1Message_1_1ARMessage_1_1RPType.html", null ],
     [ "com.rutgers.Encryption.RSAEncryption", "classcom_1_1rutgers_1_1Encryption_1_1RSAEncryption.html", null ],
+    [ "com.rutgers.Examples.RuleExample", "classcom_1_1rutgers_1_1Examples_1_1RuleExample.html", null ],
     [ "com.rutgers.RuleEngine.Rules", "classcom_1_1rutgers_1_1RuleEngine_1_1Rules.html", null ],
     [ "com.rutgers.Hilbert.SmallHilbertCurve", "classcom_1_1rutgers_1_1Hilbert_1_1SmallHilbertCurve.html", null ],
     [ "com.rutgers.Storm.Storm", "classcom_1_1rutgers_1_1Storm_1_1Storm.html", null ],

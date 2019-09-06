@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('interfacecom_1_1rutgers_1_1Core_1_1Lis
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a55c7d023e5fcfe48e12986a476410fe7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1rutgers_1_1Core_1_1Listener.html#a55c7d023e5fcfe48e12986a476410fe7">replay</a> (<a class="el" href="classcom_1_1rutgers_1_1Core_1_1MessageListener.html">MessageListener</a> o, Message.ARMessage arg)</td></tr>
+<tr class="memitem:a55c7d023e5fcfe48e12986a476410fe7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1rutgers_1_1Core_1_1Listener.html#a55c7d023e5fcfe48e12986a476410fe7">replay</a> (<a class="el" href="classcom_1_1rutgers_1_1Core_1_1MessageListener.html">MessageListener</a> o, Message.ARMessage arg)  throws TException</td></tr>
 <tr class="separator:a55c7d023e5fcfe48e12986a476410fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -119,7 +119,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> throws TException</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -128,6 +128,12 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">o</td><td>the observable object. </td></tr>
     <tr><td class="paramname">arg</td><td>an argument passed to the <code>notifyObservers</code> method. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">TException</td><td></td></tr>
   </table>
   </dd>
 </dl>

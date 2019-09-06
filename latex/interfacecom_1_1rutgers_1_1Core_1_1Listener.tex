@@ -3,7 +3,7 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{interfacecom_1_1rutgers_1_1Core_1_1Listener_a55c7d023e5fcfe48e12986a476410fe7}{replay} (\hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener}{Message\+Listener} o, Message.\+A\+R\+Message arg)
+void \hyperlink{interfacecom_1_1rutgers_1_1Core_1_1Listener_a55c7d023e5fcfe48e12986a476410fe7}{replay} (\hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener}{Message\+Listener} o, Message.\+A\+R\+Message arg)  throws T\+Exception
 \end{DoxyCompactItemize}
 
 
@@ -23,7 +23,7 @@ Eduard Giber Renart
 \index{com\+::rutgers\+::\+Core\+::\+Listener@{com\+::rutgers\+::\+Core\+::\+Listener}!replay@{replay}}
 \index{replay@{replay}!com\+::rutgers\+::\+Core\+::\+Listener@{com\+::rutgers\+::\+Core\+::\+Listener}}
 \subsubsection{\texorpdfstring{replay()}{replay()}}
-{\footnotesize\ttfamily void com.\+rutgers.\+Core.\+Listener.\+replay (\begin{DoxyParamCaption}\item[{\hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener}{Message\+Listener}}]{o,  }\item[{Message.\+A\+R\+Message}]{arg }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void com.\+rutgers.\+Core.\+Listener.\+replay (\begin{DoxyParamCaption}\item[{\hyperlink{classcom_1_1rutgers_1_1Core_1_1MessageListener}{Message\+Listener}}]{o,  }\item[{Message.\+A\+R\+Message}]{arg }\end{DoxyParamCaption}) throws T\+Exception}
 
 This method is called whenever the observed object is changed. An application calls an {\ttfamily Observable} object\textquotesingle{}s {\ttfamily notify\+Observers} method to have all the object\textquotesingle{}s observers notified of the change.
 
@@ -34,6 +34,11 @@ This method is called whenever the observed object is changed. An application ca
 {\em arg} & an argument passed to the {\ttfamily notify\+Observers} method. \\
 \hline
 \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em T\+Exception} & \\
+\hline
+\end{DoxyExceptions}
 
 
 The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}

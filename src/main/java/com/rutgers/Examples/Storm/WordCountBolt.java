@@ -9,17 +9,28 @@ import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Tuple;
 import org.apache.storm.tuple.Values;
 
+/**
+ * 
+ * This is and example of the use of the R-Pulsar API.
+ * This class counts the words and emits the results
+ * @author eduard
+ *
+ */
+
 public class WordCountBolt extends BaseBasicBolt {
     Map<String, Integer> counts = new HashMap<String, Integer>();
 
     @Override
     public void execute(Tuple tuple, BasicOutputCollector collector) {
       String word = tuple.getString(0);
+      //Get the words from the previous step
       Integer count = counts.get(word);
       if (count == null)
         count = 0;
       count++;
+      //Count the words
       counts.put(word, count);
+      //Emit the results
       collector.emit(new Values(word, count));
     }
 

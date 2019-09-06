@@ -22,6 +22,12 @@ import com.rutgers.Core.Message;
 import com.rutgers.Core.PulsarConsumer;
 import com.rutgers.Examples.Publisher;
 
+/**
+ * This is and example of the use of the R-Pulsar API.
+ * This class consumes sentences from the R-Pulsar consumer and passes the contents the SplitSentenceBolt.
+ * @author eduard
+ */
+
 public class RandomSentenceSpout extends BaseRichSpout {
 	
     PulsarConsumer consumer = null;
@@ -54,6 +60,7 @@ public class RandomSentenceSpout extends BaseRichSpout {
             Message.ARMessage consum_msg = Message.ARMessage.newBuilder().setHeader(header).setAction(Message.ARMessage.Action.REQUEST).setTopic(msg.getTopic()).build();
             //Get the message that was send by the sensor
             Message.ARMessage poll = consumer.poll(consum_msg, msg.getHeader().getPeerId());
+            //Emit the sentence from the R-Pulsar producer to the next storm step
             _collector.emit(new Values(poll.getPayload(0)));
 			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException | NoSuchAlgorithmException | InvalidKeySpecException | UnknownHostException e) {

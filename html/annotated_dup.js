@@ -40,7 +40,8 @@ var annotated_dup =
           [ "Consumer", "classcom_1_1rutgers_1_1Examples_1_1Consumer.html", null ],
           [ "DHTPublisher", "classcom_1_1rutgers_1_1Examples_1_1DHTPublisher.html", null ],
           [ "DHTQuery", "classcom_1_1rutgers_1_1Examples_1_1DHTQuery.html", null ],
-          [ "Publisher", "classcom_1_1rutgers_1_1Examples_1_1Publisher.html", null ]
+          [ "Publisher", "classcom_1_1rutgers_1_1Examples_1_1Publisher.html", null ],
+          [ "RuleExample", "classcom_1_1rutgers_1_1Examples_1_1RuleExample.html", null ]
         ] ],
         [ "Hilbert", null, [
           [ "Base39", "classcom_1_1rutgers_1_1Hilbert_1_1Base39.html", "classcom_1_1rutgers_1_1Hilbert_1_1Base39" ],

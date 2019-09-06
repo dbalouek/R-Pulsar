@@ -17,6 +17,7 @@ var searchData=
   ['rp',['RP',['../classcom_1_1rutgers_1_1Core_1_1RP.html',1,'com::rutgers::Core']]],
   ['rptype',['RPType',['../enumcom_1_1rutgers_1_1Core_1_1Message_1_1ARMessage_1_1RPType.html',1,'com::rutgers::Core::Message::ARMessage']]],
   ['rsaencryption',['RSAEncryption',['../classcom_1_1rutgers_1_1Encryption_1_1RSAEncryption.html',1,'com::rutgers::Encryption']]],
+  ['ruleexample',['RuleExample',['../classcom_1_1rutgers_1_1Examples_1_1RuleExample.html',1,'com::rutgers::Examples']]],
   ['rules',['Rules',['../classcom_1_1rutgers_1_1RuleEngine_1_1Rules.html',1,'com::rutgers::RuleEngine']]],
   ['run',['run',['../classcom_1_1rutgers_1_1Core_1_1ConsumerReplyHandler.html#a975390fd28870020fe1ec8a98c539eca',1,'com.rutgers.Core.ConsumerReplyHandler.run()'],['../classcom_1_1rutgers_1_1Core_1_1HeartBeat.html#a0d9ca37ab5618b50adbfd7815549579d',1,'com.rutgers.Core.HeartBeat.run()']]]
 ];
