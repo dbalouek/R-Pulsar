@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.3" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+<class-diagram version="1.2.3" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="com.rutgers.Hilbert.Range" project="Rutgers-Pulsar" 
     file="/Rutgers-Pulsar/src/main/java/com/rutgers/Hilbert/Range.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="277" width="191" x="152" y="111"/>    
@@ -85,16 +85,16 @@
     </display>  
   </class>  
   <nesting id="10">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="4"/>  
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="5"/>  
   </nesting>  
   <nesting id="11">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="9"/>  
   </nesting>  
   <nesting id="12">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="5"/>  
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="4"/>  
   </nesting>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
