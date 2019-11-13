@@ -110,8 +110,8 @@ public class PulsarProducer extends Pulsar{
         //}
 
         Number160 index = hc.index(singleList, payloadList.toArray(new String[payloadList.size()]));
-        PeerAddress peer = lkManager.nearestKey(index);
-        rp.sendDirectMessageNonBlocking(peer, msg); 
+        //PeerAddress peer = lkManager.nearestKey(index);
+        //rp.sendDirectMessageNonBlocking(peer, msg); 
     }
     
     /**

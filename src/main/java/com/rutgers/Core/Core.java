@@ -142,7 +142,7 @@ public class Core {
                 qTree.insert(manager.getLatitude(), manager.getLongitude(), rp.getPeerAddress(), "");
                 manager.setqTree(qTree);
                 String publicString = Base64.encode(rp.getUserProfile().getPublicKey().getEncoded());       
-                rp.putDHT(rp.getId(), new Number160("RP".getBytes()), publicString);
+                //rp.putDHT(rp.getId(), new Number160("RP".getBytes()), publicString);
                 
                 messageQueue = new ArrayBlockingQueue<>(_MAX_QUEUE_SIZE_);
                 userQueue = new ArrayBlockingQueue<>(_MAX_QUEUE_SIZE_);

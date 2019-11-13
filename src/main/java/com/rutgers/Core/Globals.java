@@ -14,7 +14,7 @@ package com.rutgers.Core;
 public class Globals {
     public static int _THREAD_POOL_ = 5;
     public static int _LOWER_THREAD_POOL_ = 5;
-    public static int _MAX_QUERY_DIM_ = 2;
+    public static int _MAX_QUERY_DIM_ = 3;
     public static int _MAX_QUERY_VARCHAR_ = 10;
     public static int _QUERY_BITS_ = 20;
     public static int _MAX_QUEUE_SIZE_ = 100;

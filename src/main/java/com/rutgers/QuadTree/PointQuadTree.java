@@ -54,7 +54,7 @@ public class PointQuadTree<T> extends AbstractQuadTree<T> {
 	public void insert(double latitude, double longitude, T element, String icon) throws NoSuchAlgorithmException, InvalidKeySpecException {
             
             if(!(longitude >= west && longitude < east && latitude <= north && latitude > south)) {
-                throw new IndexOutOfBoundsException("The coordinate must be within bounds.");
+                //throw new IndexOutOfBoundsException("The coordinate must be within bounds.");
             }
             
             this.rootNode.insert(new PointNodeElement<T>(latitude, longitude, element, icon));
@@ -68,48 +68,48 @@ public class PointQuadTree<T> extends AbstractQuadTree<T> {
                 
                 for(AbstractNode.Cell cell: keySet) {
                     
-                    PeerAddress master = (PeerAddress) this.rootNode.nodes.get(cell).getElements().get(0).getElement();
-                    elements = master.inetAddress().toString() + ":" + master.tcpPort();
+//                    PeerAddress master = (PeerAddress) this.rootNode.nodes.get(cell).getElements().get(0).getElement();
+//                    elements = master.inetAddress().toString() + ":" + master.tcpPort();
+//                    
+//                    for(PointNodeElement<T> ele:this.rootNode.nodes.get(cell).getElements()) {
+//                        list.add((PeerAddress) ele.getElement());
+//                    }
                     
-                    for(PointNodeElement<T> ele:this.rootNode.nodes.get(cell).getElements()) {
-                        list.add((PeerAddress) ele.getElement());
-                    }
-                    
-                    PointNode<T> pn = this.rootNode.nodes.get(cell);
-                    directions = String.valueOf(pn.north) + "," + String.valueOf(pn.south) + "," + String.valueOf(pn.east) + "," + String.valueOf(pn.west);
-                    
-                    if(rpTwo != null) {
-                        Message.ARMessage.Header.Profile.Builder p = Message.ARMessage.Header.Profile.newBuilder();
-                        Message.ARMessage.Header h = Message.ARMessage.Header.newBuilder().setLatitude(0.00).setLongitude(0.0).setType(Message.ARMessage.RPType.AR_RP).setProfile(p).addHID(rpTwo.getId().toString()).build();
-                        Message.ARMessage msgRegular = Message.ARMessage.newBuilder().setHeader(h).setAction(Message.ARMessage.Action.UPDATE).addPayload(elements).build();                        
-                        Message.ARMessage msgMaster = Message.ARMessage.newBuilder().setHeader(h).setAction(Message.ARMessage.Action.UPDATE).addPayload(elements).addPayload(directions).addPayload("Master").build();  
-                        
-                        for (int i = 0; i < list.size(); i++) {
-                            if(i == 0) {
-                                rpTwo.sendDirectMessageNonBlocking(list.get(i), msgMaster);
-                            }else  {
-                                rpTwo.sendDirectMessageNonBlocking(list.get(i), msgRegular);
-                            }
-                        }
-
-                    } else {
-                        Message.ARMessage.Header.Profile.Builder p = Message.ARMessage.Header.Profile.newBuilder();
-                        Message.ARMessage.Header h = Message.ARMessage.Header.newBuilder().setLatitude(0.00).setLongitude(0.0).setType(Message.ARMessage.RPType.AR_RP).setProfile(p).addHID(rpOne.getId().toString()).build();
-                        Message.ARMessage msgRegular = Message.ARMessage.newBuilder().setHeader(h).setAction(Message.ARMessage.Action.UPDATE).addPayload(elements).addPayload(directions).build();
-                        Message.ARMessage msgMaster = Message.ARMessage.newBuilder().setHeader(h).setAction(Message.ARMessage.Action.UPDATE).addPayload(elements).addPayload(directions).addPayload("Master").build();  
-                        
-                        for (int i = 0; i < list.size(); i++) {          
-                            if(i == 0) {
-                                rpOne.sendDirectMessageNonBlocking(list.get(i), msgMaster);
-                            } else {
-                                rpOne.sendDirectMessageNonBlocking(list.get(i), msgRegular);
-                            }
-                        }
-                    }   
-                    
-                    list.clear();
-                    elements = ""; 
-                    directions = "";
+//                    PointNode<T> pn = this.rootNode.nodes.get(cell);
+//                    directions = String.valueOf(pn.north) + "," + String.valueOf(pn.south) + "," + String.valueOf(pn.east) + "," + String.valueOf(pn.west);
+//                    
+//                    if(rpTwo != null) {
+//                        Message.ARMessage.Header.Profile.Builder p = Message.ARMessage.Header.Profile.newBuilder();
+//                        Message.ARMessage.Header h = Message.ARMessage.Header.newBuilder().setLatitude(0.00).setLongitude(0.0).setType(Message.ARMessage.RPType.AR_RP).setProfile(p).addHID(rpTwo.getId().toString()).build();
+//                        Message.ARMessage msgRegular = Message.ARMessage.newBuilder().setHeader(h).setAction(Message.ARMessage.Action.UPDATE).addPayload(elements).build();                        
+//                        Message.ARMessage msgMaster = Message.ARMessage.newBuilder().setHeader(h).setAction(Message.ARMessage.Action.UPDATE).addPayload(elements).addPayload(directions).addPayload("Master").build();  
+//                        
+//                        for (int i = 0; i < list.size(); i++) {
+//                            if(i == 0) {
+//                                rpTwo.sendDirectMessageNonBlocking(list.get(i), msgMaster);
+//                            }else  {
+//                                rpTwo.sendDirectMessageNonBlocking(list.get(i), msgRegular);
+//                            }
+//                        }
+//
+//                    } else {
+//                        Message.ARMessage.Header.Profile.Builder p = Message.ARMessage.Header.Profile.newBuilder();
+//                        Message.ARMessage.Header h = Message.ARMessage.Header.newBuilder().setLatitude(0.00).setLongitude(0.0).setType(Message.ARMessage.RPType.AR_RP).setProfile(p).addHID(rpOne.getId().toString()).build();
+//                        Message.ARMessage msgRegular = Message.ARMessage.newBuilder().setHeader(h).setAction(Message.ARMessage.Action.UPDATE).addPayload(elements).addPayload(directions).build();
+//                        Message.ARMessage msgMaster = Message.ARMessage.newBuilder().setHeader(h).setAction(Message.ARMessage.Action.UPDATE).addPayload(elements).addPayload(directions).addPayload("Master").build();  
+//                        
+//                        for (int i = 0; i < list.size(); i++) {          
+//                            if(i == 0) {
+//                                rpOne.sendDirectMessageNonBlocking(list.get(i), msgMaster);
+//                            } else {
+//                                rpOne.sendDirectMessageNonBlocking(list.get(i), msgRegular);
+//                            }
+//                        }
+//                    }   
+//                    
+//                    list.clear();
+//                    elements = ""; 
+//                    directions = "";
                 }
             }
 	}
