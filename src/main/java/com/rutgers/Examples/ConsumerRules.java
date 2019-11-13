@@ -10,6 +10,9 @@ import com.rutgers.Core.Listener;
 import com.rutgers.Core.Message;
 import com.rutgers.Core.MessageListener;
 import com.rutgers.Core.PulsarConsumer;
+import com.rutgers.RuleEngine.Rule;
+import com.rutgers.RuleEngine.Rules;
+import com.rutgers.RuleEngine.TriggerProfileReaction;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -17,7 +20,9 @@ import java.io.InputStream;
 import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -29,7 +34,7 @@ import java.util.logging.Logger;
  * @param keys
  * @return
  */
-public class Consumer {
+public class ConsumerRules {
     static boolean running = false;
     static Thread thread = null;
     static PulsarConsumer consumer = null;
@@ -38,13 +43,35 @@ public class Consumer {
         Message.ARMessage msg;
         Message.ARMessage.Header.Profile profile;
         Message.ARMessage.Header header;
+        Rules boltRules;
+        
+        Message.ARMessage msgEdge;
+        Message.ARMessage.Header.Profile profileEdge;
+        Message.ARMessage.Header headerEdge;
+        
+        Message.ARMessage msgCloud;
+        Message.ARMessage.Header.Profile profileCloud;
+        Message.ARMessage.Header headerCloud;
         
         Consum(Message.ARMessage msg) {
             this.msg = msg;
             profile = Message.ARMessage.Header.Profile.newBuilder().addSingle("temperature").addSingle("fahrenheit").build();
             header = Message.ARMessage.Header.newBuilder().setLatitude(0.00).setLongitude(0.00).setType(Message.ARMessage.RPType.AR_CONSUMER).setProfile(profile).setPeerId(consumer.getPeerID()).build();
+            //Add a rule with to check if X > 5 if the rule is fired the message with the AR Profile will be send
+          
+            profileEdge = Message.ARMessage.Header.Profile.newBuilder().addSingle("temperature").addSingle("reaction").build();
+            headerEdge = Message.ARMessage.Header.newBuilder().setLatitude(0.00).setLongitude(0.00).setType(Message.ARMessage.RPType.AR_PRODUCER).setProfile(profile).setPeerId(consumer.getPeerID()).build();
+            
+            boltRules = new Rules();
+            try {
+				boltRules.addRule(new Rule.Builder().withCondition("X > 5").withConsequence(new TriggerProfileReaction(msg)).withPriority(1).build());
+				boltRules.addRule(new Rule.Builder().withCondition("X < 5").withConsequence(new TriggerProfileReaction(msg)).withPriority(2).build());
+            } catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
-        
+
         @Override
         public void run() {
             while(running) {
@@ -55,12 +82,19 @@ public class Consumer {
                     
                     String payload = poll.getPayload(0).split("\\r?\\n")[1].split(":")[1].trim().replace("\"", "");
                     System.out.println("Recived: " + payload);
+            			                        
+                    Map<String, String> bindings = new HashMap<>();
+                    //The bindings is the data that is coming in from the sensors.
+                    bindings.put("X", "6");
+                    //Evalues the rules
+                    boltRules.eval(bindings);		
+            		
                 	
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (NoSuchAlgorithmException | InvalidKeySpecException | UnknownHostException ex) {
-                    Logger.getLogger(Consumer.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ConsumerRules.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -78,7 +112,7 @@ public class Consumer {
         	}
         	
             // Load the consumer properties into an InputStream  
-            InputStream props = new FileInputStream(args[0]);//Resources.getResource("consumer.prop").openStream();
+            InputStream props = new FileInputStream(args[0]); // Resources.getResource("consumer.prop").openStream();
             //Create a java util properties object 
             Properties properties = new Properties();
             //Load the consumer properties into memory

@@ -49,6 +49,7 @@ public class TriggerProfileReaction implements ActionDispatcher {
     @Override
     public void fire() {
         try {
+        	System.out.println("Fire Rule");
             ProtocolStringList payloadList = msg.getPayloadList();
             List<String> singleList = msg.getHeader().getProfile().getSingleList();
             Number160 index = hc.index(singleList, payloadList.toArray(new String[payloadList.size()]));

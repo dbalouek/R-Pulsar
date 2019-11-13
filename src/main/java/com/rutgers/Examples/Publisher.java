@@ -11,12 +11,15 @@ import com.rutgers.Core.Message;
 import com.rutgers.Core.Message.ARMessage;
 import com.rutgers.Core.MessageListener;
 import com.rutgers.Core.PulsarProducer;
+
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Properties;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,7 +33,7 @@ public class Publisher {
     
     static int numRecords = 10000;
     static int recordSize = 200;
-    static int iterations = 10;
+    static int iterations = 20;
     static boolean running = false;
     static Thread thread = null;
     static PulsarProducer producer = null;
@@ -39,37 +42,31 @@ public class Publisher {
         Message.ARMessage msg = null;
         ARMessage.Header.Profile profile = null;
         ARMessage.Header header = null;
-        String str;
+        String[] sentences = null;
         
         Push(Message.ARMessage msg) {
             this.msg = msg;
-            //Each message is of size 200. Packing 1000 messages into one.
-            byte[] data = new byte[200000];
-            str = new String(data);
+            sentences = new String[]{ "the cow jumped over the moon", "an apple a day keeps the doctor away",
+                    "four score and seven years ago", "snow white and the seven dwarfs", "i am at two with nature" };
         }
         
         @Override
         public void run() {
         	// Creation of a record
-            Message.ARMessage push_msg = Message.ARMessage.newBuilder().setAction(Message.ARMessage.Action.STORE_QUEUE).setTopic(msg.getTopic()).addPayload(str).build();
-
-            long start = System.currentTimeMillis();
+            Random rand = new Random(); 
             //Using some compression techniques to reduce network overhead
             for(int i = 0; i < iterations; i ++) {
                 try {
                 	// Pushing a record to the RP
+                	int rand_int1 = rand.nextInt(sentences.length);
+                    Message.ARMessage push_msg = Message.ARMessage.newBuilder().setAction(Message.ARMessage.Action.STORE_QUEUE).setTopic(msg.getTopic()).addPayload(sentences[rand_int1]).build();
+                	System.out.println("Sending: " + sentences[rand_int1]);
                     producer.stream(push_msg, msg.getHeader().getPeerId());
                 } catch (NoSuchAlgorithmException | InvalidKeySpecException | UnknownHostException | InterruptedException ex) {
                     Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
-            //Calculate the performance
-            long ellapsed = System.currentTimeMillis() - start;
-            double msgsSec = 1000.0 * numRecords / (double) ellapsed;
-            double mbSec = msgsSec * recordSize / (1024.0 * 1024.0);
-            System.out.println(start);
-            System.out.printf("%d records sent in %d ms ms. %.2f records per second (%.2f mb/sec).", numRecords, ellapsed, msgsSec, mbSec);
         }
     }
     
@@ -78,8 +75,14 @@ public class Publisher {
      */
     public static void main(String[] args) throws UnknownHostException, ClassNotFoundException {
         try {
+        	
+        	if(args.length == 0) {
+    	        System.out.println("Need to specify the producer property file!!");
+    	        System.exit(0);
+        	}
+        	
             // TODO code application logic here           
-            InputStream props = Resources.getResource("producer.prop").openStream();
+            InputStream props = new FileInputStream(args[0]);//Resources.getResource("producer.prop").openStream();
             Properties properties = new Properties();
             properties.load(props);
             

@@ -22,6 +22,7 @@ import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
 import org.apache.storm.thrift.TException;
 import org.apache.storm.topology.TopologyBuilder;
+import org.apache.storm.topology.base.BaseWindowedBolt.Count;
 import org.apache.storm.tuple.Fields;
 
 /**
@@ -30,71 +31,25 @@ import org.apache.storm.tuple.Fields;
  * @param keys
  * @return
  */
-public class StormMain {
-    static PulsarConsumer consumer = null;
-    
+public class StormMain {    
     /**
      * @param args the command line arguments
      * @throws Exception 
      */
     public static void main(String[] args) throws Exception {
         try {
-            // Load the consumer properties into an InputStream  
-            InputStream props = Resources.getResource("consumer.prop").openStream();
-            //Create a java util properties object 
-            Properties properties = new Properties();
-            //Load the consumer properties into memory
-            properties.load(props);
-            
-            //Create a new R-Pulsar consumer object
-            consumer = new PulsarConsumer(properties);
-            //Init the R-Pulsar consumer
-            consumer.init();
-            
-            //Create a profile with the data that we are interested in
-            Message.ARMessage.Header.Profile profile = Message.ARMessage.Header.Profile.newBuilder().addSingle("temperature").addSingle("fahrenheit").build();
-            //Create a header and set our physical location
-            Message.ARMessage.Header header = Message.ARMessage.Header.newBuilder().setLatitude(0.00).setLongitude(0.00).setType(Message.ARMessage.RPType.AR_CONSUMER).setProfile(profile).setPeerId(consumer.getPeerID()).build();
-            //Create an AR Message and tell the system to notify us if there is a profile that matches this criteria
-            Message.ARMessage msg = Message.ARMessage.newBuilder().setHeader(header).setAction(Message.ARMessage.Action.NOTIFY_DATA).build();
-            //Use the consumer object to send the message
-            
+            // Load the consumer properties into an InputStream              
             TopologyBuilder builder = new TopologyBuilder();
-            builder.setSpout("spout", new RandomSentenceSpout(msg, consumer));
-            builder.setBolt("split", new SplitSentenceBolt(), 8).shuffleGrouping("spout");
-            builder.setBolt("count", new WordCountBolt(), 12).fieldsGrouping("split", new Fields("word"));
+            builder.setSpout("spout", new RandomSentenceSpout());
+            builder.setBolt("split", new SplitSentenceBolt()).shuffleGrouping("spout");
+            builder.setBolt("count", new WordCountBolt().withWindow(Count.of(5), Count.of(3))).fieldsGrouping("split", new Fields("word"));
             
             Config conf = new Config();
             conf.setDebug(true);
             conf.setMaxTaskParallelism(3);
             LocalCluster cluster = new LocalCluster();
             
-            //Create a listener for incoming AR messages
-            consumer.replayListener(new Listener(){
-                @Override
-                public void replay(MessageListener ml, Message.ARMessage o) {
-                    switch(o.getAction()) {
-                        //When we receive a notify_start we need to start processing the data that we will receive
-                        case NOTIFY_START:
-                            // Start a new thread with the Consum class
-							try {
-								cluster.submitTopology("word-count", conf, builder.createTopology());
-							} catch (TException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-                            break;
-                        //We will not receive any more data from the sensors
-                        case NOTIFY_STOP:
-							cluster.shutdown();
-                            break;
-                        case REQUEST_RESPONSE:
-                            break;
-                    }
-                }
-            });
-            
-            consumer.post(msg);
+            cluster.submitTopology("word-count", conf, builder.createTopology());
             
         } catch (IOException | InterruptedException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
             Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);

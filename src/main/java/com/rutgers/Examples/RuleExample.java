@@ -53,9 +53,7 @@ public class RuleExample {
             //Add a rule with to check if X > 5 if the rule is fired the message with the AR Profile will be send
             boltRules.addRule(new Rule.Builder().withCondition("X > 5").withConsequence(new TriggerProfileReaction(msg)).withPriority(1).build());
             boltRules.addRule(new Rule.Builder().withCondition("X < 5").withConsequence(new TriggerProfileReaction(msg)).withPriority(1).build());
-            boltRules.addRule(new Rule.Builder().withCondition("X == 5").withConsequence(new TriggerProfileReaction(msg)).withPriority(1).build());
-            boltRules.addRule(new Rule.Builder().withCondition("X > 5 AND Y < 6").withConsequence(new TriggerProfileReaction(msg)).withPriority(1).build());
-            boltRules.addRule(new Rule.Builder().withCondition("X > 5 OR Y < 6").withConsequence(new TriggerProfileReaction(msg)).withPriority(1).build());
+
 
             
             Map<String, String> bindings = new HashMap<>();
