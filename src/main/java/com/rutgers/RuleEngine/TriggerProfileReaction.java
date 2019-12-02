@@ -37,30 +37,34 @@ public class TriggerProfileReaction implements ActionDispatcher {
     RP rpTwo = null;
     LocationKeyManager lkManager = null;
     HilbertCurve hc = null;
+    Boolean fired = false;
     
     public TriggerProfileReaction(Message.ARMessage msg) throws IOException {
-        this.msg = msg;
+        this.msg = msg;        
         mgr = Manager.getInstance();
         rpOne = mgr.getRpOne();
         rpTwo = mgr.getRpTwo();
+        lkManager = mgr.getLocationKeyManager();
         hc = HilbertCurve.bits(_QUERY_BITS_).dimensions(_MAX_QUERY_DIM_);
     }
 
     @Override
     public void fire() {
         try {
-        	System.out.println("Fire Rule");
-            ProtocolStringList payloadList = msg.getPayloadList();
-            List<String> singleList = msg.getHeader().getProfile().getSingleList();
-            Number160 index = hc.index(singleList, payloadList.toArray(new String[payloadList.size()]));
-            PeerAddress peer = lkManager.nearestKey(index); 
-            
-            if(rpTwo != null) {
-                rpTwo.sendDirectMessageNonBlocking(peer, msg);
-            }else {
-                rpOne.sendDirectMessageNonBlocking(peer, msg);
-            }
-            
+        	if (fired == false) {
+	        	System.out.println("Fire Rule");
+	            ProtocolStringList payloadList = msg.getPayloadList();
+	            List<String> singleList = msg.getHeader().getProfile().getSingleList();
+	            Number160 index = hc.index(singleList, payloadList.toArray(new String[payloadList.size()]));
+	            PeerAddress peer = lkManager.nearestKey(index); 
+	            
+	            if(rpTwo != null) {
+	                rpTwo.sendDirectMessageNonBlocking(peer, msg);
+	            }else {
+	                rpOne.sendDirectMessageNonBlocking(peer, msg);
+	            }
+	            fired = true;
+        	}
         } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
             Logger.getLogger(TriggerProfileReaction.class.getName()).log(Level.SEVERE, null, ex);
         }

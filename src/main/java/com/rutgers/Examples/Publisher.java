@@ -5,13 +5,11 @@
  */
 package com.rutgers.Examples;
 
-import com.google.common.io.Resources;
 import com.rutgers.Core.Listener;
 import com.rutgers.Core.Message;
 import com.rutgers.Core.Message.ARMessage;
 import com.rutgers.Core.MessageListener;
 import com.rutgers.Core.PulsarProducer;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -59,13 +57,13 @@ public class Publisher {
                 try {
                 	// Pushing a record to the RP
                 	int rand_int1 = rand.nextInt(sentences.length);
-                    Message.ARMessage push_msg = Message.ARMessage.newBuilder().setAction(Message.ARMessage.Action.STORE_QUEUE).setTopic(msg.getTopic()).addPayload(sentences[rand_int1]).build();
+                    //Message.ARMessage push_msg = Message.ARMessage.newBuilder().setAction(Message.ARMessage.Action.STORE_QUEUE).setTopic(msg.getTopic()).addPayload(sentences[rand_int1]).build();
+                	Message.ARMessage push_msg = Message.ARMessage.newBuilder().setAction(Message.ARMessage.Action.STORE_QUEUE).setTopic(msg.getTopic()).addPayload("Hello World!!").build();
                 	System.out.println("Sending: " + sentences[rand_int1]);
                     producer.stream(push_msg, msg.getHeader().getPeerId());
                 } catch (NoSuchAlgorithmException | InvalidKeySpecException | UnknownHostException | InterruptedException ex) {
                     Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
             }
         }
     }
