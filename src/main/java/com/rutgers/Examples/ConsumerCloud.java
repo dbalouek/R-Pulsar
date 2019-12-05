@@ -58,7 +58,7 @@ public class ConsumerCloud {
                 	
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(HelloWorldPublisher.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (NoSuchAlgorithmException | InvalidKeySpecException | UnknownHostException ex) {
                     Logger.getLogger(ConsumerCloud.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -107,7 +107,7 @@ public class ConsumerCloud {
                                 running = false;
                                 thread.join();
                             } catch (InterruptedException ex) {
-                                Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(HelloWorldPublisher.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             break;
                         case REQUEST_RESPONSE:
@@ -127,7 +127,7 @@ public class ConsumerCloud {
             consumer.post(msg);
             
         } catch (IOException | InterruptedException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
-            Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HelloWorldPublisher.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

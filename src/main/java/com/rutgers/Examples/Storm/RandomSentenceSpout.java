@@ -27,7 +27,7 @@ import com.rutgers.Core.Message;
 import com.rutgers.Core.Message.ARMessage;
 import com.rutgers.Core.MessageListener;
 import com.rutgers.Core.PulsarConsumer;
-import com.rutgers.Examples.Publisher;
+import com.rutgers.Examples.HelloWorldPublisher;
 import com.rutgers.Examples.Consumer.Consum;
 
 /**

@@ -10,7 +10,7 @@ import com.rutgers.Core.Listener;
 import com.rutgers.Core.Message;
 import com.rutgers.Core.MessageListener;
 import com.rutgers.Core.PulsarConsumer;
-import com.rutgers.Examples.Publisher;
+import com.rutgers.Examples.HelloWorldPublisher;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.NoSuchAlgorithmException;
@@ -52,7 +52,7 @@ public class StormMain {
             cluster.submitTopology("word-count", conf, builder.createTopology());
             
         } catch (IOException | InterruptedException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
-            Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HelloWorldPublisher.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

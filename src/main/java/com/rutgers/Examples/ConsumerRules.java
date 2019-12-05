@@ -107,7 +107,7 @@ public class ConsumerRules {
                     }
                     
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(HelloWorldPublisher.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (NoSuchAlgorithmException | InvalidKeySpecException | UnknownHostException ex) {
                     Logger.getLogger(ConsumerRules.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -160,7 +160,7 @@ public class ConsumerRules {
                                 running = false;
                                 thread.join();
                             } catch (InterruptedException ex) {
-                                Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(HelloWorldPublisher.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             break;
                         case REQUEST_RESPONSE:
@@ -180,7 +180,7 @@ public class ConsumerRules {
             consumer.post(msg);
             
         } catch (IOException | InterruptedException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
-            Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HelloWorldPublisher.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

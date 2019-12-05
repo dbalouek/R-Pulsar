@@ -27,7 +27,7 @@ import java.util.logging.Logger;
  * @param keys
  * @return
  */
-public class Publisher { 
+public class StormPublisher { 
     
     static int numRecords = 10000;
     static int recordSize = 200;
@@ -57,12 +57,12 @@ public class Publisher {
                 try {
                 	// Pushing a record to the RP
                 	int rand_int1 = rand.nextInt(sentences.length);
-                    //Message.ARMessage push_msg = Message.ARMessage.newBuilder().setAction(Message.ARMessage.Action.STORE_QUEUE).setTopic(msg.getTopic()).addPayload(sentences[rand_int1]).build();
-                	Message.ARMessage push_msg = Message.ARMessage.newBuilder().setAction(Message.ARMessage.Action.STORE_QUEUE).setTopic(msg.getTopic()).addPayload("Hello World!!").build();
+                    Message.ARMessage push_msg = Message.ARMessage.newBuilder().setAction(Message.ARMessage.Action.STORE_QUEUE).setTopic(msg.getTopic()).addPayload(sentences[rand_int1]).build();
+                	//Message.ARMessage push_msg = Message.ARMessage.newBuilder().setAction(Message.ARMessage.Action.STORE_QUEUE).setTopic(msg.getTopic()).addPayload("Hello World!!").build();
                 	System.out.println("Sending: " + sentences[rand_int1]);
                     producer.stream(push_msg, msg.getHeader().getPeerId());
                 } catch (NoSuchAlgorithmException | InvalidKeySpecException | UnknownHostException | InterruptedException ex) {
-                    Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(StormPublisher.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -103,7 +103,7 @@ public class Publisher {
                                 running = false;
                                 thread.join();
                             } catch (InterruptedException ex) {
-                                Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(StormPublisher.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             break;
                     }
@@ -118,7 +118,7 @@ public class Publisher {
             producer.post(msg, profile);
             
         } catch (IOException | InterruptedException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
-            Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StormPublisher.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
