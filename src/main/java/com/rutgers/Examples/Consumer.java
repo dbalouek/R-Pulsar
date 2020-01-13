@@ -54,7 +54,7 @@ public class Consumer {
                     Message.ARMessage poll = consumer.poll(consum_msg, msg.getHeader().getPeerId());
                     
                     String payload = poll.getPayload(0).split("\\r?\\n")[1].split(":")[1].trim().replace("\"", "");
-                    System.out.println("Recived: " + payload);
+                    System.out.println("Received: " + payload);
                 	
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException ex) {
