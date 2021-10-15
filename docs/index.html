@@ -4,9 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to R-Pulsar’s documentation! &mdash; R-Pulsar 1.0 documentation</title>
+  <title>Welcome to R-Pulsar’s documentation! &mdash; R-Pulsar 1.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -15,6 +16,8 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -57,7 +60,6 @@
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
       <li>Welcome to R-Pulsar’s documentation!</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -73,21 +75,27 @@
 <ol class="arabic simple">
 <li><p>Compile project using maven:</p></li>
 </ol>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mvn clean package
+<div class="highlight-console.. notranslate"><div class="highlight"><pre><span></span>$ mvn clean package
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>Deploy a Rendez-vous Point (RP):</p>
-</li>
+<li><p>Deploy a Rendez-vous Point (RP):</p></li>
 </ol>
-<ol class="arabic simple" start="2">
-<li><p>Deploy a data publisher:</p>
-</li>
+<div class="highlight-console.. notranslate"><div class="highlight"><pre><span></span>$ java -jar P2P-1.0-SNAPSHOT-jar-with-dependencies.jar  -l x -gps 40:-74 -p 5000
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Deploy a data publisher:</p></li>
 </ol>
-<ol class="arabic simple" start="2">
-<li><p>Deploy a data consumer:</p>
-</li>
+<div class="highlight-console.. notranslate"><div class="highlight"><pre><span></span>$ java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar com.rutgers.Examples.Publisher path_to_the_property_file
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Deploy a data consumer:</p></li>
 </ol>
+<div class="highlight-console.. notranslate"><div class="highlight"><pre><span></span>$ java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar com.rutgers.Examples.Consumer path_to_the_property_file
+</pre></div>
+</div>
 </section>
 <section id="table-of-contents">
 <h1>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h1>

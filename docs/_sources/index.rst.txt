@@ -11,21 +11,28 @@ Hello World Quickstart
 
 1. Compile project using maven:
    
-.. code:: console
+.. code:: console..
 
-	  $ mvn clean package   
+ $ mvn clean package   
 
 2. Deploy a Rendez-vous Point (RP):
 
-   .. snippets/deploy-rp::
+.. code:: console..
 
-2. Deploy a data publisher:
+ $ java -jar P2P-1.0-SNAPSHOT-jar-with-dependencies.jar  -l x -gps 40:-74 -p 5000
 
-   .. snippets/deploy-publisher::
+3. Deploy a data publisher:
 
-2. Deploy a data consumer:
+.. code:: console..
 
-   .. snippets/deploy-consumer::
+ $ java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar com.rutgers.Examples.Publisher path_to_the_property_file
+
+4. Deploy a data consumer:
+
+.. code:: console..
+
+ $ java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar com.rutgers.Examples.Consumer path_to_the_property_file
+	  
 
 Table of contents
 =================
