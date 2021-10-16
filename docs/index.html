@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Platform" href="platform.html" /> 
+    <link rel="next" title="Platform" href="Platform.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -39,9 +39,31 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Platform.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data%20structures.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20producer.html">Building a data producer program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20consumer.html">Building a data consumer program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scheduling%20in%20R-Pulsar.html">Schedluling in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tracing%20in%20R-Pulsar.html">Tracing in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deploying%20an%20R-Pulsar%20platform.html">Deploying a R-Pulsar platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Workflow%20management%20in%20R-Pulsar.html">Workflow management in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Federation%20Management.html">Federation Management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials and Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20profiles.html">Building profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Writing%20rules.html">Writing dynamic rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Window%20processing%20using%20Apache%20Storm.html">Window processing using Apache Storm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Delegates%20Rendez-vous%20Points.html">Master/Slaves RPs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Publications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Main%20publications.html">Main publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="They%20use%20it.html">They use it</a></li>
 </ul>
 
         </div>
@@ -69,52 +91,86 @@
              
   <section id="welcome-to-r-pulsar-s-documentation">
 <h1>Welcome to R-Pulsar’s documentation!<a class="headerlink" href="#welcome-to-r-pulsar-s-documentation" title="Permalink to this headline"></a></h1>
+<p>R-Pulsar is an IoT Edge Framework, that extends cloud capabilities to local devices and provides a programming model for deciding what, when, and where data get collected and processed. It has been deployed and tested on embedded devices (Raspberry Pi and Android phone) and presents an experimental evaluation that demonstrates that R-Pulsar can enable timely stream analytics by effectively leveraging edge and core resources.</p>
 </section>
 <section id="hello-world-quickstart">
 <h1>Hello World Quickstart<a class="headerlink" href="#hello-world-quickstart" title="Permalink to this headline"></a></h1>
 <ol class="arabic simple">
-<li><p>Compile project using maven:</p></li>
+<li><p>Download and extract the latest version of R-Pulsar:</p></li>
 </ol>
-<div class="highlight-console.. notranslate"><div class="highlight"><pre><span></span>$ mvn clean package
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: "$ ";
+}
+</style><span class="prompt1">wget https://github.com/dbalouek/R-Pulsar/archive/refs/tags/1.0.tar.gz</span>
+<span class="prompt1">tar xzf <span class="m">1</span>.0.tar.gz</span>
+</pre></div></div><ol class="arabic simple" start="2">
+<li><p>Compile using maven:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">mvn clean package</span>
+</pre></div></div><ol class="arabic simple" start="3">
 <li><p>Deploy a Rendez-vous Point (RP):</p></li>
 </ol>
-<div class="highlight-console.. notranslate"><div class="highlight"><pre><span></span>$ java -jar P2P-1.0-SNAPSHOT-jar-with-dependencies.jar  -l x -gps 40:-74 -p 5000
-</pre></div>
-</div>
-<ol class="arabic simple" start="3">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">java -jar P2P-1.0-SNAPSHOT-jar-with-dependencies.jar  -l x -gps <span class="m">40</span>:-74 -p <span class="m">5000</span></span>
+</pre></div></div><ol class="arabic simple" start="4">
 <li><p>Deploy a data publisher:</p></li>
 </ol>
-<div class="highlight-console.. notranslate"><div class="highlight"><pre><span></span>$ java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar com.rutgers.Examples.Publisher path_to_the_property_file
-</pre></div>
-</div>
-<ol class="arabic simple" start="4">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar com.rutgers.Examples.Publisher path_to_the_property_file</span>
+</pre></div></div><ol class="arabic simple" start="5">
 <li><p>Deploy a data consumer:</p></li>
 </ol>
-<div class="highlight-console.. notranslate"><div class="highlight"><pre><span></span>$ java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar com.rutgers.Examples.Consumer path_to_the_property_file
-</pre></div>
-</div>
-</section>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">java -cp P2P-1.0-SNAPSHOT-jar-with-dependencies.jar com.rutgers.Examples.Consumer path_to_the_property_file</span>
+</pre></div></div></section>
 <section id="table-of-contents">
 <h1>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h1>
 <div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="platform.html">Platform</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="platform.html#heading">Heading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Platform.html">Platform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Platform.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Platform.html#r-pulsar-components">R-Pulsar Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Platform.html#communications-layer">Communications layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Platform.html#r-pulsar-initialization">R-Pulsar initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Platform.html#data-streaming">Data streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Platform.html#rule-engine">Rule engine</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Installation.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Installation.html#compiling-the-platform">Compiling the platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Installation.html#r-pulser-consumer-producer-examples">R-Pulser consumer/producer examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Data%20structures.html">Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Data%20structures.html#ar-message">AR Message</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20producer.html">Building a data producer program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Building%20a%20data%20producer.html#structure-of-a-producer-program">Structure of a producer program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Building%20a%20data%20producer.html#client-api">Client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Building%20a%20data%20producer.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20consumer.html">Building a data consumer program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Building%20a%20data%20consumer.html#structure-of-a-consumer-program">Structure of a consumer program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Building%20a%20data%20consumer.html#client-api">Client API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Building%20a%20data%20consumer.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Scheduling%20in%20R-Pulsar.html">Schedluling in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tracing%20in%20R-Pulsar.html">Tracing in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deploying%20an%20R-Pulsar%20platform.html">Deploying a R-Pulsar platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Workflow%20management%20in%20R-Pulsar.html">Workflow management in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Federation%20Management.html">Federation Management</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
 </div>
 </section>
 <section id="indices-and-tables">
@@ -130,7 +186,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="platform.html" class="btn btn-neutral float-right" title="Platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Platform.html" class="btn btn-neutral float-right" title="Platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

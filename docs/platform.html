@@ -21,6 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="Installation.html" />
     <link rel="prev" title="Welcome to R-Pulsar’s documentation!" href="index.html" /> 
 </head>
 
@@ -39,18 +40,41 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Platform</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#heading">Heading</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#heading-3">Heading 3</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#heading-4">Heading 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#r-pulsar-components">R-Pulsar Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#communications-layer">Communications layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#r-pulsar-initialization">R-Pulsar initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-streaming">Data streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rule-engine">Rule engine</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data%20structures.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20producer.html">Building a data producer program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20consumer.html">Building a data consumer program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scheduling%20in%20R-Pulsar.html">Schedluling in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tracing%20in%20R-Pulsar.html">Tracing in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deploying%20an%20R-Pulsar%20platform.html">Deploying a R-Pulsar platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Workflow%20management%20in%20R-Pulsar.html">Workflow management in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Federation%20Management.html">Federation Management</a></li>
 </ul>
-</li>
+<p class="caption" role="heading"><span class="caption-text">Tutorials and Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Hello%20World.html">Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20profiles.html">Building profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Writing%20rules.html">Writing dynamic rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Window%20processing%20using%20Apache%20Storm.html">Window processing using Apache Storm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Delegates%20Rendez-vous%20Points.html">Master/Slaves RPs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Publications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Main%20publications.html">Main publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="They%20use%20it.html">They use it</a></li>
 </ul>
 
         </div>
@@ -78,19 +102,31 @@
              
   <section id="platform">
 <h1>Platform<a class="headerlink" href="#platform" title="Permalink to this headline"></a></h1>
-<section id="heading">
-<h2>Heading<a class="headerlink" href="#heading" title="Permalink to this headline"></a></h2>
-<section id="heading-3">
-<h3>Heading 3<a class="headerlink" href="#heading-3" title="Permalink to this headline"></a></h3>
-<section id="heading-4">
-<h4>Heading 4<a class="headerlink" href="#heading-4" title="Permalink to this headline"></a></h4>
-<section id="heading-5">
-<h5>Heading 5<a class="headerlink" href="#heading-5" title="Permalink to this headline"></a></h5>
-<section id="heading-6">
-<h6>Heading 6<a class="headerlink" href="#heading-6" title="Permalink to this headline"></a></h6>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>R-Pulsar is built upon data producers and consumers profiles <a class="reference internal" href="#paise2019" id="id1"><span>[PAISE2019]</span></a>. The process of placing functions and operators is coordinated amongst a federation of Rendez-vous Points that dynamically links producers and consumers. The rule-based engine uses run-time information to determine the most appropriate placement according to system and resources capabilities.</p>
+<section id="r-pulsar-components">
+<h3>R-Pulsar Components<a class="headerlink" href="#r-pulsar-components" title="Permalink to this headline"></a></h3>
+<p><strong>Rendez-Vous Point</strong></p>
+<p><strong>Producer</strong></p>
+<p><strong>Consumer</strong></p>
 </section>
+<section id="communications-layer">
+<h3>Communications layer<a class="headerlink" href="#communications-layer" title="Permalink to this headline"></a></h3>
 </section>
+<section id="r-pulsar-initialization">
+<h3>R-Pulsar initialization<a class="headerlink" href="#r-pulsar-initialization" title="Permalink to this headline"></a></h3>
 </section>
+<section id="data-streaming">
+<h3>Data streaming<a class="headerlink" href="#data-streaming" title="Permalink to this headline"></a></h3>
+</section>
+<section id="rule-engine">
+<h3>Rule engine<a class="headerlink" href="#rule-engine" title="Permalink to this headline"></a></h3>
+<dl class="citation">
+<dt class="label" id="paise2019"><span class="brackets"><a class="fn-backref" href="#id1">PAISE2019</a></span></dt>
+<dd><p>Renart, E. G., Balouek-Thomert, D., &amp; Parashar, M. (2019, May). An edge-based framework for enabling data-driven pipelines for iot systems. In 2019 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW) (pp. 885-894).</p>
+</dd>
+</dl>
 </section>
 </section>
 </section>
@@ -100,6 +136,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to R-Pulsar’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
