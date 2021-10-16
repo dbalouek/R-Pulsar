@@ -3,7 +3,7 @@ R-Pulsar is an IoT Edge Framework, that extends cloud capabilities to local devi
 
 ## Documentation
 
-https://dbalouek.github.io/R-Pulsar/
+[R-Pulsar Documentation on Github Pages](https://dbalouek.github.io/R-Pulsar/)
 
 
 ## License
