@@ -99,6 +99,27 @@
 <h1>Building a data consumer program<a class="headerlink" href="#building-a-data-consumer-program" title="Permalink to this headline"></a></h1>
 <section id="structure-of-a-consumer-program">
 <h2>Structure of a consumer program<a class="headerlink" href="#structure-of-a-consumer-program" title="Permalink to this headline"></a></h2>
+<p>Since the data consumer side of R-Pulsar is a library, a consumer program has to define a main function that uses R-Pulsar through function calls.</p>
+<p>The complete consumer-side interface is described in the Class PulsarConsumer and MessageListener found in the Core package.</p>
+<p>Please refer to these two classes for a complete and p-to-date API description, and import them at the beginning of your source code.</p>
+<p>import com.rutgers.Core.MessageListener;
+import com.rutgers.Core.PulsarConsumer;</p>
+<p>public class Consumer {</p>
+<p>InputStream props = new FileInputStream(args[0]);
+Properties properties = new Properties();
+properties.load(props);</p>
+<p>consumer = new PulsarConsumer(properties);
+consumer.init();</p>
+<p>consumer.replayListener(new Listener(){
+…
+}</p>
+<p>Message.ARMessage.Header.Profile profile = …
+Message.ARMessage.Header header = …
+Message.ARMessage.Header header = Message.ARMessage msg = …</p>
+<p>consumer.post(msg);</p>
+<p>}</p>
+<p>The client program must open its R-Pulsar session with a call to <em>PulsarConsumer</em>, which parses the configuration file to set all key-value parameters and get a reference to Rpulsar Master.</p>
+<p>The program then (1) defines a listener for incoming messages, (2) creates a profil about the data of interest, (3) sends a message to the Master RP to be notified whenever there is a new match in the system.</p>
 </section>
 <section id="client-api">
 <h2>Client API<a class="headerlink" href="#client-api" title="Permalink to this headline"></a></h2>
