@@ -46,7 +46,8 @@
 <li class="toctree-l1"><a class="reference internal" href="Data%20structures.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20producer.html">Building a data producer program</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20consumer.html">Building a data consumer program</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Scheduling%20in%20R-Pulsar.html">Schedluling in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20Rendez-vous%20Point.html">Building a Rendez-vous Point program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scheduling%20in%20R-Pulsar.html">Scheduling in R-Pulsar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tracing%20in%20R-Pulsar.html">Tracing in R-Pulsar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Deploying%20an%20R-Pulsar%20platform.html">Deploying a R-Pulsar platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Workflow%20management%20in%20R-Pulsar.html">Workflow management in R-Pulsar</a></li>
@@ -92,6 +93,10 @@
   <section id="welcome-to-r-pulsar-s-documentation">
 <h1>Welcome to R-Pulsar’s documentation!<a class="headerlink" href="#welcome-to-r-pulsar-s-documentation" title="Permalink to this headline"></a></h1>
 <p>R-Pulsar is an IoT Edge Framework, that extends cloud capabilities to local devices and provides a programming model for deciding what, when, and where data get collected and processed. It has been deployed and tested on embedded devices (Raspberry Pi and Android phone) and presents an experimental evaluation that demonstrates that R-Pulsar can enable timely stream analytics by effectively leveraging edge and core resources.</p>
+</section>
+<section id="how-does-it-work">
+<h1>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline"></a></h1>
+<p>Data consumers ——– Rule-based processing ——– Data producers</p>
 </section>
 <section id="hello-world-quickstart">
 <h1>Hello World Quickstart<a class="headerlink" href="#hello-world-quickstart" title="Permalink to this headline"></a></h1>
@@ -159,7 +164,13 @@ span.prompt1:before {
 <li class="toctree-l2"><a class="reference internal" href="Building%20a%20data%20consumer.html#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Scheduling%20in%20R-Pulsar.html">Schedluling in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20Rendez-vous%20Point.html">Building a Rendez-vous Point program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Building%20a%20Rendez-vous%20Point.html#structure-of-a-rendez-vous-point-program">Structure of a Rendez-vous Point program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Building%20a%20Rendez-vous%20Point.html#rp">RP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Building%20a%20Rendez-vous%20Point.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Scheduling%20in%20R-Pulsar.html">Scheduling in R-Pulsar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tracing%20in%20R-Pulsar.html">Tracing in R-Pulsar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Deploying%20an%20R-Pulsar%20platform.html">Deploying a R-Pulsar platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Workflow%20management%20in%20R-Pulsar.html">Workflow management in R-Pulsar</a></li>
