@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Building a data producer" href="Building%20a%20data%20producer.html" />
+    <link rel="next" title="Building a data producer program" href="Building%20a%20data%20producer.html" />
     <link rel="prev" title="Installation" href="Installation.html" /> 
 </head>
 
@@ -48,10 +48,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#ar-message">AR Message</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20producer.html">Building a data producer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20consumer.html">Building a data consumer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Scheduling%20in%20R-Pulsar.html">Schedluling in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20producer.html">Building a data producer program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20consumer.html">Building a data consumer program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20Rendez-vous%20Point.html">Building a Rendez-vous Point program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scheduling%20in%20R-Pulsar.html">Scheduling in R-Pulsar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tracing%20in%20R-Pulsar.html">Tracing in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deploying%20an%20R-Pulsar%20platform.html">Deploying a R-Pulsar platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Workflow%20management%20in%20R-Pulsar.html">Workflow management in R-Pulsar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Federation%20Management.html">Federation Management</a></li>
 </ul>
@@ -66,7 +68,6 @@
 <p class="caption" role="heading"><span class="caption-text">Publications</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Main%20publications.html">Main publications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="They%20use%20it.html">They use it</a></li>
 </ul>
 
         </div>
@@ -96,6 +97,27 @@
 <h1>Data<a class="headerlink" href="#data" title="Permalink to this headline"></a></h1>
 <section id="ar-message">
 <h2>AR Message<a class="headerlink" href="#ar-message" title="Permalink to this headline"></a></h2>
+<p>The message is defined as a quintuplet: header, action, data, location, and data-processing task:</p>
+<dl class="simple">
+<dt>data and data processing task fields</dt><dd><p>may be empty or may contain a message payload or the data-processing task to be uploaded.</p>
+</dd>
+<dt>location field</dt><dd><p>contains the location coordinates and a tag. The location coordinates represent the physical location of the sensors or the physical location of where to deploy data processing tasks and the tag helps decide where to deploy data-processing tasks, i.e. either the edge or the cloud, allowing to pick from multiple cloud or edge geographically distributed resources.</p>
+</dd>
+<dt>header</dt><dd><p>includes a profile in addition to the sender’s credentials. A profile is a set of attributes and/or attribute-value pairs that define not only what type of data each sensor can produce but also the recipients of the message. Attribute fields must be keywords from a defined information space, while value fields may be keywords, partial keywords, wildcards, or ranges from the same space.</p>
+</dd>
+<dt>action field</dt><dd><p>defines its reactive behavior when two profiles match at a rendezvous point.</p>
+</dd>
+</dl>
+<p>The following code shows the construction of a message using the Message Class.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span> <span class="n">msg</span><span class="p">;</span>
+<span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span><span class="p">.</span><span class="na">Header</span><span class="p">.</span><span class="na">Profile</span> <span class="n">profile</span><span class="p">;</span>
+<span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span><span class="p">.</span><span class="na">Header</span> <span class="n">header</span><span class="p">;</span>
+
+<span class="n">profile</span> <span class="o">=</span> <span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span><span class="p">.</span><span class="na">Header</span><span class="p">.</span><span class="na">Profile</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">addSingle</span><span class="p">(</span><span class="s">&quot;temperature&quot;</span><span class="p">).</span><span class="na">addSingle</span><span class="p">(</span><span class="s">&quot;fahrenheit&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+
+<span class="n">header</span> <span class="o">=</span> <span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span><span class="p">.</span><span class="na">Header</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setLatitude</span><span class="p">(</span><span class="mf">0.00</span><span class="p">).</span><span class="na">setLongitude</span><span class="p">(</span><span class="mf">0.00</span><span class="p">).</span><span class="na">setType</span><span class="p">(</span><span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span><span class="p">.</span><span class="na">RPType</span><span class="p">.</span><span class="na">AR_CONSUMER</span><span class="p">).</span><span class="na">setProfile</span><span class="p">(</span><span class="n">profile</span><span class="p">).</span><span class="na">setPeerId</span><span class="p">(</span><span class="n">consumer</span><span class="p">.</span><span class="na">getPeerID</span><span class="p">()).</span><span class="na">build</span><span class="p">();</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -104,7 +126,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Building%20a%20data%20producer.html" class="btn btn-neutral float-right" title="Building a data producer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Building%20a%20data%20producer.html" class="btn btn-neutral float-right" title="Building a data producer program" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

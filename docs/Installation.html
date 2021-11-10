@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Data structures" href="Data%20structures.html" />
+    <link rel="next" title="Data" href="Data%20structures.html" />
     <link rel="prev" title="Platform" href="Platform.html" /> 
 </head>
 
@@ -49,11 +49,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#r-pulser-consumer-producer-examples">R-Pulser consumer/producer examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Data%20structures.html">Data structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20producer.html">Building a data producer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20consumer.html">Building a data consumer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Scheduling%20in%20R-Pulsar.html">Schedluling in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data%20structures.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20producer.html">Building a data producer program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20consumer.html">Building a data consumer program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20Rendez-vous%20Point.html">Building a Rendez-vous Point program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scheduling%20in%20R-Pulsar.html">Scheduling in R-Pulsar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tracing%20in%20R-Pulsar.html">Tracing in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deploying%20an%20R-Pulsar%20platform.html">Deploying a R-Pulsar platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Workflow%20management%20in%20R-Pulsar.html">Workflow management in R-Pulsar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Federation%20Management.html">Federation Management</a></li>
 </ul>
@@ -68,7 +70,6 @@
 <p class="caption" role="heading"><span class="caption-text">Publications</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Main%20publications.html">Main publications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="They%20use%20it.html">They use it</a></li>
 </ul>
 
         </div>
@@ -98,22 +99,32 @@
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
 <section id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline"></a></h2>
+<p>R-Pulsar is written in Java.
+For storing data, R-Pulsar relies on RocksDB, an embedded key-value database.</p>
 </section>
 <section id="compiling-the-platform">
 <h2>Compiling the platform<a class="headerlink" href="#compiling-the-platform" title="Permalink to this headline"></a></h2>
-</section>
-<section id="r-pulser-consumer-producer-examples">
-<h2>R-Pulser consumer/producer examples<a class="headerlink" href="#r-pulser-consumer-producer-examples" title="Permalink to this headline"></a></h2>
-<p>Download and extract the latest version of R-Pulsar:</p>
+<p>Compile using maven:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: "$ ";
 }
-</style><span class="prompt1">wget https://github.com/dbalouek/R-Pulsar/archive/refs/tags/1.0.tar.gz</span>
-<span class="prompt1">tar xzf <span class="m">1</span>.0.tar.gz</span>
-</pre></div></div><p>Compile using maven:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">mvn clean package</span>
+</style><span class="prompt1">mvn clean package</span>
 </pre></div></div></section>
+<section id="r-pulser-consumer-producer-examples">
+<h2>R-Pulser consumer/producer examples<a class="headerlink" href="#r-pulser-consumer-producer-examples" title="Permalink to this headline"></a></h2>
+<p>A set of examples are provided within the R-Pulsar archive, including configuration and property files:</p>
+<dl class="simple">
+<dt>Hello World</dt><dd><p>A simple example of communication between a data producer, a data consumer and a Rendez-vous Point(RP). Producer and consumer start by creating profiles. Then the RP successfully matches the profiles, resulting in a stream of messages from one to the other.</p>
+</dd>
+<dt>Storm Window</dt><dd><p>Producer streams message composes of sentences. Consumer relies on Apache Storm to count the occurences of words using window processing based on Apache Storm.</p>
+</dd>
+<dt>Rules</dt><dd><p>This example declares two consumers located respectively on Edge and Cloud resources. Based on the content of each data product within the stream, computations are triggered either at the edge or in the cloud.</p>
+</dd>
+<dt>Master/Slave Rendez-vous Points</dt><dd><p>This examples illustrates the ability to work with multiple RPs within across a federation of resources.</p>
+</dd>
+</dl>
+</section>
 </section>
 
 
@@ -121,7 +132,7 @@ span.prompt1:before {
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Platform.html" class="btn btn-neutral float-left" title="Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Data%20structures.html" class="btn btn-neutral float-right" title="Data structures" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Data%20structures.html" class="btn btn-neutral float-right" title="Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

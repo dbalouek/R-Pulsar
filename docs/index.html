@@ -64,7 +64,6 @@
 <p class="caption" role="heading"><span class="caption-text">Publications</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Main%20publications.html">Main publications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="They%20use%20it.html">They use it</a></li>
 </ul>
 
         </div>
@@ -92,11 +91,14 @@
              
   <section id="welcome-to-r-pulsar-s-documentation">
 <h1>Welcome to R-Pulsar’s documentation!<a class="headerlink" href="#welcome-to-r-pulsar-s-documentation" title="Permalink to this headline"></a></h1>
-<p>R-Pulsar is an IoT Edge Framework, that extends cloud capabilities to local devices and provides a programming model for deciding what, when, and where data get collected and processed. It has been deployed and tested on embedded devices (Raspberry Pi and Android phone) and presents an experimental evaluation that demonstrates that R-Pulsar can enable timely stream analytics by effectively leveraging edge and core resources.</p>
+<p>R-Pulsar is a Edge-to-Cloud framework, that extends cloud capabilities to local devices and provides a programming model for deciding what, when, and where data get collected and processed. It has been deployed and tested on embedded devices (Raspberry Pis and Android phones) and presents an experimental evaluation that demonstrates that R-Pulsar can enable timely stream analytics by effectively leveraging edge and core resources.</p>
 </section>
 <section id="how-does-it-work">
 <h1>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline"></a></h1>
-<p>Data consumers ——– Rule-based processing ——– Data producers</p>
+<p>Data consumers ——-&gt; Rule-based processing &lt;——- Data producers</p>
+<p>R-Pulsar proposes to expose dynamic profiles for data consumers and data producers. If there is a match between (users|resources|services) across the system</p>
+<p>ex: Alice produces “HD (1) videos (2) from Piscataway, NJ (3)”, Bob requests “all non-SD videos from New-Jersey” – which matches (1)(2)(3)</p>
+<p>streaming from Alice to Bob is triggered. This dynamic matching is coupled with execution-time rules to determine where computations happens (edge, core, etc…) to make the whole system opportunistic and reactive to runtime changes.</p>
 </section>
 <section id="hello-world-quickstart">
 <h1>Hello World Quickstart<a class="headerlink" href="#hello-world-quickstart" title="Permalink to this headline"></a></h1>
@@ -159,7 +161,7 @@ span.prompt1:before {
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20consumer.html">Building a data consumer program</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Building%20a%20data%20consumer.html#structure-of-a-consumer-program">Structure of a consumer program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Building%20a%20data%20consumer.html#structure-of-a-data-consumer-program">Structure of a data consumer program</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Building%20a%20data%20consumer.html#client-api">Client API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Building%20a%20data%20consumer.html#examples">Examples</a></li>
 </ul>
@@ -176,8 +178,6 @@ span.prompt1:before {
 <li class="toctree-l1"><a class="reference internal" href="Workflow%20management%20in%20R-Pulsar.html">Workflow management in R-Pulsar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Federation%20Management.html">Federation Management</a></li>
 </ul>
-</div>
-<div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>

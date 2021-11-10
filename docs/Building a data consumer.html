@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Schedluling in R-Pulsar" href="Scheduling%20in%20R-Pulsar.html" />
+    <link rel="next" title="Building a Rendez-vous Point program" href="Building%20a%20Rendez-vous%20Point.html" />
     <link rel="prev" title="Building a data producer program" href="Building%20a%20data%20producer.html" /> 
 </head>
 
@@ -47,12 +47,13 @@
 <li class="toctree-l1"><a class="reference internal" href="Data%20structures.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20producer.html">Building a data producer program</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Building a data consumer program</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#structure-of-a-consumer-program">Structure of a consumer program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structure-of-a-data-consumer-program">Structure of a data consumer program</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#client-api">Client API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Scheduling%20in%20R-Pulsar.html">Schedluling in R-Pulsar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building%20a%20Rendez-vous%20Point.html">Building a Rendez-vous Point program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scheduling%20in%20R-Pulsar.html">Scheduling in R-Pulsar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tracing%20in%20R-Pulsar.html">Tracing in R-Pulsar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Deploying%20an%20R-Pulsar%20platform.html">Deploying a R-Pulsar platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Workflow%20management%20in%20R-Pulsar.html">Workflow management in R-Pulsar</a></li>
@@ -69,7 +70,6 @@
 <p class="caption" role="heading"><span class="caption-text">Publications</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Main%20publications.html">Main publications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="They%20use%20it.html">They use it</a></li>
 </ul>
 
         </div>
@@ -97,27 +97,37 @@
              
   <section id="building-a-data-consumer-program">
 <h1>Building a data consumer program<a class="headerlink" href="#building-a-data-consumer-program" title="Permalink to this headline"></a></h1>
-<section id="structure-of-a-consumer-program">
-<h2>Structure of a consumer program<a class="headerlink" href="#structure-of-a-consumer-program" title="Permalink to this headline"></a></h2>
+<section id="structure-of-a-data-consumer-program">
+<h2>Structure of a data consumer program<a class="headerlink" href="#structure-of-a-data-consumer-program" title="Permalink to this headline"></a></h2>
 <p>Since the data consumer side of R-Pulsar is a library, a consumer program has to define a main function that uses R-Pulsar through function calls.</p>
 <p>The complete consumer-side interface is described in the Class PulsarConsumer and MessageListener found in the Core package.</p>
 <p>Please refer to these two classes for a complete and p-to-date API description, and import them at the beginning of your source code.</p>
-<p>import com.rutgers.Core.MessageListener;
-import com.rutgers.Core.PulsarConsumer;</p>
-<p>public class Consumer {</p>
-<p>InputStream props = new FileInputStream(args[0]);
-Properties properties = new Properties();
-properties.load(props);</p>
-<p>consumer = new PulsarConsumer(properties);
-consumer.init();</p>
-<p>consumer.replayListener(new Listener(){
-…
-}</p>
-<p>Message.ARMessage.Header.Profile profile = …
-Message.ARMessage.Header header = …
-Message.ARMessage.Header header = Message.ARMessage msg = …</p>
-<p>consumer.post(msg);</p>
-<p>}</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">com.rutgers.Core.MessageListener</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.rutgers.Core.PulsarConsumer</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Consumer</span> <span class="p">{</span>
+
+<span class="n">InputStream</span> <span class="n">props</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+<span class="n">Properties</span> <span class="n">properties</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="p">();</span>
+<span class="n">properties</span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="n">props</span><span class="p">);</span>
+
+<span class="n">consumer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PulsarConsumer</span><span class="p">(</span><span class="n">properties</span><span class="p">);</span>
+<span class="n">consumer</span><span class="p">.</span><span class="na">init</span><span class="p">();</span>
+
+<span class="n">consumer</span><span class="p">.</span><span class="na">replayListener</span><span class="p">(</span><span class="k">new</span> <span class="n">Listener</span><span class="p">(){</span>
+<span class="p">...</span>
+<span class="p">}</span>
+
+
+<span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span><span class="p">.</span><span class="na">Header</span><span class="p">.</span><span class="na">Profile</span> <span class="n">profile</span> <span class="o">=</span> <span class="p">...</span>
+<span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span><span class="p">.</span><span class="na">Header</span> <span class="n">header</span> <span class="o">=</span> <span class="p">...</span>
+<span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span><span class="p">.</span><span class="na">Header</span> <span class="n">header</span> <span class="o">=</span> <span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">...</span>
+
+<span class="n">consumer</span><span class="p">.</span><span class="na">post</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>The client program must open its R-Pulsar session with a call to <em>PulsarConsumer</em>, which parses the configuration file to set all key-value parameters and get a reference to Rpulsar Master.</p>
 <p>The program then (1) defines a listener for incoming messages, (2) creates a profil about the data of interest, (3) sends a message to the Master RP to be notified whenever there is a new match in the system.</p>
 </section>
@@ -134,7 +144,7 @@ Message.ARMessage.Header header = Message.ARMessage msg = …</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Building%20a%20data%20producer.html" class="btn btn-neutral float-left" title="Building a data producer program" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Scheduling%20in%20R-Pulsar.html" class="btn btn-neutral float-right" title="Schedluling in R-Pulsar" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Building%20a%20Rendez-vous%20Point.html" class="btn btn-neutral float-right" title="Building a Rendez-vous Point program" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
