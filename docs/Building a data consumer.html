@@ -47,9 +47,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Data%20structures.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Building%20a%20data%20producer.html">Building a data producer program</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Building a data consumer program</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#structure-of-a-data-consumer-program">Structure of a data consumer program</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#client-api">Client API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structure-of-a-consumer-program">Structure of a consumer program</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Building%20a%20Rendez-vous%20Point.html">Building a Rendez-vous Point program</a></li>
@@ -97,13 +95,16 @@
              
   <section id="building-a-data-consumer-program">
 <h1>Building a data consumer program<a class="headerlink" href="#building-a-data-consumer-program" title="Permalink to this headline"></a></h1>
-<section id="structure-of-a-data-consumer-program">
-<h2>Structure of a data consumer program<a class="headerlink" href="#structure-of-a-data-consumer-program" title="Permalink to this headline"></a></h2>
+<section id="structure-of-a-consumer-program">
+<h2>Structure of a consumer program<a class="headerlink" href="#structure-of-a-consumer-program" title="Permalink to this headline"></a></h2>
 <p>Since the data consumer side of R-Pulsar is a library, a consumer program has to define a main function that uses R-Pulsar through function calls.</p>
 <p>The complete consumer-side interface is described in the Class <em>PulsarConsumer</em> and <em>MessageListener</em> found in the Core package.</p>
 <p>Please refer to these two classes for a complete and up-to-date API description, and import them at the beginning of your source code.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">com.rutgers.Core.MessageListener</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">com.rutgers.Core.PulsarConsumer</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">com.rutgers.Core.Listener</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.rutgers.Core.Message</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.rutgers.Core.Message.ARMessage</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.rutgers.Core.MessageListener</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.rutgers.Core.PulsarProducer</span><span class="p">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Consumer</span> <span class="p">{</span>
 
@@ -121,7 +122,7 @@
 
 <span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span><span class="p">.</span><span class="na">Header</span><span class="p">.</span><span class="na">Profile</span> <span class="n">profile</span> <span class="o">=</span> <span class="p">...</span>
 <span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span><span class="p">.</span><span class="na">Header</span> <span class="n">header</span> <span class="o">=</span> <span class="p">...</span>
-<span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span><span class="p">.</span><span class="na">Header</span> <span class="n">header</span> <span class="o">=</span> <span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">...</span>
+<span class="n">Message</span><span class="p">.</span><span class="na">ARMessage</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">...</span>
 
 <span class="n">consumer</span><span class="p">.</span><span class="na">post</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
 
@@ -130,12 +131,6 @@
 </div>
 <p>The client program must open its R-Pulsar session with a call to <em>PulsarConsumer</em>, which parses the configuration file to set all key-value parameters and get a reference to Rpulsar Master.</p>
 <p>The program then (1) defines a listener for incoming messages, (2) creates a profil about the data of interest, (3) sends a message to the Master RP to be notified whenever there is a new match in the system.</p>
-</section>
-<section id="client-api">
-<h2>Client API<a class="headerlink" href="#client-api" title="Permalink to this headline"></a></h2>
-</section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
 </section>
 </section>
 
