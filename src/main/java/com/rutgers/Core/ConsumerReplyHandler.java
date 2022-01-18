@@ -429,44 +429,6 @@ public class ConsumerReplyHandler implements Runnable{
                             rp.sendDirectMessageNonBlocking(rp.getAllKnownPeers().get(0), armsg);
                         }
                         break;
-                        /**
-                         * A new region has been created so we need to updated the peers in our network.
-                         */
-                    /*case SCHEDULING_PATH: // First attemp at establish a path
-                        int port = peer.port + 2;
-                        int replication = peer.replicationFactor;
-                        String stormDir = peer.sDir;
-
-                        if(manager.getRpOne() != null) {
-                            manager.getRpOne().stop();
-                        }
-
-                        if(manager.getRpTwo() != null) {
-                            manager.getRpTwo().stop();
-                        }
-
-                        String bootstrap = ARMsg.getPayload(0);
-                        String tree = ARMsg.getPayload(1);
-
-                        if(ARMsg.getPayloadCount() >= 3) {
-                            String[] split = tree.split(",");
-                            PointQuadTree<PeerAddress> qTree = new PointQuadTree<PeerAddress>(Double.parseDouble(split[0]), Double.parseDouble(split[1]), Double.parseDouble(split[2]), Double.parseDouble(split[3]), 4, 4);
-                            manager.setqTree(qTree);
-                            RP rp = new RP(Integer.toString(port), stormDir);
-                            rp.startDHTMaster(replication);
-                            manager.setRpTwo(rp);
-                        }else {
-                            RP rp = new RP(Integer.toString(port), stormDir);
-                            String[] split = bootstrap.split(":");
-                            rp.startDHTBootstrap(split[0], split[1], replication);
-                            manager.setRpOne(rp);
-
-                            ARMessage.Header.Profile.Builder p = ARMessage.Header.Profile.newBuilder();
-                            ARMessage.Header he = ARMessage.Header.newBuilder().setLatitude(manager.getLatitude()).setLongitude(manager.getLongitude()).setType(ARMessage.RPType.AR_RP).setProfile(p).build();
-                            ARMessage armsg = ARMessage.newBuilder().setHeader(he).setAction(ARMessage.Action.HELLO).build();
-                            rp.sendDirectMessageNonBlocking(rp.getAllKnownPeers().get(0), armsg);
-                        }
-                        break;*/
                 }
                 }
             } catch (InterruptedException | IOException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
