@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+
+  master:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rpulsar-master
+    network_mode: "host"
+    command: [ -l, x, -gps, 40:-74  , -p, "5000" ]
+
+  producer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rpulsar-producer
+    network_mode: "host"
+    depends_on:
+      - master
+    entrypoint: java -cp Rpulsar.jar
+    command: [com.rutgers.Examples.HelloWorldPublisher,/R-Pulsar/propertyFiles/producer.prop]
+    volumes:
+      - ${PWD}/propertyFiles/producer.prop:/R-Pulsar/propertyFiles/producer.prop
+
+  consumer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rpulsar-consumer
+    network_mode: "host"
+    depends_on:
+      - master
+      - producer
+    entrypoint: java -cp Rpulsar.jar
+    command: [com.rutgers.Examples.Consumer,/R-Pulsar/propertyFiles/consumer.prop]
+    volumes:
+      - ${PWD}/propertyFiles/consumer.prop:/R-Pulsar/propertyFiles/consumer.prop

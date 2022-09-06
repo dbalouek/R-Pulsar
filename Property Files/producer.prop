@@ -1,6 +1,0 @@
-bootstrap.server=127.0.0.1:5000
-start.gui=false
-port=5001
-keys.dir=/tmp/public1.key
-location.longitude=0.00
-location.latitude=0.00
