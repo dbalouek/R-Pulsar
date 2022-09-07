@@ -6,7 +6,6 @@ R-Pulsar is an IoT Edge Framework, that extends cloud capabilities to local devi
 [R-Pulsar Documentation on Github Pages](https://dbalouek.github.io/R-Pulsar/)
 
 ## Docker
-*** Note that the docker build process is copying over a version of R-Pulsar that was built and not building it from src due to mvn taken a long time build. ***
 
 Build and run R-Pulsar Hello World example (master, producer, and consumer):
 ```
