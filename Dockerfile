@@ -10,7 +10,7 @@ WORKDIR /R-Pulsar
 COPY src src
 COPY pom.xml pom.xml
 RUN mvn clean package
-COPY target/P2P-1.0-SNAPSHOT-jar-with-dependencies.jar Rpulsar.jar
+RUN cp target/P2P-1.0-SNAPSHOT-jar-with-dependencies.jar Rpulsar.jar
 
 ENTRYPOINT [ "java", "-jar", "Rpulsar.jar"]
 CMD [ -l, x, -gps, $GPS  , -p, $PORT ]
