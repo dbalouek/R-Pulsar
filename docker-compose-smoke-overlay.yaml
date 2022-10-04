@@ -1,0 +1,43 @@
+version: '3.7'
+services:
+
+  smokedetec:
+    image: iperezx/sage-smoke-detection:0.7.0
+    container_name: smokedetector
+    environment:
+      - TOPIC_SMOKE=env.smoke.
+      - PYWAGGLE_LOG_DIR=pywaggle-logs
+      - MODEL_FILE=model.onnx
+      - MODEL_TYPE=smokeynet
+      - CAMERA_TYPE=hpwren
+    volumes:
+      - ${PWD}/pywaggle-logs:/src/pywaggle-logs
+
+  producer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rpulsar-producer
+    network_mode: "host"
+    depends_on:
+      - master
+      - smokedetec
+    entrypoint: java -cp Rpulsar.jar
+    command: [com.rutgers.Examples.SmokePublisher,/R-Pulsar/pywaggle-logs/data.ndjson,/R-Pulsar/propertyFiles/producer.prop]
+    volumes:
+      - ${PWD}/propertyFiles/producer.prop:/R-Pulsar/propertyFiles/producer.prop
+      - ${PWD}/pywaggle-logs:/R-Pulsar/pywaggle-logs/
+
+  consumer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rpulsar-consumer
+    network_mode: "host"
+    depends_on:
+      - master
+      - producer
+    entrypoint: java -cp Rpulsar.jar
+    command: [com.rutgers.Examples.Consumer,/R-Pulsar/propertyFiles/consumer.prop]
+    volumes:
+      - ${PWD}/propertyFiles/consumer.prop:/R-Pulsar/propertyFiles/consumer.prop
