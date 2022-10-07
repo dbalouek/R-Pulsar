@@ -24,7 +24,6 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.apache.commons.lang.StringEscapeUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -84,7 +83,7 @@ public class SmokePublisher {
             while (( someData = bufferReader.readLine() ) != null )
             {
                 JSONObject jsonObj = (JSONObject) parser.parse(someData);
-                payload = StringEscapeUtils.unescapeJava(jsonObj.toString());
+                payload = jsonObj.toString();
                 System.out.println(payload);
             }
             bufferReader.close();

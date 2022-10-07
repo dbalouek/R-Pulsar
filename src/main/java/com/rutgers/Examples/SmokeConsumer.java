@@ -23,6 +23,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.commons.lang.StringEscapeUtils;
+
 /**
  * This is and example of the use of the R-Pulsar API.
  * This example shows how to build a R-Pulsar consumer.
@@ -54,8 +56,8 @@ public class SmokeConsumer {
                     //Get the message that was send by the sensor
                     Message.ARMessage poll = consumer.poll(consum_msg, msg.getHeader().getPeerId());
                     
-                    String payload = poll.getPayload(0).split("\\r?\\n")[1].split(":")[1].trim().replace("\"", "");
-                    System.out.println("Received: " + payload);
+                    String payload = poll.getPayload(0);
+                    System.out.println("Received: " + StringEscapeUtils.unescapeJava(payload));
                 	
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException ex) {
