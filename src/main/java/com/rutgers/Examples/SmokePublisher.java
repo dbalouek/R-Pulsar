@@ -9,8 +9,6 @@ import com.rutgers.Core.Listener;
 import com.rutgers.Core.Message;
 import com.rutgers.Core.Message.ARMessage;
 
-import net.minidev.json.JSONArray;
-
 import com.rutgers.Core.MessageListener;
 import com.rutgers.Core.PulsarProducer;
 
@@ -23,9 +21,10 @@ import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Properties;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.apache.commons.lang.StringEscapeUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -41,30 +40,25 @@ public class SmokePublisher {
     static boolean running = false;
     static Thread thread = null;
     static PulsarProducer producer = null;
+    public static String payload = "payload";
     
     public static class Push implements Runnable {
         Message.ARMessage msg = null;
         ARMessage.Header.Profile profile = null;
         ARMessage.Header header = null;
-        String[] sentences = null;
         
         Push(Message.ARMessage msg) {
             this.msg = msg;
-            sentences = new String[]{ "the cow jumped over the moon", "an apple a day keeps the doctor away",
-                    "four score and seven years ago", "snow white and the seven dwarfs", "i am at two with nature" };
         }
         
         @Override
         public void run() {
-        	// Creation of a record
-            Random rand = new Random(); 
             //Using some compression techniques to reduce network overhead
             for(int i = 0; i < iterations; i ++) {
                 try {
                 	// Pushing a record to the RP
-                	int rand_int1 = rand.nextInt(sentences.length);
-                    Message.ARMessage push_msg = Message.ARMessage.newBuilder().setAction(Message.ARMessage.Action.STORE_QUEUE).setTopic(msg.getTopic()).addPayload(sentences[rand_int1]).build();
-                	System.out.println("Sending: " + sentences[rand_int1]);
+                    Message.ARMessage push_msg = Message.ARMessage.newBuilder().setAction(Message.ARMessage.Action.STORE_QUEUE).setTopic(msg.getTopic()).addPayload(payload).build();
+                    System.out.println("Sending: " + payload);
                     producer.stream(push_msg, msg.getHeader().getPeerId());
                 } catch (NoSuchAlgorithmException | InvalidKeySpecException | UnknownHostException | InterruptedException ex) {
                     Logger.getLogger(StormPublisher.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,7 +66,7 @@ public class SmokePublisher {
             }
         }
     }
-    
+
     /**
      * @param args the command line arguments
      * @throws ParseException
@@ -85,14 +79,15 @@ public class SmokePublisher {
         	}
             JSONParser parser = new JSONParser();
             String pathToFile = args[0];
-            BufferedReader someReader = new BufferedReader( new FileReader( pathToFile ));
+            BufferedReader bufferReader = new BufferedReader( new FileReader( pathToFile ));
             String someData;
-            while (( someData = someReader.readLine() ) != null ) 
+            while (( someData = bufferReader.readLine() ) != null )
             {
                 JSONObject jsonObj = (JSONObject) parser.parse(someData);
-                System.out.println(jsonObj);
+                payload = StringEscapeUtils.unescapeJava(jsonObj.toString());
+                System.out.println(payload);
             }
-            someReader.close();
+            bufferReader.close();
             InputStream props = new FileInputStream(args[1]);
             Properties properties = new Properties();
             properties.load(props);
@@ -107,7 +102,6 @@ public class SmokePublisher {
                     	//Start streaming the sensor data
                         case NOTIFY_START:
                             running = true;
-                            //Start a new thread with Push class
                             thread = new Thread(new Push(o));
                             thread.start();
                             break;
@@ -122,14 +116,15 @@ public class SmokePublisher {
                     }
                 }
             });
-            
+            // String profile_value = "SmokeDetector";
+            // System.out.println("Adding to profile: " + profile_value);
+            // ARMessage.Header.Profile profile = ARMessage.Header.Profile.newBuilder().addSingle(profile_value).build();
             //Create sensor profile
             ARMessage.Header.Profile profile = ARMessage.Header.Profile.newBuilder().addSingle("temperature").addSingle("fahrenheit").build();
             ARMessage.Header header = ARMessage.Header.newBuilder().setLatitude(0.00).setLongitude(0.00).setType(ARMessage.RPType.AR_PRODUCER).setProfile(profile).setPeerId(producer.getPeerID()).build();
             ARMessage msg = ARMessage.newBuilder().setHeader(header).setAction(ARMessage.Action.NOTIFY_INTEREST).build();
             //Send the message to the RP
             producer.post(msg, profile);
-            
         } catch (IOException | InterruptedException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
             Logger.getLogger(SmokePublisher.class.getName()).log(Level.SEVERE, null, ex);
         }
