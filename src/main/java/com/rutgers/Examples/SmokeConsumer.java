@@ -74,7 +74,7 @@ public class SmokeConsumer {
      */
     public static void main(String[] args) throws UnknownHostException, ClassNotFoundException {
         try {
-        	
+            Thread.sleep(10000);
         	if(args.length == 0) {
     	        System.out.println("Need to specify the consumer property file!!");
     	        System.exit(0);

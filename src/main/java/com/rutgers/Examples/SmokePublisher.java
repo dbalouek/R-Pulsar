@@ -72,6 +72,7 @@ public class SmokePublisher {
      */
     public static void main(String[] args) throws UnknownHostException, ClassNotFoundException, ParseException {
         try {
+            Thread.sleep(10000);
         	if(args.length == 0) {
     	        System.out.println("Need to specify input files.");
     	        System.exit(0);
