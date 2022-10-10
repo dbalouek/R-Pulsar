@@ -10,6 +10,7 @@ services:
       - MODEL_FILE=model.onnx
       - MODEL_TYPE=smokeynet
       - CAMERA_TYPE=hpwren
+    command: [-delay, "1.0"]
     volumes:
       - ${PWD}/pywaggle-logs:/src/pywaggle-logs
 
