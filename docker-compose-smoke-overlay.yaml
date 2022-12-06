@@ -1,5 +1,12 @@
 version: '3.7'
 services:
+  master:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rpulsar-master
+    network_mode: "host"
+    command: [ -l, x, -gps, 40:-74  , -p, "5000" ]
 
   smokedetec:
     image: iperezx/sage-smoke-detection:0.7.0
