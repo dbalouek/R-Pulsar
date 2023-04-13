@@ -58,8 +58,8 @@ public class RuleExample {
             
             Map<String, String> bindings = new HashMap<>();
             //The bindings is the data that is coming in from the sensors.
-            bindings.put("X", "5");
-            bindings.put("Y", "5");
+            bindings.put("X", "4");
+            bindings.put("Y", "6");
             //Evalues the rules
             boltRules.eval(bindings);
             
