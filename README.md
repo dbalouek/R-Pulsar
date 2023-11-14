@@ -32,7 +32,13 @@ Clean up:
 ```
 docker-compose down --remove-orphans
 ```
+## Main publication
 
+Eduard Gibert Renard, Balouek-Thomert Daniel , and Parashar Manish.
+
+**An edge-based framework for enabling data-driven pipelines for IoT systems. **
+
+In 2019 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW) (pp. 885-894).
 
 ## License
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details
